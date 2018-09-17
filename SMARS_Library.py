@@ -20,6 +20,8 @@
 
 import Adafruit_PCA9685
 import time
+import logging
+logging.basicConfig(level=logging.DEBUG)
 
 # Initialise the PCA9685 using the default address (0x40).
 pwm = Adafruit_PCA9685.PCA9685()
@@ -58,7 +60,7 @@ class leg(object):
 
     def down(self):
         pwm.set_pwm(self.channel,0,servo_min)
-        print 'setting leg ' , self.name , 'to down'
+        print 'setting leg' , self.name , 'to down'
 
     def middle(self):
         pwm.set_pwm(self.channel,0,servo_min)
