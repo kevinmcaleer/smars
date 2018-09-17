@@ -1,6 +1,6 @@
 import SMARS_Library
 from SMARS_Library import SmarsRobot
-import time 
+import time
 
 sm = SmarsRobot()
 
@@ -12,7 +12,7 @@ sm.type = "quad"
 for n in sm.legs:
     print n.name
     n.down()
-    sleep(1)
+    time.sleep(1)
     key = raw_input("Press any key to sit down")
 
 sm.leg_reset()
