@@ -45,6 +45,8 @@ def set_servo_pulse(channel, pulse):
 class leg(object):
 
     def __init__(self,name=None, channel=None):
+        pwm = Adafruit_PCA9685.PCA9685()
+        pwm.set_pwm_freq(60)
         print "setting up leg object"
         self.name = name
         self.channel = channel
@@ -56,7 +58,7 @@ class leg(object):
 
     def down(self):
         pwm.set_pwm(self.channel,0,servo_min)
-        print('setting leg ' , self.name , 'to down')
+        print 'setting leg ' , self.name , 'to down'
 
     def middle(self):
         pwm.set_pwm(self.channel,0,servo_min)
