@@ -29,6 +29,7 @@ pwm = Adafruit_PCA9685.PCA9685()
 # Configure min and max servo pulse lengths
 servo_min = 150  # Min pulse length out of 4096
 servo_max = 600  # Max pulse length out of 4096
+sleep_count = 0.5 # the amount of time to wait between pwm operations
 
 # Set frequency to 60hz, good for servos.
 pwm.set_pwm_freq(60)
@@ -56,20 +57,20 @@ class leg(object):
         print self.channel
         print "setting to up position"
         pwm.set_pwm(self.channel,self.channel,servo_max)
-        time.sleep(1)
+        time.sleep(sleep_count)
 
     def up(self):
-        pwm.set_pwm(self.channel,0,servo_max)
-        time.sleep(1)
+        pwm.set_pwm(self.channel,self.channel,servo_max)
+        time.sleep(sleep_count)
 
     def down(self):
         pwm.set_pwm(self.channel, self.channel,servo_min)
-        time.sleep(1)
+        time.sleep(sleep_count)
         print 'setting leg' , self.name , 'to down'
 
     def middle(self):
-        pwm.set_pwm(self.channel,0,servo_min)
-        time.sleep(1)
+        pwm.set_pwm(self.channel,self.channel,servo_min - servo_max)
+        time.sleep(sleep_count)
 
     def show(self):
         print self.channel
