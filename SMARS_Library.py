@@ -126,10 +126,10 @@ class SmarsRobot(object):
     right_foot_back  = 5
 
     def leg_reset(self):
-        legs("left_foot_front").moveTo(self.leg_min)
-        legs("left_foot_back").moveTo(self.leg_max)
-        legs("right_foot_front").moveTo(self.leg_min)
-        legs("right_foot_back").moveTo(self.leg_max)
+        legs("left_foot_front").moveTo(self.leg_max)
+        legs("left_foot_back").moveTo(self.leg_min)
+        legs("right_foot_front").moveTo(self.leg_max)
+        legs("right_foot_back").moveTo(self.leg_min)
 
     def middle(self):
         print "received middle command"
