@@ -44,7 +44,7 @@ def set_servo_pulse(channel, pulse):
 
 class leg():
 
-    def __init__(self, name, channel):
+    def __init__(name, channel):
         self.name = name
         self.channel = channel
 
@@ -67,6 +67,7 @@ class SmarsRobot():
     # need to make this an enum then set the type to be one of the items in the list
     type = ['wheel', 'quad']
 
+    # newLeg = leg()
     legs = []
     legs.append(leg('left_foot_front',0))
     legs.append(leg('left_foot_back',3))
@@ -84,12 +85,12 @@ class SmarsRobot():
     right_foot_back  = 5
 
     def middle():
-        for l in legs:
+        for l in self.legs:
             l.middle()
             l.show()
 
     def sit():
-        legs['left_leg_front'].down()
-        legs['left_leg_front'].down()
-        legs['right_leg_back'].down()
-        legs['right_leg_front'].down()
+        self.legs['left_leg_front'].down()
+        self.legs['left_leg_front'].down()
+        self.legs['right_leg_back'].down()
+        self.legs['right_leg_front'].down()
