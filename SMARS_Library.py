@@ -62,7 +62,7 @@ class leg(object):
         print self.channel
         print self.name
 
-class SmarsRobot():
+class SmarsRobot(object):
 
     # defines if the robot is a quad or wheel based robot
     # need to make this an enum then set the type to be one of the items in the list
