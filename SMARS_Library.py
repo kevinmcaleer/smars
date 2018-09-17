@@ -68,6 +68,7 @@ class leg(object):
 class SmarsRobot(object):
 
     def __init__(self):
+        pwm = Adafruit_PCA9685.PCA9685()
         pwm.set_pwm_freq(60)
 
     # defines if the robot is a quad or wheel based robot
