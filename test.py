@@ -6,4 +6,5 @@ sm = SmarsRobot()
 #  Telling sm to Sit
 
 print "Telling robot to sit"
+sm.type = "quad"
 sm.sit()

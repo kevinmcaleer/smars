@@ -56,7 +56,7 @@ class leg(object):
 
     def down(self):
         pwm.set_pwm(self.channel,0,servo_min)
-        print('setting leg ' , self.name , 'to downcat ')
+        print('setting leg ' , self.name , 'to down')
 
     def middle(self):
         pwm.set_pwm(self.channel,0,servo_min)
@@ -66,6 +66,9 @@ class leg(object):
         print self.name
 
 class SmarsRobot(object):
+
+    def __init__(self):
+        pwm.set_pwm_freq(60)
 
     # defines if the robot is a quad or wheel based robot
     # need to make this an enum then set the type to be one of the items in the list
