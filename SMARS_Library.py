@@ -55,7 +55,7 @@ class leg(object):
         print self.name
         print self.channel
         print "setting to up position"
-        pwm.set_pwm(self.channel,0,servo_max)
+        pwm.set_pwm(0,0,servo_max)
 
     def up(self):
         pwm.set_pwm(self.channel,0,servo_max)
