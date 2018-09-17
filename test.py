@@ -9,8 +9,8 @@ print "SMARS QUAD TEST PROGRAM"
 sm.type = "quad"
 sm.middle()
 
-input("Press any key to sit dowm")
+key = input("Press any key to sit down")
 sm.sit()
 
-input("Press any key to stand")
+key = input("Press any key to stand")
 sm.stand()
