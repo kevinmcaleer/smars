@@ -42,9 +42,9 @@ def set_servo_pulse(channel, pulse):
     pulse //= pulse_length
     pwm.set_pwm(channel, 0, pulse)
 
-class leg():
+class leg(object):
 
-    def __init__(name, channel):
+    def __init__(self,name=None, channel=None):
         self.name = name
         self.channel = channel
 
