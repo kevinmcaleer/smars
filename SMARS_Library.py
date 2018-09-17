@@ -45,8 +45,11 @@ def set_servo_pulse(channel, pulse):
 class leg(object):
 
     def __init__(self,name=None, channel=None):
+        print "setting up leg object"
         self.name = name
         self.channel = channel
+        print self.name
+        print self.channel
 
     def up(self):
         pwm.set_pwm(self.channel,0,servo_max)
