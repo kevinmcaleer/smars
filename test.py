@@ -5,7 +5,12 @@ sm = SmarsRobot()
 
 #  Telling sm to Sit
 
-print "Telling robot to sit"
+print "SMARS QUAD TEST PROGRAM"
 sm.type = "quad"
 sm.middle()
-# sm.sit()
+
+input("Press any key to sit dowm")
+sm.sit()
+
+input("Press any key to stand")
+sm.stand()

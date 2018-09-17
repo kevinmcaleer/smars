@@ -119,3 +119,7 @@ class SmarsRobot(object):
         # self.legs["left_leg_front"].down()
         # self.legs['right_leg_back'].down()
         # self.legs['right_leg_front'].down()
+
+    def stand(self):
+        for l in self.legs:
+            l.up()
