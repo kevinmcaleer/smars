@@ -2,7 +2,7 @@
 
 # setup leg 1:
 
-from SMARS_Library import leg()
+from SMARS_Library import leg
 
 l1 = leg()
 l1.name = "left_leg_front"
