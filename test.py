@@ -1,5 +1,5 @@
 import SMARS_Library
-import SmarsRobot from SMARS_Library
+from SMARS_Library import SmarsRobot
 
 sm = SmarsRobot()
 
