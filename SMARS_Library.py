@@ -53,6 +53,7 @@ class leg(object):
 
     def down():
         pwm.set_pwm(self.channel,0,servo_min)
+        Print('setting leg ' & self.name & 'to down')
 
     def middle():
         pwm.set_pwm(self.channel,0,servo_min)
@@ -73,7 +74,7 @@ class SmarsRobot():
     legs.append(leg('left_foot_back',3))
     legs.append(leg('right_foot_front',6))
     legs.append(leg('right_foot_back',5))
-    print legs.count
+    print len(legs)
 
     # setup legs and feet to correspond to the correct channel
     left_leg_front   = 0
@@ -91,6 +92,7 @@ class SmarsRobot():
             l.show()
 
     def sit():
+        print("Sitting down")
         self.legs['left_leg_front'].down()
         self.legs['left_leg_front'].down()
         self.legs['right_leg_back'].down()
