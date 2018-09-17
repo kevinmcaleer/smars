@@ -10,6 +10,7 @@ l1.channel = 0
 
 # print "setting minimum position"
 position = 0
+key = ""
 while key != "0":
     key = raw_input("setting min position, press 0 to exit")
     position = position + 10
