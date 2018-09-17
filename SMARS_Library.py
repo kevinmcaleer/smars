@@ -47,6 +47,8 @@ def set_servo_pulse(channel, pulse):
 
 class leg(object):
 
+    leg_min = 150
+    leg_max = 600
     def __init__(self,name=None, channel=None):
         pwm = Adafruit_PCA9685.PCA9685()
         pwm.set_pwm_freq(60)
@@ -56,7 +58,9 @@ class leg(object):
         # print self.name
         # print self.channel
         # print "setting to up position"
-        pwm.set_pwm(self.channel,self.channel,servo_max)
+
+        # Need to configure the in and max position for each limb
+        # pwm.set_pwm(self.channel,self.channel,servo_max)
         time.sleep(sleep_count)
 
     def up(self):
@@ -75,6 +79,10 @@ class leg(object):
     def show(self):
         print self.channel
         print self.name
+
+    def moveTo(self, position):
+        pwm.set_pwm(self.channel, self.channel, position)
+        time.sleep(sleep_count)
 
 class SmarsRobot(object):
 
