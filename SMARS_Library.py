@@ -88,9 +88,9 @@ class SmarsRobot(object):
 
     # newLeg = leg()
     legs = []
-    legs.append(leg(name = 'left_foot_front', channel = 0))
+    legs.append(leg(name = 'left_foot_front', channel = 1))
     legs.append(leg(name = 'left_foot_back',channel = 3))
-    legs.append(leg(name = 'right_foot_front',channel = 6))
+    legs.append(leg(name = 'right_foot_front',channel = 7))
     legs.append(leg(name = 'right_foot_back',channel = 5))
     print "number of legs", len(legs)
 
