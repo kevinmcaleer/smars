@@ -3,4 +3,4 @@ from SMARS_Library import SmarsRobot
 
 sm = SmarsRobot()
 
-sm.sit()
+sm.sit
