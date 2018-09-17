@@ -73,10 +73,10 @@ class SmarsRobot(object):
 
     # newLeg = leg()
     legs = []
-    legs.append(leg('left_foot_front',0))
-    legs.append(leg('left_foot_back',3))
-    legs.append(leg('right_foot_front',6))
-    legs.append(leg('right_foot_back',5))
+    legs.append(leg(name = 'left_foot_front', channel = 0))
+    legs.append(leg(name = 'left_foot_back',channel = 3))
+    legs.append(leg(name = 'right_foot_front',channel = 6))
+    legs.append(leg(name = 'right_foot_back',channel = 5))
     print "number of legs", len(legs)
 
     # setup legs and feet to correspond to the correct channel
@@ -99,7 +99,7 @@ class SmarsRobot(object):
         for l in self.legs:
             print l.name
         print("Sitting down")
-        self.legs['left_leg_front'].down()
+        self.legs[name = 'left_leg_front'].down()
         self.legs['left_leg_front'].down()
         self.legs['right_leg_back'].down()
         self.legs['right_leg_front'].down()
