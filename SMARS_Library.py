@@ -99,7 +99,9 @@ class SmarsRobot(object):
         for l in self.legs:
             print l.name
         print("Sitting down")
-        self.legs["left_leg_front"].down()
-        self.legs["left_leg_front"].down()
-        self.legs['right_leg_back'].down()
-        self.legs['right_leg_front'].down()
+        for l in self.legs:
+            l.down()
+        # self.legs["left_leg_front"].down()
+        # self.legs["left_leg_front"].down()
+        # self.legs['right_leg_back'].down()
+        # self.legs['right_leg_front'].down()
