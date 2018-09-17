@@ -77,7 +77,7 @@ class SmarsRobot(object):
     legs.append(leg('left_foot_back',3))
     legs.append(leg('right_foot_front',6))
     legs.append(leg('right_foot_back',5))
-    print len(legs)
+    print "number of legs" & len(legs)
 
     # setup legs and feet to correspond to the correct channel
     left_leg_front   = 0
