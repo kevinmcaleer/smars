@@ -101,9 +101,7 @@ class SmarsRobot(object):
     def sit(self):
         print "received sit command"
         for l in self.legs:
-            print l.name
-        print("Sitting down")
-        for l in self.legs:
+            print "sitting down leg: ", l.name
             l.down()
         # self.legs["left_leg_front"].down()
         # self.legs["left_leg_front"].down()
