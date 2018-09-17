@@ -6,7 +6,7 @@ from SMARS_Library import leg
 
 l1 = leg()
 l1.name = "left_leg_front"
-l1.channel = 0
+l1.channel = 1
 
 # print "setting minimum position"
 position = 300

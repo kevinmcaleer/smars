@@ -7,7 +7,7 @@ sm = SmarsRobot()
 
 print "SMARS QUAD TEST PROGRAM"
 sm.type = "quad"
-sm.middle()
+sm.leg_reset()
 
 key = raw_input("Press any key to sit down")
 sm.sit()
