@@ -113,7 +113,7 @@ class SmarsRobot(object):
     legs.append(leg(name = 'left_leg_back',   channel = 2, leg_min = 300, leg_max = 600, invert = True))
     legs.append(leg(name = 'right_leg_front', channel = 6, leg_min = 300, leg_max = 600, invert = False))
     legs.append(leg(name = 'right_leg_back',  channel = 4, leg_min = 300, leg_max = 600, invert = True))
-    print "number of legs", len(legs)
+    # print "number of legs", len(legs)
 
     # setup legs and feet to correspond to the correct channel
     left_leg_front   = 0
@@ -126,10 +126,10 @@ class SmarsRobot(object):
     right_foot_back  = 5
 
     def leg_reset(self):
-        legs("left_foot_front").moveTo(self.leg_max)
-        legs("left_foot_back").moveTo(self.leg_min)
-        legs("right_foot_front").moveTo(self.leg_max)
-        legs("right_foot_back").moveTo(self.leg_min)
+        self.legs("left_foot_front").moveTo(self.leg_max)
+        self.legs("left_foot_back").moveTo(self.leg_min)
+        self.legs("right_foot_front").moveTo(self.leg_max)
+        self.legs("right_foot_back").moveTo(self.leg_min)
 
     def middle(self):
         print "received middle command"
