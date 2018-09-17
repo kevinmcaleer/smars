@@ -72,7 +72,7 @@ class SmarsRobot():
     legs.append(leg('left_foot_front',0))
     legs.append(leg('left_foot_back',3))
     legs.append(leg('right_foot_front',6))
-    legs.append(leg('right_foot_back'),5))
+    legs.append(leg('right_foot_back',5))
     legs[0].show()
     # setup legs and feet to correspond to the correct channel
     left_leg_front   = 0
