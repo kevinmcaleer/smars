@@ -6,4 +6,4 @@ sm = SmarsRobot()
 #  Telling sm to Sit
 
 print "Telling robot to sit"
-sm.sit
+sm.sit()
