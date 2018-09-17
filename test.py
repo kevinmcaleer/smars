@@ -1,5 +1,6 @@
 import SMARS_Library
 from SMARS_Library import SmarsRobot
+import time 
 
 sm = SmarsRobot()
 
