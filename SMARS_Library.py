@@ -92,6 +92,8 @@ class SmarsRobot():
             l.show()
 
     def sit():
+        for l in legs:
+            print l.name
         print("Sitting down")
         self.legs['left_leg_front'].down()
         self.legs['left_leg_front'].down()
