@@ -47,14 +47,17 @@ def set_servo_pulse(channel, pulse):
 
 class leg(object):
 
-    leg_min = 150
-    leg_max = 600
-    def __init__(self,name=None, channel=None):
+    # leg_min = 150
+    # leg_max = 600
+    def __init__(self,name=None, channel=None, leg_min=None, leg_max=None, invert=None):
         pwm = Adafruit_PCA9685.PCA9685()
         pwm.set_pwm_freq(60)
         # print "setting up leg object"
         self.name = name
         self.channel = channel
+        self.leg_min = leg_min
+        self.leg_max = leg_max
+        self.invert = invert
         # print self.name
         # print self.channel
         # print "setting to up position"
@@ -64,16 +67,22 @@ class leg(object):
         time.sleep(sleep_count)
 
     def up(self):
-        pwm.set_pwm(self.channel,self.channel,servo_max)
+        if self.invert = False:
+            pwm.set_pwm(self.channel,self.channel, self.leg_max)
+        else
+            pwm.set_pwm(self.channel,self.channel, self.leg_min)
         time.sleep(sleep_count)
 
     def down(self):
-        pwm.set_pwm(self.channel, self.channel,servo_min)
+        if self.invert = False:
+            pwm.set_pwm(self.channel, self.channel, self.leg_min)
+        else
+            pwm.set_pwm(self.channel, self.channel, self.leg_max)
         time.sleep(sleep_count)
         # print 'setting leg' , self.name , 'to down'
 
     def middle(self):
-        pwm.set_pwm(self.channel,self.channel,servo_min - servo_max)
+        pwm.set_pwm(self.channel,self.channel,self.leg_min - self.leg_max)
         time.sleep(sleep_count)
 
     def show(self):
@@ -96,7 +105,7 @@ class SmarsRobot(object):
 
     # newLeg = leg()
     legs = []
-    legs.append(leg(name = 'left_foot_front', channel = 1))
+    legs.append(leg(name = 'left_foot_front', channel = 1, leg_min = 300, leg_max = 600, invert=false))
     legs.append(leg(name = 'left_foot_back',channel = 3))
     legs.append(leg(name = 'right_foot_front',channel = 7))
     legs.append(leg(name = 'right_foot_back',channel = 5))
