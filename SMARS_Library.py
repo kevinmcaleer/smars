@@ -53,7 +53,7 @@ class leg(object):
 
     def down():
         pwm.set_pwm(self.channel,0,servo_min)
-        Print('setting leg ' & self.name & 'to down')
+        Print('setting leg ' & self.name & 'to downcat ')
 
     def middle():
         pwm.set_pwm(self.channel,0,servo_min)
