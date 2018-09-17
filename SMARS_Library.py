@@ -55,7 +55,7 @@ class leg(object):
         print self.name
         print self.channel
         print "setting to up position"
-        pwm.set_pwm(0,channel,servo_max)
+        pwm.set_pwm(self.channel,self.channel,servo_max)
         time.sleep(1)
 
     def up(self):
@@ -63,7 +63,7 @@ class leg(object):
         time.sleep(1)
 
     def down(self):
-        pwm.set_pwm(0, self.channel,servo_min)
+        pwm.set_pwm(self.channel, self.channel,servo_min)
         time.sleep(1)
         print 'setting leg' , self.name , 'to down'
 
