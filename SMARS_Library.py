@@ -105,10 +105,14 @@ class SmarsRobot(object):
 
     # newLeg = leg()
     legs = []
-    legs.append(leg(name = 'left_foot_front', channel = 1, leg_min = 300, leg_max = 600, invert=False))
-    legs.append(leg(name = 'left_foot_back',channel = 3, leg_min = 300, leg_max = 600, invert = True))
-    legs.append(leg(name = 'right_foot_front',channel = 7, leg_min = 300, leg_max = 600, invert=False))
-    legs.append(leg(name = 'right_foot_back',channel = 5, leg_min = 300, leg_max = 600, invert = True))
+    legs.append(leg(name = 'left_foot_front', channel = 1, leg_min = 300, leg_max = 600, invert = False))
+    legs.append(leg(name = 'left_foot_back',  channel = 3, leg_min = 300, leg_max = 600, invert = True))
+    legs.append(leg(name = 'right_foot_front',channel = 7, leg_min = 300, leg_max = 600, invert = False))
+    legs.append(leg(name = 'right_foot_back', channel = 5, leg_min = 300, leg_max = 600, invert = True))
+    legs.append(leg(name = 'left_leg_front',  channel = 0, leg_min = 300, leg_max = 600, invert = False))
+    legs.append(leg(name = 'left_leg_back',   channel = 2, leg_min = 300, leg_max = 600, invert = True))
+    legs.append(leg(name = 'right_leg_front', channel = 6, leg_min = 300, leg_max = 600, invert = False))
+    legs.append(leg(name = 'right_leg_back',  channel = 4, leg_min = 300, leg_max = 600, invert = True))
     print "number of legs", len(legs)
 
     # setup legs and feet to correspond to the correct channel
