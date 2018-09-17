@@ -50,12 +50,12 @@ class leg(object):
     def __init__(self,name=None, channel=None):
         pwm = Adafruit_PCA9685.PCA9685()
         pwm.set_pwm_freq(60)
-        print "setting up leg object"
+        # print "setting up leg object"
         self.name = name
         self.channel = channel
-        print self.name
-        print self.channel
-        print "setting to up position"
+        # print self.name
+        # print self.channel
+        # print "setting to up position"
         pwm.set_pwm(self.channel,self.channel,servo_max)
         time.sleep(sleep_count)
 
@@ -66,7 +66,7 @@ class leg(object):
     def down(self):
         pwm.set_pwm(self.channel, self.channel,servo_min)
         time.sleep(sleep_count)
-        print 'setting leg' , self.name , 'to down'
+        # print 'setting leg' , self.name , 'to down'
 
     def middle(self):
         pwm.set_pwm(self.channel,self.channel,servo_min - servo_max)
@@ -105,9 +105,10 @@ class SmarsRobot(object):
     right_foot_back  = 5
 
     def middle(self):
+        print "received middle command"
         for l in self.legs:
             l.middle()
-            l.show()
+            # l.show()
 
     def sit(self):
         print "received sit command"
