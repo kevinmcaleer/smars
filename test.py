@@ -17,7 +17,9 @@ for n in sm.legs:
     time.sleep(1)
     key = raw_input("Press any key to sit down")
 
-sm.leg_reset()
+
+#  BUG In leg_reset code. cannot call an object by name from the list...
+# sm.leg_reset()
 
 key = raw_input("Press any key to sit down")
 sm.sit()
