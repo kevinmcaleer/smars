@@ -55,11 +55,11 @@ class leg(object):
         # print "setting up leg object"
         self.name = name
         self.channel = channel
+        self.leg_minAngle = leg_minAngle
+        self.leg_maxAngle = leg_maxAngle
+        self.invert = invert
         self.leg_min = leg_min
         self.leg_max = leg_max
-        self.invert = invert
-        self.leg_minAngle = 0
-        self.leg_maxAngle = 180
         # print self.name
         # print self.channel
         # print "setting to up position"
