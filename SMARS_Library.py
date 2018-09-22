@@ -93,6 +93,18 @@ class leg(object):
         pwm.set_pwm(self.channel, self.channel, position)
         time.sleep(sleep_count)
 
+    def setAngle(self, angle):
+        # Works out the value of the angle by mapping the leg_min and leg_max to between 0 and 180 degrees
+        mapMax = self.leg_max - self.leg_min
+        percentage = angle/180*100
+        pulse = mapMax / 100 * percentage + self.leg_min
+        print "Angle = ", angle
+        print "Angle as a percentage = ", percentage
+        print "pulse = ", pulse
+        print "map Max = ", mapMax
+        # return pulse
+        pwm.set_pwm(self.channel, self.channel, pulse)
+
 class SmarsRobot(object):
 
     def __init__(self):
