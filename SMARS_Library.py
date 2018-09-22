@@ -101,12 +101,13 @@ class leg(object):
     def setAngle(self, angle):
         # Works out the value of the angle by mapping the leg_min and leg_max to between 0 and 180 degrees
         print "Angle is:", angle
+
         # Check the angle is within the boundaries for this limb
         if angle >= self.leg_minAngle and angle <= self.leg_maxAngle:
 
             mapMax = self.leg_max - self.leg_min
-            percentage = ( angle / 180 ) * 100
-            pulse = (( mapMax / 100 ) * percentage ) + self.leg_min
+            percentage = float(( angle / 180 ) * 100)
+            pulse = float(( mapMax / 100 ) * percentage ) + self.leg_min
             print "Angle = ", angle
             print "Angle as a percentage = ", percentage
             print "pulse = ", pulse
