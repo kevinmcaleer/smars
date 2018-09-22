@@ -7,6 +7,9 @@ from SMARS_Library import leg
 l1 = leg()
 l1.name = "left_leg_front"
 l1.channel = 1
+l1.leg_minAngle = 0
+l1.leg_maxAngle = 90
+l1.invert = False
 
 # print "setting minimum position"
 angle = 0
