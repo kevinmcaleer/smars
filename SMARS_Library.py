@@ -69,7 +69,7 @@ class leg(object):
         time.sleep(sleep_count)
 
     def setDefault(self):
-        self.setAngle(self, self.leg_minAngle - self.leg_maxAngle)
+        self.setAngle(self.leg_minAngle - self.leg_maxAngle)
 
     def up(self):
         if self.invert == False:
