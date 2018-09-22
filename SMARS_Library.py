@@ -47,9 +47,9 @@ def set_servo_pulse(channel, pulse):
 
 class leg(object):
 
-    # leg_min = 150
-    # leg_max = 600
-    def __init__(self,name=None, channel=None, leg_min=None, leg_max=None, invert=None):
+    leg_min = 150
+    leg_max = 600
+    def __init__(self,name=None, channel=None, leg_minAngle=None, leg_maxAngle=None, invert=None):
         pwm = Adafruit_PCA9685.PCA9685()
         pwm.set_pwm_freq(60)
         # print "setting up leg object"
@@ -58,6 +58,8 @@ class leg(object):
         self.leg_min = leg_min
         self.leg_max = leg_max
         self.invert = invert
+        self.leg_minAngle = 0
+        self.leg_maxAngle = 180
         # print self.name
         # print self.channel
         # print "setting to up position"
@@ -65,6 +67,9 @@ class leg(object):
         # Need to configure the in and max position for each limb
         # pwm.set_pwm(self.channel,self.channel,servo_max)
         time.sleep(sleep_count)
+
+    def setDefault(self):
+        self.setAngle(self, self.leg_minAngle - self.leg_maxAngle)
 
     def up(self):
         if self.invert == False:
@@ -95,15 +100,21 @@ class leg(object):
 
     def setAngle(self, angle):
         # Works out the value of the angle by mapping the leg_min and leg_max to between 0 and 180 degrees
-        mapMax = self.leg_max - self.leg_min
-        percentage = angle/180*100
-        pulse = mapMax / 100 * percentage + self.leg_min
-        print "Angle = ", angle
-        print "Angle as a percentage = ", percentage
-        print "pulse = ", pulse
-        print "map Max = ", mapMax
-        # return pulse
-        pwm.set_pwm(self.channel, self.channel, pulse)
+
+        # Check the angle is within the boundaries for this limb
+        if angle > self.leg_minAngle and self.leg_maxAngle:
+
+            mapMax = self.leg_max - self.leg_min
+            percentage = angle/180*100
+            pulse = mapMax / 100 * percentage + self.leg_min
+            print "Angle = ", angle
+            print "Angle as a percentage = ", percentage
+            print "pulse = ", pulse
+            print "map Max = ", mapMax
+            # return pulse
+            pwm.set_pwm(self.channel, self.channel, pulse)
+        else:
+            print("Error angle was outside of bounds for this leg: ", angle, "Minimum:", self.leg_minAngle, "Maximum:", self.leg_maxAngle)
 
 class SmarsRobot(object):
 
@@ -117,14 +128,14 @@ class SmarsRobot(object):
 
     # newLeg = leg()
     legs = []
-    legs.append(leg(name = 'left_foot_front', channel = 1, leg_min = 300, leg_max = 560, invert = False))
-    legs.append(leg(name = 'left_foot_back',  channel = 3, leg_min = 300, leg_max = 560, invert = True))
-    legs.append(leg(name = 'right_foot_front',channel = 7, leg_min = 300, leg_max = 560, invert = False))
-    legs.append(leg(name = 'right_foot_back', channel = 5, leg_min = 300, leg_max = 560, invert = True))
-    legs.append(leg(name = 'left_leg_front',  channel = 0, leg_min = 300, leg_max = 600, invert = False))
-    legs.append(leg(name = 'left_leg_back',   channel = 2, leg_min = 300, leg_max = 600, invert = True))
-    legs.append(leg(name = 'right_leg_front', channel = 6, leg_min = 300, leg_max = 600, invert = False))
-    legs.append(leg(name = 'right_leg_back',  channel = 4, leg_min = 300, leg_max = 600, invert = True))
+    legs.append(leg(name = 'left_foot_front', channel = 1, leg_minAngle = 0,   leg_maxAngle = 90,  invert = False))
+    legs.append(leg(name = 'left_foot_back',  channel = 3, leg_minAngle = 90,  leg_maxAngle = 180, invert = True))
+    legs.append(leg(name = 'right_foot_front',channel = 7, leg_minAngle = 90, leg_maxAngle = 180, invert = False))
+    legs.append(leg(name = 'right_foot_back', channel = 5, leg_minAngle = 0, leg_maxAngle = 90, invert = True))
+    legs.append(leg(name = 'left_leg_front',  channel = 0, leg_minAngle = 0, leg_maxAngle = 90, invert = False))
+    legs.append(leg(name = 'left_leg_back',   channel = 2, leg_minAngle = 90, leg_maxAngle = 180, invert = True))
+    legs.append(leg(name = 'right_leg_front', channel = 6, leg_minAngle = 90, leg_maxAngle = 180, invert = False))
+    legs.append(leg(name = 'right_leg_back',  channel = 4, leg_minAngle = 0, leg_maxAngle = 90, invert = True))
     # print "number of legs", len(legs)
 
     # setup legs and feet to correspond to the correct channel
