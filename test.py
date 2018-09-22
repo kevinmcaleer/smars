@@ -11,10 +11,11 @@ sm.type = "quad"
 
 for n in sm.legs:
     print n.name
-    n.down()
+    n.setDefault()
+    # n.down()
     time.sleep(1)
-    n.up()
-    time.sleep(1)
+    # n.up()
+    # time.sleep(1)
     key = raw_input("Press any key to sit down")
 
 
