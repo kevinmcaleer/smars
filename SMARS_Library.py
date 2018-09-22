@@ -102,7 +102,7 @@ class leg(object):
         # Works out the value of the angle by mapping the leg_min and leg_max to between 0 and 180 degrees
 
         # Check the angle is within the boundaries for this limb
-        if angle > self.leg_minAngle and self.leg_maxAngle:
+        if angle => self.leg_minAngle and angle <= self.leg_maxAngle:
 
             mapMax = self.leg_max - self.leg_min
             percentage = angle/180*100
