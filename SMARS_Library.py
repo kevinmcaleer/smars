@@ -100,7 +100,7 @@ class leg(object):
 
     def setAngle(self, angle):
         # Works out the value of the angle by mapping the leg_min and leg_max to between 0 and 180 degrees
-
+        print "Angle is:", angle
         # Check the angle is within the boundaries for this limb
         if angle >= self.leg_minAngle and angle <= self.leg_maxAngle:
 
