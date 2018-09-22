@@ -9,13 +9,13 @@ l1.name = "left_leg_front"
 l1.channel = 1
 
 # print "setting minimum position"
-position = 300
-l1.moveTo(position)
+angle = 0
+l1.setAngle(angle)
 key = ""
 while key != "0":
     key = raw_input("setting min position, press 0 to exit")
     print key
     # if raw_input ==
-    position = position + 10
-    l1.moveTo(position)
-    print "current position:", position
+    angle = angle + 10
+    l1.setAngle(angle)
+    print "current angle:", angle
