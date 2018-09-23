@@ -33,14 +33,16 @@ servo_max = 600  # Max pulse length out of 4096
 sleep_count = 0.25 # the amount of time to wait between pwm operations
 
 # setup legs and feet to correspond to the correct channel
-left_leg_front   = 0
-left_foot_front  = 1
-left_leg_back    = 2
-left_foot_back   = 3
-right_leg_front  = 6
-right_foot_front = 7
-right_leg_back   = 4
-right_foot_back  = 5
+left_leg_back    = 0 # channel 2
+left_leg_front   = 1 # channel 0
+left_foot_front  = 2 # channel 1
+left_foot_back   = 3 # channel 3
+
+
+right_leg_front  = 0 # channel 6
+right_foot_front = 1 # channel 7
+right_leg_back   = 2 # channel 4
+right_foot_back  = 3 # channel 5
 
 # Set frequency to 60hz, good for servos.
 pwm.set_pwm_freq(60)
