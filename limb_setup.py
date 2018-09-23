@@ -19,13 +19,15 @@ def select_channel():
     print "--------------"
     print ""
     print "currently selected channel is:", channel_number
+    key = ""
 
-    while int(channel_number) <= 15:
-            channel_number = raw_input("type channel number:")
+    while channel_number <= 15:
+            key = raw_input("type channel number:")
+            channel_number = int(key)
             if channel_number >= 15:
-                print "you typed", channel_number
+                print "you typed", key, channel_number
                 print "sorry that channel number is too high, needs to be between 0 and 15"
-    l1.channel = int(channel_number)
+    l1.channel = channel_number
 
 def select_angle():
     global angle
