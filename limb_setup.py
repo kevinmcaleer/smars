@@ -20,9 +20,9 @@ def select_channel():
     print ""
     print "currently selected channel is:", channel_number
 
-    while channel_number <= 15:
+    while int(channel_number) <= 15:
             channel_number = raw_input("type channel number:")
-            if channel_number >= 15:
+            if int(channel_number) >= 15:
                 print "sorry that channel number is too high, needs to be between 0 and 15"
     l1.channel = int(channel_number)
 
