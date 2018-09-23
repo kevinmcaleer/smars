@@ -23,18 +23,22 @@ def check_legs():
 
     print "front left leg"
     sm.legs[sl.left_leg_front].up()
+    print sm.legs[sl.left_leg_front].name
     key = raw_input("press a key to continue")
 
     print "front right leg"
     sm.legs[sl.right_leg_front].up()
+    print sm.legs[sl.right_leg_front].name
     key = raw_input("press a key to continue")
 
     print "back left leg"
     sm.legs[sl.left_leg_back].up()
+    print sm.legs[sl.left_leg_back].name
     key = raw_input("press a key to continue")
 
     print "back right leg"
     sm.legs[sl.right_leg_back].up()
+    print sm.legs[sl.right_leg_back].name
     key = raw_input("press a key to continue")
 
     print "Now moving each let to its default position."
@@ -43,9 +47,33 @@ def check_legs():
     sm.legs[sl.left_leg_back].setDefault()
     sm.legs[sl.right_leg_back].setDefault()
 
+    print "now moving each leg to its down position"
+
 def check_feet():
     print "Checking each foot - each foot should rise up."
+    key = raw_input("press a key to continue")
 
+    print "front left foot"
+    sm.foot[sl.left_foot_front].up()
+    key = raw_input("press a key to continue")
+
+    print "front right foot"
+    sm.foot[sl.right_foot_front].up()
+    key = raw_input("press a key to continue")
+
+    print "back left foot"
+    sm.foot[sl.left_foot_back].up()
+    key = raw_input("press a key to continue")
+
+    print "back right foot"
+    sm.foot[sl.right_foot_back].up()
+    key = raw_input("press a key to continue")
+
+    print "Now moving each let to its default position."
+    sm.legs[sl.left_leg_front].setDefault()
+    sm.legs[sl.right_leg_front].setDefault()
+    sm.legs[sl.left_leg_back].setDefault()
+    sm.legs[sl.right_leg_back].setDefault()
 
 # set the input choice to nothing
 key = ""
