@@ -134,10 +134,11 @@ class SmarsRobot(object):
 
     # newLeg = leg()
     legs = []
-    legs.append(leg(name = 'left_foot_front', channel = 1, leg_minAngle = 0,   leg_maxAngle = 90,  invert = False))
-    legs.append(leg(name = 'left_foot_back',  channel = 3, leg_minAngle = 90,  leg_maxAngle = 180, invert = True))
-    legs.append(leg(name = 'right_foot_front',channel = 7, leg_minAngle = 90, leg_maxAngle = 180, invert = False))
-    legs.append(leg(name = 'right_foot_back', channel = 5, leg_minAngle = 0, leg_maxAngle = 90, invert = True))
+    feet = []
+    feet.append(leg(name = 'left_foot_front', channel = 1, leg_minAngle = 0,   leg_maxAngle = 90,  invert = False))
+    feet.append(leg(name = 'left_foot_back',  channel = 3, leg_minAngle = 90,  leg_maxAngle = 180, invert = True))
+    feet.append(leg(name = 'right_foot_front',channel = 7, leg_minAngle = 90, leg_maxAngle = 180, invert = False))
+    feet.append(leg(name = 'right_foot_back', channel = 5, leg_minAngle = 0, leg_maxAngle = 90, invert = True))
     legs.append(leg(name = 'left_leg_front',  channel = 0, leg_minAngle = 0, leg_maxAngle = 90, invert = False))
     legs.append(leg(name = 'left_leg_back',   channel = 2, leg_minAngle = 90, leg_maxAngle = 180, invert = True))
     legs.append(leg(name = 'right_leg_front', channel = 6, leg_minAngle = 90, leg_maxAngle = 180, invert = False))
@@ -168,7 +169,7 @@ class SmarsRobot(object):
 
     def sit(self):
         print "received sit command"
-        for l in self.legs:
+        for l in self.feet:
             # print "sitting down leg: ", l.name
             l.down()
         # self.legs["left_leg_front"].down()
@@ -177,5 +178,5 @@ class SmarsRobot(object):
         # self.legs['right_leg_front'].down()
 
     def stand(self):
-        for l in self.legs:
+        for l in self.feet:
             l.up()
