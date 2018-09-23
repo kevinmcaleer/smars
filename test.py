@@ -4,7 +4,7 @@
 # Written by Kevin McAleer
 # September 2018
 
-import SMARS_Library
+import SMARS_Library as sl
 from SMARS_Library import SmarsRobot
 import time
 
@@ -15,41 +15,33 @@ sm = SmarsRobot()
 sm.type = "quad"
 
 def check_legs():
-    global left_leg_back
-    global right_leg_back
-    global left_leg_front
-    global right_leg_front
-
-    global left_foot_back
-    global right_foot_back
-    global left_foot_front
-    global right_foot_front
+    # Check each leg
 
     key = ""
     print "Checking each leg - it should rotate to its full extent"
     key = raw_input("press a key to continue")
 
     print "front left leg"
-    sm.legs[left_leg_front].up()
+    sm.legs[sl.left_leg_front].up()
     key = raw_input("press a key to continue")
 
     print "front right leg"
-    sm.legs[right_leg_front].up()
+    sm.legs[sl.right_leg_front].up()
     key = raw_input("press a key to continue")
 
     print "back left leg"
-    sm.legs[left_leg_back].up()
+    sm.legs[sl.left_leg_back].up()
     key = raw_input("press a key to continue")
 
     print "back right leg"
-    sm.legs[right_leg_back].up()
+    sm.legs[sl.right_leg_back].up()
     key = raw_input("press a key to continue")
 
     print "Now moving each let to its default position."
-    sm.legs[left_leg_front].setDefault()
-    sm.legs[right_leg_front].setDefault()
-    sm.legs[left_leg_back].setDefault()
-    sm.legs[right_leg_back].setDefault()
+    sm.legs[sl.left_leg_front].setDefault()
+    sm.legs[sl.right_leg_front].setDefault()
+    sm.legs[sl.left_leg_back].setDefault()
+    sm.legs[sl.right_leg_back].setDefault()
 
 def check_feet():
     print "Checking each foot - each foot should rise up."
