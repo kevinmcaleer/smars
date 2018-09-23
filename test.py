@@ -14,6 +14,37 @@ sm = SmarsRobot()
 # set the robot type to 'quad'
 sm.type = "quad"
 
+def check_legs():
+    key = ""
+    print "Checking each leg - it should rotate to its full extent"
+    key = raw_input("press a key to continue")
+
+    print "front left leg"
+    sm.legs[left_leg_front].up()
+    key = raw_input("press a key to continue")
+
+    print "front right leg"
+    sm.legs[right_leg_front].up()
+    key = raw_input("press a key to continue")
+
+    print "back left leg"
+    sm.legs[left_leg_back].up()
+    key = raw_input("press a key to continue")
+
+    print "back right leg"
+    sm.legs[right_leg_back].up()
+    key = raw_input("press a key to continue")
+
+    print "Now moving each let to its default position."
+    sm.legs[left_leg_front].setDefault()
+    sm.legs[right_leg_front].setDefault()
+    sm.legs[left_leg_back].setDefault()
+    sm.legs[right_leg_back].setDefault()
+
+def check_feet():
+    print "Checking each foot - each foot should rise up."
+
+
 # set the input choice to nothing
 key = ""
 
@@ -47,33 +78,3 @@ while key != "q":
 
     if key == "q":
         print "Good bye!"
-
-def check_legs():
-    key = ""
-    print "Checking each leg - it should rotate to its full extent"
-    key = raw_input("press a key to continue")
-
-    print "front left leg"
-    sm.legs[left_leg_front].up()
-    key = raw_input("press a key to continue")
-
-    print "front right leg"
-    sm.legs[right_leg_front].up()
-    key = raw_input("press a key to continue")
-
-    print "back left leg"
-    sm.legs[left_leg_back].up()
-    key = raw_input("press a key to continue")
-
-    print "back right leg"
-    sm.legs[right_leg_back].up()
-    key = raw_input("press a key to continue")
-
-    print "Now moving each let to its default position."
-    sm.legs[left_leg_front].setDefault()
-    sm.legs[right_leg_front].setDefault()
-    sm.legs[left_leg_back].setDefault()
-    sm.legs[right_leg_back].setDefault()
-
-def check_feet():
-    print "Checking each foot - each foot should rise up."
