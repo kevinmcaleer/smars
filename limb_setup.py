@@ -46,6 +46,7 @@ l1.leg_minAngle = 0
 l1.leg_maxAngle = 180
 l1.invert = False
 
+menu_key = ""
 # show Menu until quit
 while menu_key != "0":
     menu()
