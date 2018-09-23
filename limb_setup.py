@@ -12,7 +12,7 @@ l1.leg_maxAngle = 180
 l1.invert = False
 
 # print "setting minimum position"
-angle = 90
+angle = 0
 l1.setAngle(angle)
 key = ""
 while key != "0":
