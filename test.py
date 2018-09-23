@@ -23,12 +23,14 @@ def continous_test(object):
 
         while a <= object.leg_maxAngle:
             object.setAngle(a)
-            time.sleep(1)
-            a = a + 10
+            print "angle:", a
+            time.sleep(0.1)
+            a = a + 1
         while b >= object.leg_minAngle:
             object.setAngle(b)
-            time.sleep(1)
-            b = b - 10
+            print "angle:", b
+            time.sleep(0.1)
+            b = b - 1
 
 def continous_feet_test():
     key = ""
@@ -47,6 +49,9 @@ def continous_feet_test():
         if key == "1":
             # sm.legs[sl.left_foot_front].setAngle(sm.legs[sl.left_foot_front].leg_minAngle)
             continous_test(sm.feet[sl.left_foot_front])
+        if key == "2":
+            continous_test(sm.feet[sl.right_foot_front])
+
 
 def continous_leg_test():
     print "Continuous leg test"
