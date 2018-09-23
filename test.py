@@ -15,6 +15,16 @@ sm = SmarsRobot()
 sm.type = "quad"
 
 def check_legs():
+    global left_leg_back
+    global right_leg_back
+    global left_leg_front
+    global right_leg_front
+
+    global left_foot_back
+    global right_foot_back
+    global left_foot_front
+    global right_foot_front
+
     key = ""
     print "Checking each leg - it should rotate to its full extent"
     key = raw_input("press a key to continue")
