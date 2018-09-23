@@ -19,7 +19,7 @@ def continous_test(object):
     # print "channel number", channel_num
     a = object.leg_minAngle
     b = object.leg_maxAngle
-    while true:
+    while True:
 
         while a <= object.leg_maxAngle:
             object.setAngle(a)
