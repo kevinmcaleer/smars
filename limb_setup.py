@@ -28,15 +28,23 @@ def select_channel():
 
 def select_angle():
     global angle
-    l1.setAngle(angle)
+    print "Select Angle"
+    print "------------"
+    print ""
+    print "current angle is:", angle
+
+    # l1.setAngle(angle)
     key = ""
     while key != "0":
-        key = raw_input("setting min position, press 0 to exit")
+        key = raw_input("Type angle to set servo to, or press q to exit")
         print key
-        # if raw_input ==
-        angle = angle + 10
-        l1.setAngle(angle)
-        print "current angle:", angle
+        if key == "q":
+            print ""
+        else:
+            # if raw_input ==
+            # angle = angle + 10
+            l1.setAngle(int(angle))
+            print "current angle:", angle
 
 #globals
 angle = 0
