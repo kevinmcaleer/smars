@@ -35,7 +35,7 @@ def select_angle():
 
     # l1.setAngle(angle)
     key = ""
-    while key != "0":
+    while key != "q":
         key = raw_input("Type angle to set servo to, or press q to exit")
         print key
         if key == "q":
