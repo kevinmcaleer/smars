@@ -35,6 +35,7 @@ def select_channel():
                 else:
                     channel_number = int(ch)
                     l1.channel = channel_number
+                    l1.show()
 
 def select_angle():
     global angle
