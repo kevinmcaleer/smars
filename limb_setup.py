@@ -24,7 +24,7 @@ def select_channel():
             channel_number = raw_input("type channel number:")
             if channel_number >= 15:
                 print "sorry that channel number is too high, needs to be between 0 and 15"
-    return int(channel_number)
+    l1.channel = int(channel_number)
 
 def select_angle():
     global angle
@@ -66,7 +66,7 @@ while menu_key != "0":
     menu_key = raw_input("enter number ")
 
     if menu_key == "1":
-        l1.channel = select_channel()
+        select_channel()
     if menu_key == "2":
         select_angle()
     if menu_key == "0":
