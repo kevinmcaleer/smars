@@ -23,11 +23,11 @@ def continous_test(object):
 
         while a <= object.leg_maxAngle:
             object.setAngle(a)
-            sleep(1)
+            time.sleep(1)
             a = a + 10
         while b >= object.leg_minAngle:
             object.setAngle(b)
-            sleep(1)
+            time.sleep(1)
             b = b - 10
 
 def continous_feet_test():
