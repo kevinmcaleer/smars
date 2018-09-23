@@ -18,10 +18,17 @@ sm.type = "quad"
 def continous_test(object):
     # print "channel number", channel_num
     a = object.leg_minAngle
-    while a <= object.leg_maxAngle:
-        object.setAngle(a)
-        sleep(1)
-        a = a + 10
+    b = object.leg_maxAngle
+    while true:
+
+        while a <= object.leg_maxAngle:
+            object.setAngle(a)
+            sleep(1)
+            a = a + 10
+        while b >= object.leg_minAngle:
+            object.setAngle(b)
+            sleep(1)
+            b = b - 10
 
 def continous_feet_test():
     key = ""
