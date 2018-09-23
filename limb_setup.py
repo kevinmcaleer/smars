@@ -15,19 +15,26 @@ def menu():
 
 def select_channel():
     global channel_number
+    global l1
     print "Select Channel"
     print "--------------"
     print ""
     print "currently selected channel is:", channel_number
     key = ""
-
-    while channel_number <= 15:
-            key = raw_input("type channel number:")
-            channel_number = int(key)
-            if channel_number >= 15:
-                print "you typed", key, channel_number
-                print "sorry that channel number is too high, needs to be between 0 and 15"
-    l1.channel = channel_number
+    ch = 0
+    #  need to make this loop exit once the channel number is selected and "q" pressed
+    while key != "q":
+            key = raw_input("type channel number:, or q to return to the main menu")
+            print key
+            if key == "q":
+                print ""
+            else:
+                ch = int(key)
+                if ch >= 16:
+                    print "sorry that channel number is too high, needs to be between 0 and 15"
+                else:
+                    channel_number = int(ch)
+                    l1.channel = channel_number
 
 def select_angle():
     global angle
