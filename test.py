@@ -26,7 +26,7 @@ while key != "q":
     print "2) Set all feet to stand position"
     print "3) Set all feet to sit position"
 
-    key = raw_input("type an option and press enter")
+    key = raw_input("type an option, or type 'q' to quit")
     if key == "1":
         for n in sm.legs:
             print n.name
