@@ -107,8 +107,8 @@ class leg(object):
         if angle >= self.leg_minAngle and angle <= self.leg_maxAngle:
 
             mapMax = self.leg_max - self.leg_min
-            percentage = ( angle / 180 ) * 100
-            pulse = (( mapMax / 100 ) * percentage ) + self.leg_min
+            percentage = ( float(angle) / 180 ) * 100
+            pulse = (( float(mapMax) / 100 ) * percentage ) + self.leg_min
             print "Angle = ", angle
             print "Angle as a percentage = ", percentage
             print "pulse = ", pulse
