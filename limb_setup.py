@@ -4,10 +4,6 @@
 
 from SMARS_Library import leg
 
-#globals
-angle = 0
-channel_number = 0
-
 def menu():
     print "Menu"
     print "----"
@@ -18,6 +14,7 @@ def menu():
     print ""
 
 def select_channel():
+
     print "Select Channel"
     print "--------------"
     print ""
@@ -28,6 +25,7 @@ def select_channel():
             if channel_number >= 15:
                 print "sorry that channel number is too high, needs to be between 0 and 15"
     return channel_number
+
 def select_angle():
     l1.setAngle(angle)
     key = ""
@@ -39,9 +37,12 @@ def select_angle():
         l1.setAngle(angle)
         print "current angle:", angle
 
+#globals
+angle = 0
+channel_number = 0
 l1 = leg()
 l1.name = "left_leg_front"
-l1.channel = 15
+l1.channel = channel_number
 l1.leg_minAngle = 0
 l1.leg_maxAngle = 180
 l1.invert = False
