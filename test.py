@@ -31,7 +31,6 @@ while key != "q":
         for n in sm.legs:
             print n.name
             n.setDefault()
-            time.sleep(1)
     if key == "2":
         for n in sm.legs:
             n.up()
