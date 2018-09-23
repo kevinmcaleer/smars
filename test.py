@@ -17,8 +17,8 @@ sm.type = "quad"
 
 def continous_test(object):
     # print "channel number", channel_num
-
-    for a = object.leg_minAngle to object.leg_maxAngle:
+    a = object.leg_minAngle
+    while a <= object.leg_maxAngle:
         object.setAngle(a)
         a = a + 10
 
