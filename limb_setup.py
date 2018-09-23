@@ -53,9 +53,9 @@ while menu_key != "0":
     print "current angle is:", angle
     menu_key = raw_input("enter number ")
 
-    if menu_key = "1":
+    if menu_key == "1":
         l1.channel = select_channel()
-    if menu_key = "2":
+    if menu_key == "2":
         select_angle()
-    if menu_key = "0":
+    if menu_key == "0":
         print "Good bye!"
