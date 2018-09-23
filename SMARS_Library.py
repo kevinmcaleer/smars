@@ -149,7 +149,7 @@ class SmarsRobot(object):
     feet = []
 
     # add each foot to the feet array
-    feet.append(leg(name = 'left_foot_front', channel = 1, leg_minAngle = 50,   leg_maxAngle = 150,  invert = False))
+    feet.append(leg(name = 'left_foot_front', channel = 1, leg_minAngle = 90,   leg_maxAngle = 180,  invert = False))
     feet.append(leg(name = 'left_foot_back',  channel = 3, leg_minAngle = 50,  leg_maxAngle = 150, invert = True))
     feet.append(leg(name = 'right_foot_front',channel = 7, leg_minAngle = 50, leg_maxAngle = 150, invert = False))
     feet.append(leg(name = 'right_foot_back', channel = 5, leg_minAngle = 50, leg_maxAngle = 150, invert = True))
