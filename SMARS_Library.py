@@ -32,6 +32,16 @@ servo_min = 150  # Min pulse length out of 4096
 servo_max = 600  # Max pulse length out of 4096
 sleep_count = 0.25 # the amount of time to wait between pwm operations
 
+# setup legs and feet to correspond to the correct channel
+left_leg_front   = 0
+left_foot_front  = 1
+left_leg_back    = 2
+left_foot_back   = 3
+right_leg_front  = 6
+right_foot_front = 7
+right_leg_back   = 4
+right_foot_back  = 5
+
 # Set frequency to 60hz, good for servos.
 pwm.set_pwm_freq(60)
 
@@ -149,16 +159,6 @@ class SmarsRobot(object):
     legs.append(leg(name = 'right_leg_front', channel = 6, leg_minAngle = 90, leg_maxAngle = 180, invert = False))
     legs.append(leg(name = 'right_leg_back',  channel = 4, leg_minAngle = 0, leg_maxAngle = 90, invert = True))
     # print "number of legs", len(legs)
-
-    # setup legs and feet to correspond to the correct channel
-    left_leg_front   = 0
-    left_foot_front  = 1
-    left_leg_back    = 2
-    left_foot_back   = 3
-    right_leg_front  = 6
-    right_foot_front = 7
-    right_leg_back   = 4
-    right_foot_back  = 5
 
     def leg_reset(self):
         for l in legs:
