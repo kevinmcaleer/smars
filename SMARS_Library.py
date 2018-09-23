@@ -104,7 +104,7 @@ class leg(object):
 
     def setAngle(self, angle):
         # Works out the value of the angle by mapping the leg_min and leg_max to between 0 and 180 degrees
-        print "Angle is:", angle
+        # print "Angle is:", angle
 
         pulse = 0
 
@@ -114,10 +114,10 @@ class leg(object):
             mapMax = self.leg_max - self.leg_min
             percentage = ( float(angle) / 180 ) * 100
             pulse = int( (( float(mapMax) / 100 ) * float(percentage) ) + self.leg_min)
-            print "Angle = ", angle
-            print "Angle as a percentage = ", percentage
-            print "pulse = ", pulse
-            print "map Max = ", mapMax
+            # print "Angle = ", angle
+            # print "Angle as a percentage = ", percentage
+            # print "pulse = ", pulse
+            # print "map Max = ", mapMax
             # return pulse
             pwm.set_pwm(self.channel, self.channel, pulse)
         else:
