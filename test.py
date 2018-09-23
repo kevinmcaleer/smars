@@ -6,6 +6,7 @@
 
 import SMARS_Library as sl
 from SMARS_Library import SmarsRobot
+from SMARS_Library import leg
 import time
 
 # create an instance of the Smars Robot class
@@ -13,6 +14,56 @@ sm = SmarsRobot()
 
 # set the robot type to 'quad'
 sm.type = "quad"
+
+def continous_test(object):
+    # print "channel number", channel_num
+
+    for a = object.leg_minAngle to object.leg_maxAngle:
+        object.setAngle(a)
+        a = a + 10
+
+def continous_feet_test():
+    key = ""
+    while key != "q":
+        print "Continuous feet test"
+        print "-------------------"
+        print ""
+        print "Select a foot to test:"
+        print "1) Front Left Foot"
+        print "2) Front Right Foot"
+        print "3) Back Left Foot"
+        print "4) Back Right Foot"
+        print "q) Return to main menu"
+
+        key = raw_input("Type 1-4 or q to return to main menu")
+        if key == "1":
+            # sm.legs[sl.left_foot_front].setAngle(sm.legs[sl.left_foot_front].leg_minAngle)
+            continous_test(sm.feet[sl.left_foot_front])
+
+def continous_leg_test():
+    print "Continuous leg test"
+    print "-------------------"
+    print ""
+
+
+def continuous_check():
+    key = ""
+    while key != "q":
+        print "Continous servo check"
+        print "---------------------"
+        print ""
+        print "Select a feet or limbs:"
+        print "l) - select legs"
+        print "f) - select feet"
+        print "q) - return to main menu"
+
+        key = raw_input("Type 'l', 'f' or 'q' ")
+        if key == "q":
+            print ""
+        if key == "l":
+            continous_leg_test()
+        if key == "f":
+            continous_feet_test()
 
 def check_legs():
     # Check each leg
@@ -87,6 +138,7 @@ while key != "q":
     print "2) Set all feet to stand position"
     print "3) Set all feet to sit position"
     print "4) Check each limb is set correctly"
+    print "5) continous servo check"
 
     key = raw_input("type an option, or type 'q' to quit ")
     if key == "1":
@@ -105,6 +157,8 @@ while key != "q":
     if key == "4":
         check_legs()
         check_feet()
+    if key == "5":
+        continuous_check()
 
     if key == "q":
         print "Good bye!"
