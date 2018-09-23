@@ -43,7 +43,8 @@ def select_angle():
         else:
             # if raw_input ==
             # angle = angle + 10
-            l1.setAngle(int(angle))
+            angle = int(key)
+            l1.setAngle(angle)
             print "current angle:", angle
 
 #globals
