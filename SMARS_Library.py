@@ -35,13 +35,12 @@ sleep_count = 0.25 # the amount of time to wait between pwm operations
 # setup legs and feet to correspond to the correct channel
 left_leg_back    = 0 # channel 2
 left_leg_front   = 1 # channel 0
-left_foot_front  = 2 # channel 1
-left_foot_back   = 3 # channel 3
+right_leg_back   = 3 # channel 4
+right_leg_front  = 4 # channel 6
 
-
-right_leg_front  = 0 # channel 6
-right_foot_front = 1 # channel 7
-right_leg_back   = 2 # channel 4
+left_foot_front  = 0 # channel 1
+left_foot_back   = 1 # channel 3
+right_foot_front = 2 # channel 7
 right_foot_back  = 3 # channel 5
 
 # Set frequency to 60hz, good for servos.
