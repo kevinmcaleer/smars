@@ -27,16 +27,16 @@ while key != "q":
     print "3) Set all feet to sit position"
 
     key = raw_input("type an option and press enter")
-    if key = "1":
+    if key == "1":
         for n in sm.legs:
             print n.name
             n.setDefault()
             time.sleep(1)
-    if key = "2":
+    if key == "2":
         for n in sm.legs:
             n.up()
-    if key = "3":
+    if key == "3":
         for n in sm.legs:
             n.down()
-    if key = "q":
+    if key == "q":
         print "Good bye!"
