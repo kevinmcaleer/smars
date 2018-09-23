@@ -14,7 +14,7 @@ def menu():
     print ""
 
 def select_channel():
-
+    global channel_number
     print "Select Channel"
     print "--------------"
     print ""
@@ -27,6 +27,7 @@ def select_channel():
     return channel_number
 
 def select_angle():
+    global angle
     l1.setAngle(angle)
     key = ""
     while key != "0":
