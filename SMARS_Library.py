@@ -20,7 +20,7 @@
 
 import Adafruit_PCA9685
 import time
-from __future__ import division
+# from __future__ import division
 # import logging
 # logging.basicConfig(level=logging.DEBUG)
 
