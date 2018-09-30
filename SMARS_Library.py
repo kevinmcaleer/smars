@@ -235,47 +235,39 @@ class SmarsRobot(object):
 
         while True:
 
-            # lift the other feet up
-            print "Step 1"
-            self.feet[left_foot_front].up()
-            self.feet[right_foot_back].up()
-            time.sleep(sleep_count)
-
-            # set the front right and back left to half of stetch position
-            print "Step 2"
+            # Step
             self.legs[left_leg_front].setSwing()
-            self.legs[right_leg_back].setSwing()
-            self.legs[right_leg_front].setBody()
-            self.legs[left_leg_back].setBody()
-            time.sleep(sleep_count)
-
-            # put the feet down
-            print "Step 3"
-            self.feet[left_foot_front].down()
-            self.feet[right_foot_back].down()
-            self.feet[right_foot_front].up()
-            self.feet[left_foot_back].up()
-            time.sleep(sleep_count)
-
-            # set the front right back leg to body position
-            print "Step 4"
-            self.legs[left_leg_front].setBody()
-            self.legs[right_leg_back].setBody()
-            self.legs[right_leg_front].setSwing()
             self.legs[left_leg_back].setSwing()
-            time.sleep(sleep_count)
-
-            # duplicate?
-            print "Step 5"
-            self.feet[right_foot_front].down()
-            self.feet[left_foot_back].down()
-            self.feet[left_foot_front].up()
-            self.feet[right_foot_back].up()
-            time.sleep(sleep_count)
-
-            print "Step 6"
             self.legs[right_leg_front].setBody()
-            self.legs[left_leg_back].setBody()
-            self.legs[left_leg_front].setSwing()
+            self.legs[right_leg_back].setBody()
+            time.sleep(sleep_count)
+
+            self.feet[right_foot_front].up()
+            self.legs[right_leg_front].setStretch()
+            self.feet[right_foot_front].down()
+            time.sleep(sleep_count)
+
+
+            self.legs[left_leg_front].setbody()
+            self.legs[left_leg_back].setStretch()
+            self.legs[right_leg_front].setSwing()
             self.legs[right_leg_back].setSwing()
             time.sleep(sleep_count)
+
+            self.legs[left_leg_back].up()
+            self.legs[left_leg_back].setBody()
+            self.legs[left_leg_back].down()
+            time.sleep(sleep_count)
+
+            self.legs[left_leg_front].up()
+            self.legs[left_leg_front].setStretch()
+            self.legs[left_leg_front].down()
+            time.sleep(sleep_count)
+
+            self.legs[left_leg_front].setSwing()
+            self.legs[left_leg_back].setSwing()
+            self.legs[right_leg_front].setBody()
+            self.legs[right_leg_back].setStretch()
+            time.sleep(sleep_count)
+
+            
