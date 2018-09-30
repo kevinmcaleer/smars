@@ -102,7 +102,7 @@ class leg(object):
         if self.invert == False:
             self.setAngle(self.leg_maxAngle - self.leg_minAngle / 2)
         # else:
-            self.setAngle(self.leg_maxAngle + self.leg_minAngle /2)
+            self.setAngle(self.leg_maxAngle - self.leg_minAngle * 2)
         # self.setAngle(self.leg_maxAngle - self.leg_minAngle / 2 )
 
     def up(self):
