@@ -33,8 +33,8 @@ servo_max = 600  # Max pulse length out of 4096
 sleep_count = 0.25 # the amount of time to wait between pwm operations
 
 # setup legs and feet to correspond to the correct channel
-left_leg_back    = 0 # channel 2
-left_leg_front   = 1 # channel 0
+left_leg_front   = 0 # channel 0
+left_leg_back    = 1 # channel 2
 right_leg_front  = 2 # channel 6
 right_leg_back   = 3 # channel 4
 

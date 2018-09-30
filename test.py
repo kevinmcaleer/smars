@@ -176,7 +176,7 @@ while key != "q":
     print "left leg front", sl.left_leg_front
     print "right leg front", sl.right_leg_front
     print "left leg back", sl.left_leg_back
-    print "right left back", sl.right_leg_back
+    print "right leg back", sl.right_leg_back
 
     key = raw_input("type an option, or type 'q' to quit ")
     if key == "1":
