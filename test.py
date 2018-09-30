@@ -70,8 +70,8 @@ def continous_leg_test():
 
     key = raw_input("Type 1-4 or q to return to main menu")
     if key == "1":
-        # sm.legs[sl.left_foot_front].setAngle(sm.legs[sl.left_foot_front].leg_minAngle)
-        continous_test(sm.legs[sl.left_leg_front])
+        print sl.right_leg_front
+        # continous_test(sm.legs[sl.left_leg_front])
     if key == "2":
         continous_test(sm.legs[sl.right_leg_front])
     if key == "3":
