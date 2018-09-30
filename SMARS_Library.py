@@ -85,7 +85,7 @@ class leg(object):
 
     def up(self):
         # if self.invert == False:
-            self.setAngle(self.leg_minAngle)
+        self.setAngle(self.leg_minAngle)
             # pwm.set_pwm(self.channel,self.channel, self.leg_max)
         # else:
             # self.setAngle(self.leg_maxAngle)
