@@ -222,14 +222,14 @@ class SmarsRobot(object):
         while True:
 
             # Raise front left and back right foot
-            self.feet[self.left_foot_front].up()
-            self.feet[self.right_foot_back].up()
+            self.feet[left_foot_front].up()
+            self.feet[right_foot_back].up()
             time.sleep(sleep_count)
 
 
             # Set front left and back right to half of stretch position
             self.legs[self.left_leg_front].setSwing()
-            self.legs[self.right_foot_back].setSwing()
+            self.legs[self.right_leg_back].setSwing()
             time.sleep(sleep_count)
 
 
@@ -246,8 +246,8 @@ class SmarsRobot(object):
 
 
             # set the front right and back left to half of stetch position
-            self.legs[self.right_foot_front].setSwing()
-            self.legs[self.left_foot_back].setSwing()
+            self.legs[self.right_leg_front].setSwing()
+            self.legs[self.left_leg_back].setSwing()
             time.sleep(sleep_count)
 
 
@@ -258,6 +258,6 @@ class SmarsRobot(object):
 
 
             # set the front right abck legt to body position
-            self.legs[self.right_foot_front].setBody()
-            self.legs[self.left_foot_bcak].setBody()
+            self.legs[self.right_leg_front].setBody()
+            self.legs[self.left_leg_bcak].setBody()
             time.sleep(sleep_count)
