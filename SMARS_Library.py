@@ -93,9 +93,9 @@ class leg(object):
     def setStretch(self):
         # Sets the limb to its stretch position.
         if self.invert == False:
-            self.setAngle(self.leg_minAngle)
-        else:
             self.setAngle(self.leg_maxAngle)
+        else:
+            self.setAngle(self.leg_minAngle)
 
     def setSwing(self):
         # Sets the limb to its stretch position.
@@ -251,7 +251,7 @@ class SmarsRobot(object):
             self.feet[right_foot_front].down()
             self.feet[left_foot_back].down()
             self.feet[right_foot_back].down()
-            
+
             time.sleep(sleep_count)
             self.legs[left_leg_front].setSwing()
             self.legs[left_leg_back].setSwing()
