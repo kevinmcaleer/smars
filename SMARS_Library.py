@@ -30,7 +30,7 @@ pwm = Adafruit_PCA9685.PCA9685()
 # Configure min and max servo pulse lengths
 servo_min = 150  # Min pulse length out of 4096
 servo_max = 600  # Max pulse length out of 4096
-sleep_count = 0.5 # the amount of time to wait between pwm operations
+sleep_count = 0.25 # the amount of time to wait between pwm operations
 
 # setup legs and feet to correspond to the correct channel
 left_leg_front   = 0 # channel 0
@@ -100,14 +100,14 @@ class leg(object):
     def setSwing(self):
         # Sets the limb to its stretch position.
         a = 0
-        print "Max Angle", self.leg_maxAngle, "Min angle", self.leg_minAngle, "Invert:", self.invert
+        # print "Max Angle", self.leg_maxAngle, "Min angle", self.leg_minAngle, "Invert:", self.invert
         if self.invert == False:
             a = (self.leg_minAngle / 2) + self.leg_minAngle
-            print "INVERT = FALSE angle calculation is", a
+            # print "INVERT = FALSE angle calculation is", a
             self.setAngle(a)
         else:
             a =(self.leg_maxAngle - self.leg_minAngle) / 2
-            print "INVERT = TRUE angle calculation is", a
+            # print "INVERT = TRUE angle calculation is", a
             self.setAngle(a)
         # self.setAngle(self.leg_maxAngle - self.leg_minAngle / 2 )
 
