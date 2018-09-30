@@ -232,14 +232,14 @@ class SmarsRobot(object):
             # lift the other feet up
             print "Step 1"
             self.feet[left_foot_front].up()
-            self.feet[right_foot_back].up() #
+            self.feet[right_foot_back].up() 
             time.sleep(sleep_count)
 
 
             # set the front right and back left to half of stetch position
             print "Step 2"
             self.legs[left_leg_front].setSwing()
-            self.legs[right_leg_back].setSwing() #
+            self.legs[right_leg_back].setSwing()
             time.sleep(sleep_count)
 
 
