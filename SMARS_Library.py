@@ -263,32 +263,44 @@ class SmarsRobot(object):
 
             print "2"
             self.feet[right_foot_front].up()
+            time.sleep(sleep_count)
             self.legs[right_leg_front].setStretch()
+            time.sleep(sleep_count)
             self.feet[right_foot_front].down()
             time.sleep(sleep_count)
 
             print "3"
             self.legs[left_leg_front].setBody()
+            time.sleep(sleep_count)
             self.legs[left_leg_back].setStretch()
+            time.sleep(sleep_count)
             self.legs[right_leg_front].setSwing()
+            time.sleep(sleep_count)
             self.legs[right_leg_back].setSwing()
             time.sleep(sleep_count)
 
             print "4"
             self.feet[left_foot_back].up()
+            time.sleep(sleep_count)
             self.legs[left_leg_back].setBody()
+            time.sleep(sleep_count)
             self.feet[left_foot_back].down()
             time.sleep(sleep_count)
 
             print "5"
             self.feet[left_foot_front].up()
+            time.sleep(sleep_count)
             self.legs[left_leg_front].setStretch()
+            time.sleep(sleep_count)
             self.feet[left_foot_front].down()
             time.sleep(sleep_count)
 
             print "6"
             self.legs[left_leg_front].setSwing()
+            time.sleep(sleep_count)
             self.legs[left_leg_back].setSwing()
+            time.sleep(sleep_count)
             self.legs[right_leg_front].setBody()
+            time.sleep(sleep_count)
             self.legs[right_leg_back].setStretch()
             time.sleep(sleep_count)
