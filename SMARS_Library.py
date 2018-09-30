@@ -168,7 +168,7 @@ class SmarsRobot(object):
 
     # add each leg to the legs array
     legs.append(leg(name = 'left_leg_front',  channel = 0, leg_minAngle = 0, leg_maxAngle = 90, invert = False))
-    legs.append(leg(name = 'left_leg_back',   channel = 2, leg_minAngle = 90, leg_maxAngle = 180, invert = True))
+    legs.append(leg(name = 'left_leg_back',   channel = 2, leg_minAngle = 90, leg_maxAngle = 180, invert = False))
     legs.append(leg(name = 'right_leg_front', channel = 6, leg_minAngle = 90, leg_maxAngle = 180, invert = False))
     legs.append(leg(name = 'right_leg_back',  channel = 4, leg_minAngle = 0, leg_maxAngle = 90, invert = True))
     # print "number of legs", len(legs)
