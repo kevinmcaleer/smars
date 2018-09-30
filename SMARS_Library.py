@@ -266,11 +266,10 @@ class SmarsRobot(object):
             time.sleep(sleep_count)
 
             print "2"
-
+            self.feet[right_foot_front].up()
             self.legs[right_leg_front].setStretch()
+            self.feet[right_foot_front].down()
             time.sleep(sleep_count)
-
-
             print "3"
             self.legs[left_leg_front].setBody()
             time.sleep(sleep_count)
