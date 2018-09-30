@@ -247,8 +247,8 @@ class SmarsRobot(object):
             time.sleep(sleep_count)
 
             # walk
-            self.feet[left_foot_front].setBody()
-            self.feet[right_foot_back].setBody()
+            self.feet[left_leg_front].setBody()
+            self.feet[right_leg_back].setBody()
             time.sleep(sleep_count)
 
             # lift the other feet up
