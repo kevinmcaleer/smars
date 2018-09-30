@@ -158,7 +158,7 @@ class leg(object):
             # return pulse
             pwm.set_pwm(self.channel, self.channel, pulse)
         else:
-            print "Error angle was outside of bounds for this leg: ", angle, "Minimum:", self.leg_minAngle, "Maximum:", self.leg_maxAngle
+            print "Error angle was outside of bounds for this leg: ", self.name, angle, "Minimum:", self.leg_minAngle, "Maximum:", self.leg_maxAngle
 
 class SmarsRobot(object):
 
