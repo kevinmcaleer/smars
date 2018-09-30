@@ -174,7 +174,7 @@ while key != "q":
     print "5) continous servo check"
 
     print "left leg front", sl.left_leg_front
-    print "right leg front", sl.right_foot_front
+    print "right leg front", sl.right_leg_front
     print "left leg back", sl.left_leg_back
     print "right left back", sl.right_leg_back
 
