@@ -15,6 +15,17 @@ sm = SmarsRobot()
 # set the robot type to 'quad'
 sm.type = "quad"
 
+def legs_body():
+    sm.legs[sl.left_leg_front].setBody()
+    sm.legs[sl.right_leg_front].setBody()
+    sm.legs[sl.left_leg_back].setBody()
+    sm.legs[sl.right_leg_back].setBody()
+
+def legs_stretch():
+    sm.legs[sl.left_leg_front].setStretch()
+    sm.legs[sl.right_leg_front].setStretch()
+    sm.legs[sl.left_leg_back].setStretch()
+    sm.legs[sl.right_leg_back].setStretch()
 def continous_test(object):
     # print "channel number", channel_num
 
@@ -200,6 +211,11 @@ while key != "q":
         check_feet()
     if key == "5":
         continuous_check()
-
+    if key == "6":
+        # set legs to body position
+        legs_body()
+    if key == "7":
+        # set legs to stretch position
+        legs_stretch()
     if key == "q":
         print "Good bye!"
