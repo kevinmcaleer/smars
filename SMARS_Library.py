@@ -99,10 +99,11 @@ class leg(object):
 
     def setSwing(self):
         # Sets the limb to its stretch position.
-        if self.invert == False:
-            self.setAngle(self.leg_maxAngle - self.leg_minAngle)
-        else:
+        # if self.invert == False:
+            # self.setAngle(self.leg_maxAngle - self.leg_minAngle)
+        # else:
             self.setAngle(self.leg_minAngle - self.leg_maxAngle)
+        self.setAngle(self.leg_maxAngle - self.leg_minAngle)
 
     def up(self):
         if self.invert == False:
