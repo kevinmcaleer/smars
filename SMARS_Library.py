@@ -145,7 +145,7 @@ class leg(object):
             mapMax = self.leg_max - self.leg_min
             percentage = ( float(angle) / 180 ) * 100
             pulse = int( (( float(mapMax) / 100 ) * float(percentage) ) + self.leg_min)
-            # print "Angle = ", angle
+            print "Angle = ", angle
             # print "Angle as a percentage = ", percentage
             # print "pulse = ", pulse
             # print "map Max = ", mapMax
