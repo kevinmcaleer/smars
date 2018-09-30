@@ -103,7 +103,7 @@ class leg(object):
             # self.setAngle(self.leg_maxAngle - self.leg_minAngle)
         # else:
             # self.setAngle(self.leg_minAngle - self.leg_maxAngle)
-        self.setAngle(self.leg_maxAngle - self.leg_minAngle)
+        self.setAngle(self.leg_maxAngle - self.leg_minAngle / 2 )
 
     def up(self):
         if self.invert == False:
@@ -265,7 +265,7 @@ class SmarsRobot(object):
             time.sleep(sleep_count)
 
 
-            # set the front right abck legt to body position
+            # set the front right back leg to body position
             self.legs[right_leg_front].setBody()
             self.legs[left_leg_back].setBody()
             time.sleep(sleep_count)
