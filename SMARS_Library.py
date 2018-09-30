@@ -84,20 +84,18 @@ class leg(object):
         self.setAngle(self.leg_maxAngle - self.leg_minAngle)
 
     def up(self):
-        # if self.invert == False:
-        self.setAngle(self.leg_minAngle)
-            # pwm.set_pwm(self.channel,self.channel, self.leg_max)
-        # else:
-            # self.setAngle(self.leg_maxAngle)
-            # pwm.set_pwm(self.channel,self.channel, self.leg_min)
-        time.sleep(sleep_count)
+        if self.invert == False:
+            self.setAngle(self.leg_minAngle)
+        else:
+            self.setAngle(self.leg_maxAngle)
+        # time.sleep(sleep_count)
 
     def down(self):
         if self.invert == False:
             self.setAngle(self.leg_maxAngle)
         else:
             self.setAngle(self.leg_minAngle)
-        time.sleep(sleep_count)
+        # time.sleep(sleep_count)
         # print 'setting leg' , self.name , 'to down'
 
     def middle(self):
@@ -150,9 +148,9 @@ class SmarsRobot(object):
 
     # add each foot to the feet array
     feet.append(leg(name = 'left_foot_front', channel = 1, leg_minAngle = 50,   leg_maxAngle = 150,  invert = False))
-    feet.append(leg(name = 'left_foot_back',  channel = 3, leg_minAngle = 50,  leg_maxAngle = 150, invert = True))
+    feet.append(leg(name = 'left_foot_back',  channel = 3, leg_minAngle = 50,  leg_maxAngle = 150, invert = False))
     feet.append(leg(name = 'right_foot_front',channel = 7, leg_minAngle = 50, leg_maxAngle = 150, invert = False))
-    feet.append(leg(name = 'right_foot_back', channel = 5, leg_minAngle = 50, leg_maxAngle = 150, invert = True))
+    feet.append(leg(name = 'right_foot_back', channel = 5, leg_minAngle = 50, leg_maxAngle = 150, invert = False))
 
     # add each leg to the legs array
     legs.append(leg(name = 'left_leg_front',  channel = 0, leg_minAngle = 0, leg_maxAngle = 90, invert = False))
