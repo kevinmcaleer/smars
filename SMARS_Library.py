@@ -97,6 +97,13 @@ class leg(object):
         else:
             self.setAngle(self.leg_maxAngle)
 
+    def setSwing(self):
+        # Sets the limb to its stretch position.
+        if self.invert == False:
+            self.setAngle(self.leg_maxAngle - self.leg_minAngle)
+        else:
+            self.setAngle(self.leg_minAngle - self.leg_maxAngle)
+
     def up(self):
         if self.invert == False:
             self.setAngle(self.leg_minAngle)
@@ -191,13 +198,66 @@ class SmarsRobot(object):
     def sit(self):
         print "received sit command"
         for l in self.feet:
-            # print "sitting down leg: ", l.name
             l.down()
-        # self.legs["left_leg_front"].down()
-        # self.legs["left_leg_front"].down()
-        # self.legs['right_leg_back'].down()
-        # self.legs['right_leg_front'].down()
 
     def stand(self):
         for l in self.feet:
             l.up()
+
+    def walk(self):
+
+        # Set all legs to up (sit)
+
+        self.sit()
+        time.sleep(sleep_count)
+
+        # Set all legs to middle position
+        self.middle()
+        time.sleep(sleep_count)
+
+        # Set all legs to down position (stand)
+        self.stand()
+        time.sleep(sleep_count)
+
+        while True:
+
+            # Raise front left and back right foot
+            self.feet[sl.left_foot_front].up()
+            self.feet[sl.right_foot_back].up()
+            time.sleep(sleep_count)
+
+
+            # Set front left and back right to half of stretch position
+            self.legs[sl.left_leg_front].setSwing()
+            self.legs[sk.right_foot_back].setSwing()
+            time.sleep(sleep_count)
+
+
+            # put the foot down
+            self.feet[sl.left_foot_front].down()
+            self.feet[sl.right_foot_back].down()
+            time.sleep(sleep_count)
+
+
+            # lift the other feet up
+            self.feet[sl.right_foot_front].up()
+            self.feet[sl.left_foot_back].up()
+            time.sleep(sleep_count)
+
+
+            # set the front right and back left to half of stetch position
+            self.legs[sl.right_foot_front].setSwing()
+            self.legs[sl.left_foot_back].setSwing()
+            time.sleep(sleep_count)
+
+
+            # put the feet down
+            self.feet[sl.right_foot_front].down()
+            self.feet[sl.left_foot_back].down()
+            time.sleep(sleep_count)
+
+
+            # set the front right abck legt to body position
+            self.legs[sl.right_foot_front].setBody()
+            self.legs[sl.left_foot_bcak].setBody()
+            time.sleep(sleep_count)
