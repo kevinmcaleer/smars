@@ -70,8 +70,8 @@ def continous_leg_test():
 
     key = raw_input("Type 1-4 or q to return to main menu")
     if key == "1":
-        print sl.right_leg_front
-        # continous_test(sm.legs[sl.left_leg_front])
+        # print sl.right_leg_front
+        continous_test(sm.legs[sl.left_leg_front])
     if key == "2":
         continous_test(sm.legs[sl.right_leg_front])
     if key == "3":
@@ -172,6 +172,11 @@ while key != "q":
     print "3) Set all feet to sit position"
     print "4) Check each limb is set correctly"
     print "5) continous servo check"
+
+    print "left leg front", sl.left_leg_front
+    print "right leg front", sl.right_foot_front
+    print "left leg back", sl.left_leg_back
+    print "right left back", sl.right_leg_back
 
     key = raw_input("type an option, or type 'q' to quit ")
     if key == "1":
