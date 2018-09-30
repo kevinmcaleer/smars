@@ -86,9 +86,9 @@ class leg(object):
     def setBody(self):
         # Sets the limb to its default position.
         if self.invert == False:
-            self.setAngle(self.leg_maxAngle)
-        else:
             self.setAngle(self.leg_minAngle)
+        else:
+            self.setAngle(self.leg_maxAngle)
 
     def setStretch(self):
         # Sets the limb to its stretch position.
