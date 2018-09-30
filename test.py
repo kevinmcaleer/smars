@@ -23,7 +23,7 @@ def continous_test(object):
         b = object.leg_maxAngle
         while a <= object.leg_maxAngle:
             object.setAngle(a)
-            print "angle:", a
+            print "angle:", a, "Channel:", object.channel, "name: ", object.name
             time.sleep(0.1)
             a = a + 1
         while b >= object.leg_minAngle:
