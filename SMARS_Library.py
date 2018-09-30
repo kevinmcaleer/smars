@@ -247,20 +247,22 @@ class SmarsRobot(object):
 
             # Step
             print "1"
-            self.feet[left_foot_front].up()
-            self.feet[right_foot_front].up()
-            self.feet[left_foot_back].up()
-            self.feet[right_foot_back].up()
+            self.feet[left_foot_front].down()
+            self.feet[right_foot_front].down()
+            self.feet[left_foot_back].down()
+            self.feet[right_foot_back].down()
+            
             time.sleep(sleep_count)
             self.legs[left_leg_front].setSwing()
             self.legs[left_leg_back].setSwing()
             self.legs[right_leg_front].setBody()
             self.legs[right_leg_back].setBody()
             time.sleep(sleep_count)
-            self.feet[left_foot_front].down()
-            self.feet[right_foot_front].down()
-            self.feet[left_foot_back].down()
-            self.feet[right_foot_back].down()
+
+            self.feet[left_foot_front].up()
+            self.feet[right_foot_front].up()
+            self.feet[left_foot_back].up()
+            self.feet[right_foot_back].up()
             time.sleep(sleep_count)
 
             print "2"
