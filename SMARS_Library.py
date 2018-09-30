@@ -248,7 +248,7 @@ class SmarsRobot(object):
             time.sleep(sleep_count)
 
 
-            self.legs[left_leg_front].setbody()
+            self.legs[left_leg_front].setBody()
             self.legs[left_leg_back].setStretch()
             self.legs[right_leg_front].setSwing()
             self.legs[right_leg_back].setSwing()
@@ -269,5 +269,3 @@ class SmarsRobot(object):
             self.legs[right_leg_front].setBody()
             self.legs[right_leg_back].setStretch()
             time.sleep(sleep_count)
-
-            
