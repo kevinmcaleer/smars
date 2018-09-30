@@ -141,7 +141,7 @@ class leg(object):
 
     def setAngle(self, angle):
         # Works out the value of the angle by mapping the leg_min and leg_max to between 0 and 180 degrees
-        print "Angle is:", angle
+        # print "Angle is:", angle
 
         pulse = 0
 
@@ -266,29 +266,31 @@ class SmarsRobot(object):
             time.sleep(sleep_count)
 
             ### Walk Cycle
-            # lift the other feet up
-            print "Step 5"
-            self.feet[right_foot_front].up()
-            self.feet[left_foot_back].up() #
-            time.sleep(sleep_count)
+
 
 
             # set the front right and back left to half of stetch position
-            print "Step 6"
+            print "Step 5"
             self.legs[right_leg_front].setSwing()
             self.legs[left_leg_back].setSwing() #
             time.sleep(sleep_count)
 
 
             # put the feet down
-            print "Step 7"
+            print "Step 6"
             self.feet[right_foot_front].down()
             self.feet[left_foot_back].down() #
             time.sleep(sleep_count)
 
 
             # set the front right back leg to body position
-            print "Step 8"
+            print "Step 7"
             self.legs[right_leg_front].setBody()
             self.legs[left_leg_back].setBody() #
+            time.sleep(sleep_count)
+
+            # lift the other feet up
+            print "Step 8"
+            self.feet[right_foot_front].up()
+            self.feet[left_foot_back].up() #
             time.sleep(sleep_count)
