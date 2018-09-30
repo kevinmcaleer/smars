@@ -235,36 +235,36 @@ class SmarsRobot(object):
 
 
             # Set front left and back right to half of stretch position
-            self.legs[self.left_leg_front].setSwing()
-            self.legs[self.right_leg_back].setSwing()
+            self.legs[left_leg_front].setSwing()
+            self.legs[right_leg_back].setSwing()
             time.sleep(sleep_count)
 
 
             # put the foot down
-            self.feet[self.left_foot_front].down()
-            self.feet[self.right_foot_back].down()
+            self.feet[left_foot_front].down()
+            self.feet[right_foot_back].down()
             time.sleep(sleep_count)
 
 
             # lift the other feet up
-            self.feet[self.right_foot_front].up()
-            self.feet[self.left_foot_back].up()
+            self.feet[right_foot_front].up()
+            self.feet[left_foot_back].up()
             time.sleep(sleep_count)
 
 
             # set the front right and back left to half of stetch position
-            self.legs[self.right_leg_front].setSwing()
-            self.legs[self.left_leg_back].setSwing()
+            self.legs[right_leg_front].setSwing()
+            self.legs[left_leg_back].setSwing()
             time.sleep(sleep_count)
 
 
             # put the feet down
-            self.feet[self.right_foot_front].down()
-            self.feet[self.left_foot_back].down()
+            self.feet[right_foot_front].down()
+            self.feet[left_foot_back].down()
             time.sleep(sleep_count)
 
 
             # set the front right abck legt to body position
-            self.legs[self.right_leg_front].setBody()
-            self.legs[self.left_leg_bcak].setBody()
+            self.legs[right_leg_front].setBody()
+            self.legs[left_leg_bcak].setBody()
             time.sleep(sleep_count)
