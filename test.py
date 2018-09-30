@@ -172,6 +172,9 @@ while key != "q":
     print "3) Set all feet to sit position"
     print "4) Check each limb is set correctly"
     print "5) continous servo check"
+    print "6) Set all legs to body position"
+    print "7) Set all legs to stretch position"
+    print "8) Walk!"
 
     print "left leg front", sl.left_leg_front
     print "right leg front", sl.right_leg_front

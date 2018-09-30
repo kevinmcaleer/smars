@@ -159,8 +159,19 @@ class SmarsRobot(object):
     legs.append(leg(name = 'right_leg_back',  channel = 4, leg_minAngle = 0, leg_maxAngle = 90, invert = True))
     # print "number of legs", len(legs)
 
+    def setBody(self):
+        for l in self.legs:
+            l.setDefault()
+
+    def setStretch(self):
+        for l in self.legs:
+            if l.invert == False:
+                l.setAngle(l.leg_minAngle)
+            else:
+                l.setAngle(l.leg_maxAngle)
+
     def leg_reset(self):
-        for l in legs:
+        for l in self.legs:
             l.setDefault()
 
         # self.legs("left_foot_front").moveTo(self.leg_max)
