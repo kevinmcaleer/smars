@@ -205,7 +205,14 @@ class SmarsRobot(object):
             l.up()
 
     def walk(self):
-
+        global left_leg_front
+        global left_leg_back
+        global right_leg_front
+        global right_leg_back
+        global left_foot_front
+        global left_foot_back
+        global right_foot_front
+        global right_foot_back
         # Set all legs to up (sit)
 
         self.sit()
