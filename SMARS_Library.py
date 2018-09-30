@@ -103,11 +103,11 @@ class leg(object):
         print "Max Angle", self.leg_maxAngle, "Min angle", self.leg_minAngle, "Invert:", self.invert
         if self.invert == False:
             a = (self.leg_minAngle / 2) + self.leg_minAngle
-            print "angle calculation is", a
+            print "INVERT = FALSE angle calculation is", a
             self.setAngle(a)
         # else:
             a =(self.leg_maxAngle - self.leg_minAngle) / 2
-            print "angle calculation is", a
+            print "INVERT = TRUE angle calculation is", a
             self.setAngle(a)
         # self.setAngle(self.leg_maxAngle - self.leg_minAngle / 2 )
 
