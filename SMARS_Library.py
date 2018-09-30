@@ -222,42 +222,42 @@ class SmarsRobot(object):
         while True:
 
             # Raise front left and back right foot
-            self.feet[sl.left_foot_front].up()
-            self.feet[sl.right_foot_back].up()
+            self.feet[self.left_foot_front].up()
+            self.feet[self.right_foot_back].up()
             time.sleep(sleep_count)
 
 
             # Set front left and back right to half of stretch position
-            self.legs[sl.left_leg_front].setSwing()
-            self.legs[sk.right_foot_back].setSwing()
+            self.legs[self.left_leg_front].setSwing()
+            self.legs[self.right_foot_back].setSwing()
             time.sleep(sleep_count)
 
 
             # put the foot down
-            self.feet[sl.left_foot_front].down()
-            self.feet[sl.right_foot_back].down()
+            self.feet[self.left_foot_front].down()
+            self.feet[self.right_foot_back].down()
             time.sleep(sleep_count)
 
 
             # lift the other feet up
-            self.feet[sl.right_foot_front].up()
-            self.feet[sl.left_foot_back].up()
+            self.feet[self.right_foot_front].up()
+            self.feet[self.left_foot_back].up()
             time.sleep(sleep_count)
 
 
             # set the front right and back left to half of stetch position
-            self.legs[sl.right_foot_front].setSwing()
-            self.legs[sl.left_foot_back].setSwing()
+            self.legs[self.right_foot_front].setSwing()
+            self.legs[self.left_foot_back].setSwing()
             time.sleep(sleep_count)
 
 
             # put the feet down
-            self.feet[sl.right_foot_front].down()
-            self.feet[sl.left_foot_back].down()
+            self.feet[self.right_foot_front].down()
+            self.feet[self.left_foot_back].down()
             time.sleep(sleep_count)
 
 
             # set the front right abck legt to body position
-            self.legs[sl.right_foot_front].setBody()
-            self.legs[sl.left_foot_bcak].setBody()
+            self.legs[self.right_foot_front].setBody()
+            self.legs[self.left_foot_bcak].setBody()
             time.sleep(sleep_count)
