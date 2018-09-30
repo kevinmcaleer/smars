@@ -51,13 +51,33 @@ def continous_feet_test():
             continous_test(sm.feet[sl.left_foot_front])
         if key == "2":
             continous_test(sm.feet[sl.right_foot_front])
+        if key == "3":
+            continous_test(sm.feet[sl.left_foot_back])
+        if key == "4":
+            continous_test(sm.feet[sl.right_foot_back])
 
 
 def continous_leg_test():
     print "Continuous leg test"
     print "-------------------"
     print ""
+    print "Select a leg to test:"
+    print "1) Front Left leg"
+    print "2) Front Right leg"
+    print "3) Back Left leg"
+    print "4) Back Right leg"
+    print "q) Return to main menu"
 
+    key = raw_input("Type 1-4 or q to return to main menu")
+    if key == "1":
+        # sm.legs[sl.left_foot_front].setAngle(sm.legs[sl.left_foot_front].leg_minAngle)
+        continous_test(sm.feet[sl.left_leg_front])
+    if key == "2":
+        continous_test(sm.feet[sl.right_leg_front])
+    if key == "3":
+        continous_test(sm.feet[sl.left_leg_back])
+    if key == "4":
+        continous_test(sm.feet[sl.right_leg_back])
 
 def continuous_check():
     key = ""
