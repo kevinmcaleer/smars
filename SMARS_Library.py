@@ -266,5 +266,5 @@ class SmarsRobot(object):
 
             # set the front right abck legt to body position
             self.legs[right_leg_front].setBody()
-            self.legs[left_leg_bcak].setBody()
+            self.legs[left_leg_back].setBody()
             time.sleep(sleep_count)
