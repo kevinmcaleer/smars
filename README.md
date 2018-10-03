@@ -24,3 +24,5 @@ You can use most common small hardware platforms as the brains inside SMARS, the
 code Library design (both Arduino and Python)
 
 # simple Walking code
+
+# setting up the Python environment 
