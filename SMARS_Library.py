@@ -294,11 +294,11 @@ class SmarsRobot(object):
                 self.legs[left_leg_front].tick()
                 time.sleep(sleep_count)
 
-            self.feet[left_foot_front].up()
+            self.feet[left_foot_front].down()
             time.sleep(sleep_count)
             self.legs[left_leg_front].setBody()
             time.sleep(sleep_count)
-            self.feet[left_foot_front].down()
+            self.feet[left_foot_front].up()
             time.sleep(sleep_count)
 
 
