@@ -261,6 +261,8 @@ class SmarsRobot(object):
         rf = self.legs[right_leg_front].swingAngle
         rb = self.legs[right_leg_back].swingAngle
 
+        print "lf = ", lf
+        print "lf swing angle", self.legs[left_leg_front].swingAngle
         while True:
             print "loop"
             time.sleep(sleep_count)
