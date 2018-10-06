@@ -267,7 +267,7 @@ class SmarsRobot(object):
             #  loop - increment the lf until it is at the stretch angle, then wait until the
             if lf <= self.legs[left_leg_front].swingAngle:
                 lf += 1
-                print "lf = ", lf, "swingAngle = " self.legs[left_leg_front].swingAngle
+                print "lf = ", lf, "swingAngle = ", self.legs[left_leg_front].swingAngle
                 self.legs[left_leg_front].setAngle(lf)
             else:
                 self.feet[left_foot_front].up()
