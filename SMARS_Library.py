@@ -288,7 +288,7 @@ class SmarsRobot(object):
         print "lf swing angle", self.legs[left_leg_front].swingAngle
         while True:
             print "loop"
-            time.sleep(sleep_count)
+            # time.sleep(sleep_count)
             while self.legs[left_leg_front].tick() == False:
                 #loop until limit reached then lift leg reset and lower leg.
                 self.legs[left_leg_front].tick()
