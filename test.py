@@ -220,7 +220,7 @@ while key != "q":
 
     if key == "8":
         # Walk!
-        sm.walk()
-        
+        sm.walkForward()
+
     if key == "q":
         print "Good bye!"

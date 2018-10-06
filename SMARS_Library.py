@@ -61,6 +61,10 @@ class leg(object):
 
     leg_min = 150
     leg_max = 600
+    swingAngle = 0
+    bodyAngle = 0
+    stretchAngle = 0
+
     def __init__(self,name=None, channel=None, leg_minAngle=None, leg_maxAngle=None, invert=None):
         pwm = Adafruit_PCA9685.PCA9685()
         pwm.set_pwm_freq(60)
@@ -87,15 +91,19 @@ class leg(object):
         # Sets the limb to its default position.
         if self.invert == False:
             self.setAngle(self.leg_minAngle)
+            self.bodyAngle = self.leg_minAngle
         else:
             self.setAngle(self.leg_maxAngle)
+            self.bodyAngle = self.leg_maxAngle
 
     def setStretch(self):
         # Sets the limb to its stretch position.
         if self.invert == False:
             self.setAngle(self.leg_maxAngle)
+            self.stretchAngle = self.leg_maxAngle
         else:
             self.setAngle(self.leg_minAngle)
+            self.stretchAngle = self.leg_minAngle
 
     def setSwing(self):
         # Sets the limb to its stretch position.
@@ -109,6 +117,7 @@ class leg(object):
             a =(self.leg_maxAngle - self.leg_minAngle) / 2
             # print "INVERT = TRUE angle calculation is", a
             self.setAngle(a)
+        self.swingAngle = a
         # self.setAngle(self.leg_maxAngle - self.leg_minAngle / 2 )
 
     def up(self):
@@ -210,6 +219,53 @@ class SmarsRobot(object):
     def stand(self):
         for l in self.feet:
             l.up()
+
+    def walkForward(self):
+        global left_leg_front
+        global left_leg_back
+        global right_leg_front
+        global right_leg_back
+        global left_foot_front
+        global left_foot_back
+        global right_foot_front
+        global right_foot_back
+
+        self.sit()
+        time.sleep(sleep_count)
+
+        self.middle()
+        time.sleep(sleep_count)
+
+        self.stand()
+        time.sleep(sleep_count)
+
+        # Set the legs to the ready to walk cycle
+        # left_leg_back = body
+        # left_leg_front = body
+        # right_leg_front = Swing (45 degrees)
+        # right_leg_back = Swing (45 degrees)
+
+        self.legs[left_leg_front].setBody()
+        self.legs[left_leg_back].setBody()
+        self.legs[right_leg_front].setSwing()
+        self.legs[right_leg_back].setSwing()
+
+        lf = self.legs[left_leg_front].bodyAngle
+        lb = self.legs[left_leg_back].bodyAngle
+        rf = self.legs[right_leg_front].swingAngle
+        rb = self.legs[right_leg_back].swingAngle
+
+        while True:
+            time.sleep(sleep_count)
+            #  loop - increment the lf until it is at the stretch angle, then wait until the
+            if lf <= self.legs[left_leg_front].swingAngle:
+                lf += 1
+            else:
+                self.feet[left_foot_front].up()
+                self.legs[left_foot_front].setBody()
+                lf = self.legs[left_leg_front].bodyAngle
+                self.feet[left_foot_front].down()
+
 
     def walk(self):
         global left_leg_front
