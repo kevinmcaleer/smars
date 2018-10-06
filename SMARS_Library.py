@@ -64,6 +64,7 @@ class leg(object):
     swingAngle = 0
     bodyAngle = 0
     stretchAngle = 0
+    currentAngle = 0
 
     def __init__(self,name=None, channel=None, leg_minAngle=None, leg_maxAngle=None, invert=None):
         pwm = Adafruit_PCA9685.PCA9685()
@@ -74,6 +75,17 @@ class leg(object):
         self.leg_minAngle = leg_minAngle
         self.leg_maxAngle = leg_maxAngle
         self.invert = invert
+
+        if self.invert == False:
+            self.bodyAngle = self.leg_minAngle
+            self.stretchAngle = self.leg_maxAngle
+            self.swingAngle = (self.leg_minAngle / 2) + self.leg_minAngle
+        else:
+            self.bodyAngle = self.leg_maxAngle
+            self.stretchAngle = self.leg_minAngle
+            self.swingAngle = (self.leg_maxAngle - self.leg_minAngle) / 2
+        self.currentAngle = self.bodyAngle
+
         # self.leg_min = leg_min
         # self.leg_max = leg_max
         # print self.name
@@ -82,10 +94,11 @@ class leg(object):
 
         # Need to configure the in and max position for each limb
         # pwm.set_pwm(self.channel,self.channel,servo_max)
-        time.sleep(sleep_count)
+        # time.sleep(sleep_count)
 
     def setDefault(self):
         self.setAngle(self.leg_maxAngle - self.leg_minAngle)
+        self.currentAngle = self.leg_maxAngle - self.leg_minAngle
 
     def setBody(self):
         # Sets the limb to its default position.
@@ -95,6 +108,7 @@ class leg(object):
         else:
             self.setAngle(self.leg_maxAngle)
             self.bodyAngle = self.leg_maxAngle
+        self.currentAngle = self.bodyAngle
 
     def setStretch(self):
         # Sets the limb to its stretch position.
@@ -104,6 +118,7 @@ class leg(object):
         else:
             self.setAngle(self.leg_minAngle)
             self.stretchAngle = self.leg_minAngle
+        self.currentAngle = self.stretchAngle
 
     def setSwing(self):
         # Sets the limb to its stretch position.
@@ -118,6 +133,7 @@ class leg(object):
             # print "INVERT = TRUE angle calculation is", a
             self.setAngle(a)
         self.swingAngle = a
+        self.currentAngle = self.swingAngle
         # self.setAngle(self.leg_maxAngle - self.leg_minAngle / 2 )
 
     def up(self):
@@ -168,6 +184,21 @@ class leg(object):
             pwm.set_pwm(self.channel, self.channel, pulse)
         else:
             print "Error angle was outside of bounds for this leg: ", self.name, angle, "Minimum:", self.leg_minAngle, "Maximum:", self.leg_maxAngle
+        self.currentAngle = angle
+
+    def tick(self):
+        if self.invert = False:
+            if self.currentAngle <= self.leg_maxAngle:
+                self.currentAngle += 1
+            else:
+                print "angle met:", self.currentAngle
+        else:
+            if self.currentAngle >= self.leg_minAngle:
+                self.currentAngle -= 1
+            else:
+                print "angle met:", self.currentAngle
+        print "setting angle to ", self.currentAngle
+        self.setAngle(self.currentAngle)
 
 class SmarsRobot(object):
 
@@ -230,21 +261,6 @@ class SmarsRobot(object):
         global right_foot_front
         global right_foot_back
 
-
-        self.legs[left_leg_front].setBody()
-        self.legs[left_leg_front].setSwing()
-        self.legs[left_leg_front].setStretch()
-        self.legs[left_leg_back].setBody()
-        self.legs[left_leg_back].setSwing()
-        self.legs[left_leg_back].setStretch()
-
-        self.legs[right_leg_front].setBody()
-        self.legs[right_leg_front].setSwing()
-        self.legs[right_leg_front].setStretch()
-        self.legs[right_leg_back].setBody()
-        self.legs[right_leg_back].setSwing()
-        self.legs[right_leg_back].setStretch()
-
         # Set the legs to the ready to walk cycle
         # left_leg_back = body
         # left_leg_front = body
@@ -266,17 +282,18 @@ class SmarsRobot(object):
         while True:
             print "loop"
             time.sleep(sleep_count)
+            self.legs[left_leg_front].tick()
             #  loop - increment the lf until it is at the stretch angle, then wait until the
-            if lf <= self.legs[left_leg_front].swingAngle:
-                lf += 1
-                print "lf = ", lf, "swingAngle = ", self.legs[left_leg_front].swingAngle
-                self.legs[left_leg_front].setAngle(lf)
-            else:
-                self.feet[left_foot_front].up()
-                self.legs[left_foot_front].setBody()
-                lf = self.legs[left_leg_front].bodyAngle
-                self.feet[left_foot_front].down()
-                print "end of cycle", lf
+            # if lf <= self.legs[left_leg_front].swingAngle:
+            #     lf += 1
+            #     print "lf = ", lf, "swingAngle = ", self.legs[left_leg_front].swingAngle
+            #     self.legs[left_leg_front].setAngle(lf)
+            # else:
+            #     self.feet[left_foot_front].up()
+            #     self.legs[left_foot_front].setBody()
+            #     lf = self.legs[left_leg_front].bodyAngle
+            #     self.feet[left_foot_front].down()
+            #     print "end of cycle", lf
 
 
     def walk(self):
