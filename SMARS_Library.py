@@ -190,13 +190,17 @@ class leg(object):
         if self.invert == False:
             if self.currentAngle <= self.leg_maxAngle:
                 self.currentAngle += 1
+                return False
             else:
                 print "angle met:", self.currentAngle
+                return True
         else:
             if self.currentAngle >= self.leg_minAngle:
                 self.currentAngle -= 1
+                return False
             else:
                 print "angle met:", self.currentAngle
+                return True
         print "setting angle to ", self.currentAngle
         self.setAngle(self.currentAngle)
 
@@ -282,18 +286,15 @@ class SmarsRobot(object):
         while True:
             print "loop"
             time.sleep(sleep_count)
-            self.legs[left_leg_front].tick()
-            #  loop - increment the lf until it is at the stretch angle, then wait until the
-            # if lf <= self.legs[left_leg_front].swingAngle:
-            #     lf += 1
-            #     print "lf = ", lf, "swingAngle = ", self.legs[left_leg_front].swingAngle
-            #     self.legs[left_leg_front].setAngle(lf)
-            # else:
-            #     self.feet[left_foot_front].up()
-            #     self.legs[left_foot_front].setBody()
-            #     lf = self.legs[left_leg_front].bodyAngle
-            #     self.feet[left_foot_front].down()
-            #     print "end of cycle", lf
+            while !self.legs[left_leg_front].tick():
+                #loop until limit reached then lift leg reset and lower leg.
+                self.legs[left_leg_front].tick()
+            self.feet[left_foot_front].up()
+            time.sleep(sleep_count)
+            self.legs[left_leg_front].setBody()
+            time.sleep(sleep_count)
+            self.feet[left_foot_front].down()
+            time.sleep(sleep_count)
 
 
     def walk(self):
