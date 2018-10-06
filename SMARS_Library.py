@@ -256,16 +256,19 @@ class SmarsRobot(object):
         rb = self.legs[right_leg_back].swingAngle
 
         while True:
+            print "loop"
             time.sleep(sleep_count)
             #  loop - increment the lf until it is at the stretch angle, then wait until the
             if lf <= self.legs[left_leg_front].swingAngle:
                 lf += 1
+                print "lf = ", lf
                 self.legs[left_leg_front].setAngle(lf)
             else:
                 self.feet[left_foot_front].up()
                 self.legs[left_foot_front].setBody()
                 lf = self.legs[left_leg_front].bodyAngle
                 self.feet[left_foot_front].down()
+                print "end of cycle", lf
 
 
     def walk(self):
