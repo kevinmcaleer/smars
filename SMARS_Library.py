@@ -187,7 +187,7 @@ class leg(object):
         self.currentAngle = angle
 
     def tick(self):
-        if self.invert = False:
+        if self.invert == False:
             if self.currentAngle <= self.leg_maxAngle:
                 self.currentAngle += 1
             else:
