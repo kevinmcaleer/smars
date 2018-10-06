@@ -230,14 +230,20 @@ class SmarsRobot(object):
         global right_foot_front
         global right_foot_back
 
-        self.sit()
-        time.sleep(sleep_count)
 
-        self.middle()
-        time.sleep(sleep_count)
+        self.legs[left_leg_front].setBody()
+        self.legs[left_leg_front].setSwing()
+        self.legs[left_leg_front].setStretch()
+        self.legs[left_leg_back].setBody()
+        self.legs[left_leg_back].setSwing()
+        self.legs[left_leg_back].setStretch()
 
-        self.stand()
-        time.sleep(sleep_count)
+        self.legs[right_leg_front].setBody()
+        self.legs[right_leg_front].setSwing()
+        self.legs[right_leg_front].setStretch()
+        self.legs[right_leg_back].setBody()
+        self.legs[right_leg_back].setSwing()
+        self.legs[right_leg_back].setStretch()
 
         # Set the legs to the ready to walk cycle
         # left_leg_back = body
@@ -261,7 +267,7 @@ class SmarsRobot(object):
             #  loop - increment the lf until it is at the stretch angle, then wait until the
             if lf <= self.legs[left_leg_front].swingAngle:
                 lf += 1
-                print "lf = ", lf
+                print "lf = ", lf, "swingAngle = " self.legs[left_leg_front].swingAngle
                 self.legs[left_leg_front].setAngle(lf)
             else:
                 self.feet[left_foot_front].up()
