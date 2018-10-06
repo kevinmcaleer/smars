@@ -289,7 +289,7 @@ class SmarsRobot(object):
         while True:
             print "loop"
             # time.sleep(sleep_count)
-            for n in range (0, 3):
+            for n in range (0, 4):
                 if self.legs[n].tick() == False:
                     self.legs[n].tick()
                 # while self.legs[n].tick() == False:
