@@ -289,17 +289,17 @@ class SmarsRobot(object):
         while True:
             print "loop"
             # time.sleep(sleep_count)
-            while self.legs[left_leg_front].tick() == False:
-                #loop until limit reached then lift leg reset and lower leg.
-                self.legs[left_leg_front].tick()
+            for n in range (0, 3):
+                while self.legs[n].tick() == False:
+                    #loop until limit reached then lift leg reset and lower leg.
+                    self.legs[n].tick()
+                    time.sleep(sleep_count)
+                self.feet[n].down()
                 time.sleep(sleep_count)
-
-            self.feet[left_foot_front].down()
-            time.sleep(sleep_count)
-            self.legs[left_leg_front].setBody()
-            time.sleep(sleep_count)
-            self.feet[left_foot_front].up()
-            time.sleep(sleep_count)
+                self.legs[n].setBody()
+                time.sleep(sleep_count)
+                self.feet[n].up()
+                time.sleep(sleep_count)
 
 
     def walk(self):
