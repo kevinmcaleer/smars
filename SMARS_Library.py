@@ -207,18 +207,18 @@ class leg(object):
                 return True
 
     def tick(self):
-        if self.invert == False:
+        if self.name == "left_leg_front" or self.name == "left_leg_back":
             if self.currentAngle <= self.leg_maxAngle:
                 self.currentAngle += 1
                 print "setting angle to ", self.currentAngle
                 self.setAngle(self.currentAngle)
                 return False
             else:
-                print "angle met:", self.currentAngle
+                # print "angle met:", self.currentAngle
                 return True
         else:
-            if self.currentAngle <= self.leg_maxAngle:
-                self.currentAngle += 1
+            if self.currentAngle >= self.leg_minAngle:
+                self.currentAngle -= 1
                 print "setting angle to ", self.currentAngle
                 self.setAngle(self.currentAngle)
                 return False
