@@ -11,6 +11,7 @@ import time
 
 # create an instance of the Smars Robot class
 sm = SmarsRobot()
+sm.setName("Quaddy")
 
 # set the robot type to 'quad'
 sm.type = "quad"
@@ -220,7 +221,7 @@ while key != "q":
 
     if key == "8":
         # Walk!
-        sm.walkForward()
+        sm.walkForward(10)
 
     if key == "q":
         print "Good bye!"

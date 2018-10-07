@@ -67,6 +67,7 @@ class leg(object):
     currentAngle = 0
 
     def __init__(self,name=None, channel=None, leg_minAngle=None, leg_maxAngle=None, invert=None):
+        # Initialises the leg object
         pwm = Adafruit_PCA9685.PCA9685()
         pwm.set_pwm_freq(60)
         # print "setting up leg object"
@@ -86,22 +87,13 @@ class leg(object):
             self.swingAngle = (self.leg_maxAngle - self.leg_minAngle) / 2
         self.currentAngle = self.bodyAngle
 
-        # self.leg_min = leg_min
-        # self.leg_max = leg_max
-        # print self.name
-        # print self.channel
-        # print "setting to up position"
-
-        # Need to configure the in and max position for each limb
-        # pwm.set_pwm(self.channel,self.channel,servo_max)
-        # time.sleep(sleep_count)
-
     def setDefault(self):
+        # Sets the limb to the default angle, by dividing the maximum and minimum angles that were set previously
         self.setAngle(self.leg_maxAngle - self.leg_minAngle)
         self.currentAngle = self.leg_maxAngle - self.leg_minAngle
 
     def setBody(self):
-        # Sets the limb to its default position.
+        # Sets the limb to its body position.
         if self.invert == False:
             self.setAngle(self.leg_minAngle)
             self.bodyAngle = self.leg_minAngle
@@ -121,96 +113,93 @@ class leg(object):
         self.currentAngle = self.stretchAngle
 
     def setSwing(self):
-        # Sets the limb to its stretch position.
+        # Sets the limb to its swing position, which is 45 degrees - halfway between the body and stretch position.
         a = 0
         # print "Max Angle", self.leg_maxAngle, "Min angle", self.leg_minAngle, "Invert:", self.invert
         if self.invert == False:
             a = (self.leg_minAngle / 2) + self.leg_minAngle
-            # print "INVERT = FALSE angle calculation is", a
             self.setAngle(a)
         else:
             a =(self.leg_maxAngle - self.leg_minAngle) / 2
-            # print "INVERT = TRUE angle calculation is", a
             self.setAngle(a)
         self.swingAngle = a
         self.currentAngle = self.swingAngle
-        # self.setAngle(self.leg_maxAngle - self.leg_minAngle / 2 )
 
     def up(self):
+        # raises the limb to its minimum angle
         if self.invert == False:
             self.setAngle(self.leg_minAngle)
         else:
             self.setAngle(self.leg_maxAngle)
-        # time.sleep(sleep_count)
 
     def down(self):
+        # lowers the limb to its maximum angle
         if self.invert == False:
             self.setAngle(self.leg_maxAngle)
         else:
             self.setAngle(self.leg_minAngle)
-        # time.sleep(sleep_count)
-        # print 'setting leg' , self.name , 'to down'
 
     def middle(self):
+        #  moves the limb to half way between up and down.
         self.setAngle(self.leg_maxAngle - self.leg_minAngle)
-        # pwm.set_pwm(self.channel,self.channel,self.leg_min - self.leg_max)
-        time.sleep(sleep_count)
 
     def show(self):
+        # used for debugging - shows the servo driver channel number and the limb name
         print self.channel
         print self.name
 
     def moveTo(self, position):
+        # obsolete - use setAngle instead
         pwm.set_pwm(self.channel, self.channel, position)
         time.sleep(sleep_count)
 
     def setAngle(self, angle):
         # Works out the value of the angle by mapping the leg_min and leg_max to between 0 and 180 degrees
-        # print "Angle is:", angle
-
+        # Then moves the limb to that position
         pulse = 0
 
         # Check the angle is within the boundaries for this limb
         if angle >= self.leg_minAngle and angle <= self.leg_maxAngle:
-
             mapMax = self.leg_max - self.leg_min
             percentage = ( float(angle) / 180 ) * 100
             pulse = int( (( float(mapMax) / 100 ) * float(percentage) ) + self.leg_min)
-            # print "Angle = ", angle
-            # print "Angle as a percentage = ", percentage
-            # print "pulse = ", pulse
-            # print "map Max = ", mapMax
-            # return pulse
+
+            # send the servo the pulse, to set the angle
             pwm.set_pwm(self.channel, self.channel, pulse)
         else:
+            # display an error message if the angle set was outside the range (leg_minAngle and leg_maxAngle)
             print "Error angle was outside of bounds for this leg: ", self.name, angle, "Minimum:", self.leg_minAngle, "Maximum:", self.leg_maxAngle
         self.currentAngle = angle
 
     def untick(self):
-        if self.invert == False:
-            if self.currentAngle >= self.leg_minAngle:
-                self.currentAngle -= 2
-                print "setting angle to ", self.currentAngle
-                self.setAngle(self.currentAngle)
-                return False
-            else:
-                print "angle met:", self.currentAngle
-                return True
-        else:
-            if self.currentAngle <= self.leg_maxAngle:
-                self.currentAngle += 2
-                print "setting angle to ", self.currentAngle
-                self.setAngle(self.currentAngle)
-                return False
-            else:
-                print "angle met:", self.currentAngle
-                return True
-
-    def tick(self):
+        # TODO - need to change the values for walking backwards
+        # Used to walk backwards
         if self.name == "left_leg_front" or self.name == "left_leg_back":
             if self.currentAngle <= self.leg_maxAngle:
                 self.currentAngle += 2
-                print self.name, "setting angle to ", self.currentAngle
+                # print self.name, "setting angle to ", self.currentAngle
+                self.setAngle(self.currentAngle)
+                return False
+            else:
+
+                return True
+        elif self.name == "right_leg_front" or self.name == "right_leg_back":
+            if self.currentAngle >= self.leg_minAngle:
+                self.currentAngle -= 2
+                # print self.name, "setting angle to ", self.currentAngle
+                self.setAngle(self.currentAngle)
+                return False
+            else:
+                # print "angle met:", self.currentAngle, "max angle:", self.leg_maxAngle, "min angle:", self.leg_minAngle
+                return True
+
+    def tick(self):
+        # Used for walking forward.
+        # Each tick received changes the current angle of the limb, unless an limit is reached, which then returns a true value
+        if self.name == "left_leg_front" or self.name == "left_leg_back":
+            if self.currentAngle <= self.leg_maxAngle:
+                self.currentAngle += 2
+                # print self.name, "setting angle to ", self.currentAngle
                 self.setAngle(self.currentAngle)
                 return False
             else:
@@ -219,15 +208,15 @@ class leg(object):
         elif self.name == "right_leg_front" or self.name == "right_leg_back":
             if self.currentAngle >= self.leg_minAngle:
                 self.currentAngle -= 2
-                print self.name, "setting angle to ", self.currentAngle
+                # print self.name, "setting angle to ", self.currentAngle
                 self.setAngle(self.currentAngle)
                 return False
             else:
-                print "angle met:", self.currentAngle, "max angle:", self.leg_maxAngle, "min angle:", self.leg_minAngle
+                # print "angle met:", self.currentAngle, "max angle:", self.leg_maxAngle, "min angle:", self.leg_minAngle
                 return True
 
 class SmarsRobot(object):
-
+# This is used to model the robot, its legs and its sensors
     def __init__(self):
         pwm = Adafruit_PCA9685.PCA9685()
         pwm.set_pwm_freq(60)
@@ -239,6 +228,7 @@ class SmarsRobot(object):
     # newLeg = leg()
     legs = []
     feet = []
+    name = "" # the friendly name for the robot - used in console messages.
 
     # add each foot to the feet array
     feet.append(leg(name = 'left_foot_front', channel = 1, leg_minAngle = 50,   leg_maxAngle = 150,  invert = False))
@@ -253,31 +243,38 @@ class SmarsRobot(object):
     legs.append(leg(name = 'right_leg_back',  channel = 4, leg_minAngle = 9, leg_maxAngle = 90, invert = True))
     # print "number of legs", len(legs)
 
+    def setName(name):
+        # Sets the robots name, used for displaying console messages.
+        self.name = name
+        print "***", name, "Online ***"
+
     def leg_reset(self):
+        # used to reset all the legs
         for l in self.legs:
             l.setDefault()
 
-        # self.legs("left_foot_front").moveTo(self.leg_max)
-        # self.legs("left_foot_back").moveTo(self.leg_min)
-        # self.legs("right_foot_front").moveTo(self.leg_max)
-        # self.legs("right_foot_back").moveTo(self.leg_min)
-
     def middle(self):
+        # used to position all the legs into the middle position
         print "received middle command"
         for l in self.legs:
             l.middle()
             # l.show()
 
     def sit(self):
-        print "received sit command"
+        # used to sit the robot down
+        print self.name, "sitting Down."
         for l in self.feet:
             l.down()
 
     def stand(self):
+        print self.name, "standing up."
         for l in self.feet:
             l.up()
 
-    def walkForward(self):
+    def walkForward(self, steps):
+        # used to move the robot forward.
+
+        # include the global variables
         global left_leg_front
         global left_leg_back
         global right_leg_front
@@ -293,24 +290,29 @@ class SmarsRobot(object):
         # right_leg_front = Swing (45 degrees)
         # right_leg_back = Swing (45 degrees)
 
+        # set the legs to the correct position for walking.
+        self.sit()
         self.legs[left_leg_front].setBody()
         self.legs[left_leg_back].setBody()
         self.legs[right_leg_front].setSwing()
         self.legs[right_leg_back].setSwing()
+        self.stand()
 
-        lf = self.legs[left_leg_front].bodyAngle
-        lb = self.legs[left_leg_back].bodyAngle
-        rf = self.legs[right_leg_front].swingAngle
-        rb = self.legs[right_leg_back].swingAngle
+        # lf = self.legs[left_leg_front].bodyAngle
+        # lb = self.legs[left_leg_back].bodyAngle
+        # rf = self.legs[right_leg_front].swingAngle
+        # rb = self.legs[right_leg_back].swingAngle
+        #
+        # print "lf = ", lf
+        # print "lf swing angle", self.legs[left_leg_front].swingAngle
 
-        print "lf = ", lf
-        print "lf swing angle", self.legs[left_leg_front].swingAngle
-        while True:
-            print "loop"
-            # time.sleep(sleep_count)
+        # the walking cycle, loops for the number of steps provided.
+        currentStep = 0;
+        while currentStep < steps:
+            currentStep += 1
             for n in range (0, 4):
                 if self.legs[n].tick() == False:
-                    print "normal tick", self.legs[n].name
+                    # print "normal tick", self.legs[n].name
                     # self.legs[n].tick()
                 # while self.legs[n].tick() == False:
                 #     #loop until limit reached then lift leg reset and lower leg.
@@ -318,7 +320,7 @@ class SmarsRobot(object):
                 #
                 #     time.sleep(sleep_count)
                 else:
-                    print "moving leg:", self.legs[n].name
+                    # print "moving leg:", self.legs[n].name
                     self.feet[n].down()
                     time.sleep(sleep_count)
 
@@ -326,109 +328,18 @@ class SmarsRobot(object):
                     if self.legs[n].invert == False:
                     # if self.legs[n].name == "right_leg_front" or self.legs[n].name == "right_leg_back":
                         if self.legs[n].name == "right_leg_front":
-                            print "moving front right leg to stretch"
+                            # print "moving front right leg to stretch"
                             self.legs[n].setStretch()
                         else:
-                            print "moving leg:", self.legs[n].name, "to Body Position"
+                            # print "moving leg:", self.legs[n].name, "to Body Position"
                             self.legs[n].setBody()
                     elif self.legs[n].invert == True:
                         if self.legs[n].name == "right_leg_back":
-                            print "moving right leg to body"
+                            # print "moving right leg to body"
                             self.legs[n].setBody()
                         else:
-                            print "moving leg:", self.legs[n].name, "to Stretch Position"
+                            # print "moving leg:", self.legs[n].name, "to Stretch Position"
                             self.legs[n].setStretch()
                     time.sleep(sleep_count)
                     self.feet[n].up()
                     time.sleep(sleep_count)
-
-
-    def walk(self):
-        global left_leg_front
-        global left_leg_back
-        global right_leg_front
-        global right_leg_back
-        global left_foot_front
-        global left_foot_back
-        global right_foot_front
-        global right_foot_back
-        # Set all legs to up (sit)
-
-        self.sit()
-        time.sleep(sleep_count)
-
-        # Set all legs to middle position
-        self.middle()
-        time.sleep(sleep_count)
-
-        # Set all legs to down position (stand)
-        self.stand()
-        time.sleep(sleep_count)
-
-        self.feet[left_foot_front].up()
-        self.feet[right_foot_front].up()
-        self.feet[left_foot_back].up()
-        self.feet[right_foot_back].up()
-        self.legs[left_leg_front].setSwing()
-        self.legs[left_leg_back].setSwing()
-        self.legs[right_leg_front].setBody()
-        self.legs[right_leg_back].setBody()
-        time.sleep(sleep_count)
-
-        while True:
-
-            # Step
-            print "1"
-            self.feet[left_foot_front].down()
-            self.feet[right_foot_front].down()
-            self.feet[left_foot_back].down()
-            self.feet[right_foot_back].down()
-
-            time.sleep(sleep_count)
-            self.legs[left_leg_front].setSwing()
-            self.legs[left_leg_back].setSwing()
-            self.legs[right_leg_front].setBody()
-            self.legs[right_leg_back].setBody()
-            time.sleep(sleep_count)
-
-            self.feet[left_foot_front].up()
-            self.feet[right_foot_front].up()
-            self.feet[left_foot_back].up()
-            self.feet[right_foot_back].up()
-            time.sleep(sleep_count)
-
-            print "2"
-            self.feet[right_foot_front].down()
-            self.legs[right_leg_front].setStretch()
-            self.feet[right_foot_front].up()
-            time.sleep(sleep_count)
-            print "3"
-            self.legs[left_leg_front].setBody()
-            time.sleep(sleep_count)
-            self.legs[left_leg_back].setStretch()
-            time.sleep(sleep_count)
-            self.legs[right_leg_front].setSwing()
-            time.sleep(sleep_count)
-            self.legs[right_leg_back].setSwing()
-            time.sleep(sleep_count)
-
-            print "4"
-
-            self.legs[left_leg_back].setBody()
-            time.sleep(sleep_count)
-
-
-            print "5"
-            self.legs[left_leg_front].setStretch()
-            time.sleep(sleep_count)
-
-
-            print "6"
-            self.legs[left_leg_front].setSwing()
-            time.sleep(sleep_count)
-            self.legs[left_leg_back].setSwing()
-            time.sleep(sleep_count)
-            self.legs[right_leg_front].setBody()
-            time.sleep(sleep_count)
-            self.legs[right_leg_back].setStretch()
-            time.sleep(sleep_count)
