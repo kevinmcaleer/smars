@@ -325,7 +325,7 @@ class SmarsRobot(object):
                     # change this to left and right legs, rather than invert or not invert
                     if self.legs[n].invert == False:
                     # if self.legs[n].name == "right_leg_front" or self.legs[n].name == "right_leg_back":
-                        if self.legs[n].name == "right_leg_front" or self.legs[n].name == "right_leg_back":
+                        if self.legs[n].name == "right_leg_front":
                             print "moving front right leg to stretch"
                             self.legs[n].setStretch()
                         else:
