@@ -310,6 +310,7 @@ class SmarsRobot(object):
             # time.sleep(sleep_count)
             for n in range (0, 4):
                 if self.legs[n].tick() == False:
+                    print "normal tick", self.legs[n].name
                     self.legs[n].tick()
                 # while self.legs[n].tick() == False:
                 #     #loop until limit reached then lift leg reset and lower leg.
