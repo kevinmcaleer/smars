@@ -243,7 +243,7 @@ class SmarsRobot(object):
     legs.append(leg(name = 'right_leg_back',  channel = 4, leg_minAngle = 9, leg_maxAngle = 90, invert = True))
     # print "number of legs", len(legs)
 
-    def setName(name):
+    def setName(self, name):
         # Sets the robots name, used for displaying console messages.
         self.name = name
         print "***", name, "Online ***"
