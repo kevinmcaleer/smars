@@ -30,7 +30,7 @@ pwm = Adafruit_PCA9685.PCA9685()
 # Configure min and max servo pulse lengths
 servo_min = 150  # Min pulse length out of 4096
 servo_max = 600  # Max pulse length out of 4096
-sleep_count = 0.05 # the amount of time to wait between pwm operations
+sleep_count = 0.01 # the amount of time to wait between pwm operations
 
 # setup legs and feet to correspond to the correct channel
 left_leg_front   = 0 # channel 0
