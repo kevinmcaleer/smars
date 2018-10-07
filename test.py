@@ -221,7 +221,7 @@ while key != "q":
 
     if key == "8":
         # Walk!
-        sm.walkForward(10)
+        sm.walkForward(100)
 
     if key == "q":
         print "Good bye!"
