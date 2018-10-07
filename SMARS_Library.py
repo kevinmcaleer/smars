@@ -321,7 +321,10 @@ class SmarsRobot(object):
                     print "moving leg:", self.legs[n].name
                     self.feet[n].down()
                     time.sleep(sleep_count)
+
+                    # change this to left and right legs, rather than invert or not invert
                     if self.legs[n].invert == False:
+                    # if self.legs[n].name == "right_leg_front" or self.legs[n].name == "right_leg_back":
                         print "moving leg:", self.legs[n].name, "to Body Position"
                         self.legs[n].setBody()
                     elif self.legs[n].invert == True:
