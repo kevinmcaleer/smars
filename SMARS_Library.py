@@ -186,7 +186,7 @@ class leg(object):
             print "Error angle was outside of bounds for this leg: ", self.name, angle, "Minimum:", self.leg_minAngle, "Maximum:", self.leg_maxAngle
         self.currentAngle = angle
 
-    def tick(self):
+    def untick(self):
         if self.invert == False:
             if self.currentAngle >= self.leg_minAngle:
                 self.currentAngle -= 1
@@ -206,7 +206,7 @@ class leg(object):
                 print "angle met:", self.currentAngle
                 return True
 
-    def untick(self):
+    def tick(self):
         if self.invert == False:
             if self.currentAngle <= self.leg_maxAngle:
                 self.currentAngle += 1
