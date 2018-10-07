@@ -217,7 +217,7 @@ class leg(object):
                 print "angle met:", self.currentAngle
                 return True
         else:
-            if self.currentAngle >= self.leg_maxAngle:
+            if self.currentAngle <= self.leg_maxAngle:
                 self.currentAngle += 1
                 print "setting angle to ", self.currentAngle
                 self.setAngle(self.currentAngle)
