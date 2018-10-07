@@ -319,7 +319,10 @@ class SmarsRobot(object):
                 else:
                     self.feet[n].down()
                     time.sleep(sleep_count)
-                    self.legs[n].setBody()
+                    if self.legs[n].invert == False:
+                        self.legs[n].setBody()
+                    else:
+                        self.legs[n].setStretch()
                     time.sleep(sleep_count)
                     self.feet[n].up()
                     time.sleep(sleep_count)
