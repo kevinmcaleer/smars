@@ -217,7 +217,7 @@ class leg(object):
                 # print "angle met:", self.currentAngle
                 return True
         elif self.name == "right_leg_front" or self.name == "right_leg_back":
-            if self.currentAngle => self.leg_minAngle:
+            if self.currentAngle >= self.leg_minAngle:
                 self.currentAngle -= 2
                 print self.name, "setting angle to ", self.currentAngle
                 self.setAngle(self.currentAngle)
