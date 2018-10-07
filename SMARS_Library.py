@@ -332,8 +332,12 @@ class SmarsRobot(object):
                             print "moving leg:", self.legs[n].name, "to Body Position"
                             self.legs[n].setBody()
                     elif self.legs[n].invert == True:
-                        print "moving leg:", self.legs[n].name, "to Stretch Position"
-                        self.legs[n].setStretch()
+                        if self.legs[n].name == "right_leg_back":
+                            print "moving right leg to body"
+                            self.legs[n].setBody()
+                        else:
+                            print "moving leg:", self.legs[n].name, "to Stretch Position"
+                            self.legs[n].setStretch()
                     time.sleep(sleep_count)
                     self.feet[n].up()
                     time.sleep(sleep_count)
