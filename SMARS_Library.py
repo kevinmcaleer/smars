@@ -223,7 +223,7 @@ class leg(object):
                 self.setAngle(self.currentAngle)
                 return False
             else:
-                # print "angle met:", self.currentAngle
+                print "angle met:", self.currentAngle, "max angle:", self.leg_maxAngle
                 return True
 
 class SmarsRobot(object):
