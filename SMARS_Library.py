@@ -318,6 +318,7 @@ class SmarsRobot(object):
                 #
                 #     time.sleep(sleep_count)
                 else:
+                    print "moving leg:" self.legs[n].name
                     self.feet[n].down()
                     time.sleep(sleep_count)
                     if self.legs[n].invert == False:
