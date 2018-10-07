@@ -308,7 +308,7 @@ class SmarsRobot(object):
         while True:
             print "loop"
             # time.sleep(sleep_count)
-            for n in range (0, 3):
+            for n in range (0, 4):
                 if self.legs[n].tick() == False:
                     print "normal tick", self.legs[n].name
                     # self.legs[n].tick()
@@ -325,7 +325,7 @@ class SmarsRobot(object):
                     # change this to left and right legs, rather than invert or not invert
                     if self.legs[n].invert == False:
                     # if self.legs[n].name == "right_leg_front" or self.legs[n].name == "right_leg_back":
-                        if self.legs[n].name == "right_leg_front":
+                        if self.legs[n].name == "right_leg_front" or self.legs[n].name == "right_leg_back":
                             print "moving front right leg to stretch"
                             self.legs[n].setStretch()
                         else:
