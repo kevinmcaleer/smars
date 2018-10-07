@@ -217,13 +217,13 @@ class leg(object):
                 # print "angle met:", self.currentAngle
                 return True
         else:
-            if self.currentAngle >= self.leg_maxAngle:
+            if self.currentAngle >= self.leg_minAngle:
                 self.currentAngle -= 1
                 print self.name, "setting angle to ", self.currentAngle
                 self.setAngle(self.currentAngle)
                 return False
             else:
-                print "angle met:", self.currentAngle, "max angle:", self.leg_maxAngle
+                print "angle met:", self.currentAngle, "max angle:", self.leg_maxAngle, "min angle:", self.leg_minAngle
                 return True
 
 class SmarsRobot(object):
