@@ -1,3 +1,5 @@
+# This program listens for Scratch broadcasts, to enable the SMARS robot to be controlled via Scratch.
+
 from array import array
 import socket
 import time
@@ -29,5 +31,7 @@ def sendScratchCommand(cmd):
 
 while True:
     msg = askstring('Scratch Connector', 'Send Broadcast:')
+
+    #need to add SMARS commands here. 
     if msg:
         sendScratchCommand('broadcast "' + msg + '"')
