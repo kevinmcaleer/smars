@@ -19,10 +19,4 @@ This robot is really easy and cheap to 3d print, build and program. It can be as
 You can use most common small hardware platforms as the brains inside SMARS, the Arduino platform (and compatible) was used in the original design as its cheap, commonly available, and the tools for programming it are easy to use. For the quad version of the robot a Raspberry Pi Zero was used. The language commonly used on the Pi (and where it gets it name from) is Python. A library module has been written for both Arduino and Python to help you get started.
 
 # Getting the Arduino IDE
-
-# Pseudo code
-code Library design (both Arduino and Python)
-
-# simple Walking code
-
-# setting up the Python environment 
+Visit http://www.arduino.cc to download the latest Arduino Integrated Development Environment (IDE).
