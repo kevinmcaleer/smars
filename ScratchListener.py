@@ -49,7 +49,7 @@ while True:
     if cmd == "WalkForward":
         smars.walkForward(100)
     if cmd == "WalkBackward":
-        smars.WalkBackward(100)
+        smars.walkBackward(100)
     if cmd == "Sit":
         smars.sit()
     if cmd == "Stand":
