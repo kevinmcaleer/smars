@@ -46,16 +46,17 @@ while True:
     print msg, "length =", len(msg);
     a = ""
     a = msg.split('"')
-    for n in a:
-        print n, len(n)
+    cmd = a[1]
+    # for n in a:
+        # print n, len(n)
 
-    if msg == 'broadcast "WalkForward"':
+    if cmd == 'broadcast "WalkForward"':
         smars.walkForward(100)
-    if msg == 'broadcast "WalkBackward"':
+    if cmd == 'broadcast "WalkBackward"':
         smars.WalkBackward(100)
-    if msg == 'broadcast "Sit"':
+    if cmd == 'broadcast "Sit"':
         smars.sit()
-    if msg == 'broadcast "Stand"':
+    if cmd == 'broadcast "Stand"':
         smars.stand()
     # msg = raw_input('SMARS to Scratch Connector: Send Broadcast:')
 
