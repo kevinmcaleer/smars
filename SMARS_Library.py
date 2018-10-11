@@ -271,6 +271,39 @@ class SmarsRobot(object):
         for l in self.feet:
             l.up()
 
+    def turnLeft(self):
+        global left_leg_front
+        global left_leg_back
+        global right_leg_front
+        global right_leg_back
+        global left_foot_front
+        global left_foot_back
+        global right_foot_front
+        global right_foot_back
+        print self.name, "Turning left."
+        for f in self.feet:
+            f.down()
+        time.sleep(sleep_count)
+        for l in self.legs:
+            l.setSwing()
+        time.sleep(sleep_count)
+
+        # twist body
+        self.legs[left_leg_front].setStretch()
+        self.legs[left_leg_back].setBody()
+        self.legs[right_leg_front].setBody()
+        self.legs[right_leg_back].setStretch()
+        time.sleep(sleep_count)
+
+        # move legs one at a time back to swing position
+        for l in range(0, 4):
+            self.feet[l].down()
+            time.sleep(l)
+            self.legs[l].setSwing()
+            time.sleep(l)
+            self.feet[l].up()
+            time.sleep(l)
+
     def walkForward(self, steps):
         # used to move the robot forward.
 
@@ -284,12 +317,6 @@ class SmarsRobot(object):
         global right_foot_front
         global right_foot_back
 
-        # Set the legs to the ready to walk cycle
-        # left_leg_back = body
-        # left_leg_front = body
-        # right_leg_front = Swing (45 degrees)
-        # right_leg_back = Swing (45 degrees)
-
         # set the legs to the correct position for walking.
         self.sit()
         self.legs[left_leg_front].setBody()
@@ -297,14 +324,6 @@ class SmarsRobot(object):
         self.legs[right_leg_front].setSwing()
         self.legs[right_leg_back].setSwing()
         self.stand()
-
-        # lf = self.legs[left_leg_front].bodyAngle
-        # lb = self.legs[left_leg_back].bodyAngle
-        # rf = self.legs[right_leg_front].swingAngle
-        # rb = self.legs[right_leg_back].swingAngle
-        #
-        # print "lf = ", lf
-        # print "lf swing angle", self.legs[left_leg_front].swingAngle
 
         # the walking cycle, loops for the number of steps provided.
         currentStep = 0;
@@ -326,19 +345,19 @@ class SmarsRobot(object):
 
                     # change this to left and right legs, rather than invert or not invert
                     if self.legs[n].invert == False:
-                    # if self.legs[n].name == "right_leg_front" or self.legs[n].name == "right_leg_back":
+
                         if self.legs[n].name == "right_leg_front":
-                            # print "moving front right leg to stretch"
+
                             self.legs[n].setStretch()
                         else:
-                            # print "moving leg:", self.legs[n].name, "to Body Position"
+
                             self.legs[n].setBody()
                     elif self.legs[n].invert == True:
                         if self.legs[n].name == "right_leg_back":
-                            # print "moving right leg to body"
+
                             self.legs[n].setBody()
                         else:
-                            # print "moving leg:", self.legs[n].name, "to Stretch Position"
+
                             self.legs[n].setStretch()
                     time.sleep(sleep_count)
                     self.feet[n].up()
