@@ -279,6 +279,29 @@ class SmarsRobot(object):
             time.sleep(sleep_count)
             self.feet[l].up()
             time.sleep(sleep_count)
+    def turnRight(self):
+            global left_leg_front
+            global left_leg_back
+            global right_leg_front
+            global right_leg_back
+            global left_foot_front
+            global left_foot_back
+            global right_foot_front
+            global right_foot_back
+            print self.name, "Turning Right."
+
+            # move legs one at a time back to swing position
+            self.setSwing()
+
+            # twist body
+            self.legs[right_leg_front].setStretch()
+            self.legs[right_leg_back].setBody()
+            self.legs[left_leg_front].setBody()
+            self.legs[left_leg_back].setStretch()
+            time.sleep(sleep_count)
+
+            # move legs one at a time back to swing position
+            self.setSwing()
 
     def turnLeft(self):
         global left_leg_front
