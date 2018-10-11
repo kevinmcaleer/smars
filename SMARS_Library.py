@@ -271,7 +271,7 @@ class SmarsRobot(object):
         for l in self.feet:
             l.up()
 
-    def setSwing():
+    def setSwing(self):
         for l in range(0, 4):
             self.feet[l].down()
             time.sleep(sleep_count)
