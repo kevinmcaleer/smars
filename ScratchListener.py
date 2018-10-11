@@ -46,6 +46,8 @@ while True:
     print msg, "length =", len(msg);
     a = ""
     a = msg.split('"')
+    print "a 0", a[0]
+    print "a 1", a[1]
     cmd = a[1]
     # for n in a:
         # print n, len(n)
