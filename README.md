@@ -1,8 +1,15 @@
 # SMARS
 Screwless Modular Assemblable Robotic System
 
-# About this tutorial
-This tutorial will show you how to get the quad robot walking and detecting its environment.
+# About this library
+This library will enable you to get the quad robot walking and detecting its environment.
+
+#Scratch 1.4 Code  
+The Library now includes a sample Scratch 1.4 script that will enable you to control your SMARS Quad robot from the scratch environment. Please note you will need to enable the remote sensor control for this to work, by right clicking on the sensor and clicking on 'enable remote sensing'.
+
+The Scratch demo script needs to communicate with the Python 'ScratchListener.py' code, and you will need to know the IP address of the computer running Scratch 1.4.
+
+Note only Scratch 1.4 has the 'enable remote sensing' option available, Scratch 2.0 & Scratch 3.0 do not allow this, however you can still download and use Scratch 1.4 from the Scratch website: http://scratch.mit.edu
 
 Link to thingiverse original model:
 https://www.thingiverse.com/thing:2662828
