@@ -54,8 +54,3 @@ while True:
         smars.sit()
     if cmd == "Stand":
         smars.stand()
-    # msg = raw_input('SMARS to Scratch Connector: Send Broadcast:')
-
-    #need to add SMARS commands here.
-    # if msg:
-    #     sendScratchCommand('broadcast "' + msg + '"')

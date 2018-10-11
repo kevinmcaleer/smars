@@ -168,7 +168,7 @@ class leg(object):
             pwm.set_pwm(self.channel, self.channel, pulse)
         else:
             # display an error message if the angle set was outside the range (leg_minAngle and leg_maxAngle)
-            print "Error angle was outside of bounds for this leg: ", self.name, angle, "Minimum:", self.leg_minAngle, "Maximum:", self.leg_maxAngle
+            print "Warning: angle was outside of bounds for this leg: ", self.name, angle, "Minimum:", self.leg_minAngle, "Maximum:", self.leg_maxAngle
         self.currentAngle = angle
 
     def untick(self):
@@ -312,7 +312,7 @@ class SmarsRobot(object):
             currentStep += 1
             for n in range (0, 4):
                 if self.legs[n].tick() == False:
-                    print self.name, "walking, step", currentStep, "of", steps
+                    # print self.name, "walking, step", currentStep, "of", steps
                     # self.legs[n].tick()
                 # while self.legs[n].tick() == False:
                 #     #loop until limit reached then lift leg reset and lower leg.
