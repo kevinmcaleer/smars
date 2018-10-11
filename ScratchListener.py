@@ -44,13 +44,13 @@ def receiveScratchCommand(cmd):
 while True:
     msg = scratchSock.recv(42001)
     print msg;
-    if msg == "WalkFoward":
+    if msg == 'broadcast "WalkFoward"':
         smars.walkForward(100)
-    if msg == "WalkBackward":
+    if msg == 'broadcast "WalkBackward"':
         smars.WalkBackward(100)
-    if msg == "Sit":
+    if msg == 'broadcast "Sit"':
         smars.sit()
-    if msg == "Stand":
+    if msg == 'broadcast "Stand"':
         smars.stand()
     # msg = raw_input('SMARS to Scratch Connector: Send Broadcast:')
 
