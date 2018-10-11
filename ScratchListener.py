@@ -52,13 +52,13 @@ while True:
     # for n in a:
         # print n, len(n)
 
-    if cmd == 'broadcast "WalkForward"':
+    if cmd == "WalkForward":
         smars.walkForward(100)
-    if cmd == 'broadcast "WalkBackward"':
+    if cmd == "WalkBackward":
         smars.WalkBackward(100)
-    if cmd == 'broadcast "Sit"':
+    if cmd == "Sit":
         smars.sit()
-    if cmd == 'broadcast "Stand"':
+    if cmd == "Stand":
         smars.stand()
     # msg = raw_input('SMARS to Scratch Connector: Send Broadcast:')
 
