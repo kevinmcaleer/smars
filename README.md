@@ -1,6 +1,9 @@
 # SMARS
 Screwless Modular Assemblable Robotic System
 
+# SMARSfan.com
+Visit www.smarsfan.com for more information about this project. The site includes build instructions, videos, an interview with the designer and much more.
+
 # About this library
 This library will enable you to get the quad robot walking and detecting its environment.
 
