@@ -1,19 +1,19 @@
 # This program listens for Scratch broadcasts, to enable the SMARS robot to be controlled via Scratch.
 # Code from https://en.scratch-wiki.info/wiki/Communicating_to_Scratch_via_Python_with_a_GUI
 
-
 from array import array
 import socket
 import time
 import sys
 
-from Tkinter import Tk
-from tkSimpleDialog import askstring
-root = Tk()
-root.withdraw()
+# from Tkinter import Tk
+# from tkSimpleDialog import askstring
+# root = Tk()
+# root.withdraw()
 
 PORT = 42001
-HOST = askstring('Scratch Connector', 'IP:')
+HOST = raw_input("Scratch Connector IP:")
+# HOST = askstring('Scratch Connector', 'IP:')
 if not HOST:
     sys.exit()
 
@@ -32,7 +32,8 @@ def sendScratchCommand(cmd):
     scratchSock.send(a.tostring() + cmd)
 
 while True:
-    msg = askstring('SMARS to Scratch Connector', 'Send Broadcast:')
+    msg = raw_input('SMARS to Scratch Connector', 'Send Broadcast:')
+    # msg = askstring('SMARS to Scratch Connector', 'Send Broadcast:')
 
     #need to add SMARS commands here.
     if msg:
