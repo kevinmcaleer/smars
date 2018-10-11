@@ -9,10 +9,7 @@ import SMARS_Library
 from SMARS_Library import SmarsRobot
 import Adafruit_PCA9685
 
-# from Tkinter import Tk
-# from tkSimpleDialog import askstring
-# root = Tk()
-# root.withdraw()
+
 
 # create a SMARS robots
 smars = SmarsRobot()
@@ -37,11 +34,7 @@ def sendScratchCommand(cmd):
     a.append(chr(n & 0xFF))
     scratchSock.send(a.tostring() + cmd)
 
-def receiveScratchCommand(cmd):
-    n = len(cmd)
-    a = array('c')
-
-while True:
+def recvScratchCommand():
     msg = scratchSock.recv(42001)
     print msg, "length =", len(msg);
     a = ""
@@ -49,9 +42,10 @@ while True:
     print "a 0", a[0]
     print "a 1", a[1]
     cmd = a[1]
-    # for n in a:
-        # print n, len(n)
+    return cmd
 
+while True:
+    cmd = recvScratchCommand()
     if cmd == "WalkForward":
         smars.walkForward(100)
     if cmd == "WalkBackward":
