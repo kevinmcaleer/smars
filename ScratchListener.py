@@ -54,3 +54,5 @@ while True:
         smars.sit()
     if cmd == "Stand":
         smars.stand()
+    if cmd == "TurnLeft":
+        smars.turnLeft()
