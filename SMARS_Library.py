@@ -414,8 +414,7 @@ class SmarsRobot(object):
             for n in range (0, 4):
                 if self.legs[n].untick() == False:
                     # print self.name, "walking, step", currentStep, "of", steps
-                    self.legs[n].un
-                    untick()
+                    self.legs[n].untick()
                 else:
                     # print "moving leg:", self.legs[n].name
                     self.feet[n].down()
