@@ -5,11 +5,16 @@ from array import array
 import socket
 import time
 import sys
+import SMARS_Library
+from SMARS_Library import SmarsRobot
 
 # from Tkinter import Tk
 # from tkSimpleDialog import askstring
 # root = Tk()
 # root.withdraw()
+
+# create a SMARS robots
+smars = SmarsRobot()
 
 PORT = 42001
 HOST = raw_input("Scratch Connector IP:")
@@ -37,8 +42,15 @@ def receiveScratchCommand(cmd):
 
 while True:
     msg = scratchSock.recv(42001)
-
     print msg;
+    if msg == "WalkFoward":
+        smars.walkForward(100)
+    if msg == "WalkBackward":
+        smars.WalkBackward(100)
+    if msg == "Sit":
+        smars.sit()
+    if msg == "Stand":
+        smars.stand()
     # msg = raw_input('SMARS to Scratch Connector: Send Broadcast:')
 
     #need to add SMARS commands here.
