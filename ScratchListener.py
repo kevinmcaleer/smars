@@ -47,7 +47,8 @@ while True:
     a = ""
     a = msg.split('"')
     for n in a:
-        print n
+        print n, len(n)
+
     if msg == 'broadcast "WalkForward"':
         smars.walkForward(100)
     if msg == 'broadcast "WalkBackward"':
