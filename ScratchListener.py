@@ -31,10 +31,16 @@ def sendScratchCommand(cmd):
     a.append(chr(n & 0xFF))
     scratchSock.send(a.tostring() + cmd)
 
+def receiveScratchCommand(cmd):
+    n = len(cmd)
+    a = array('c')
+
 while True:
-    msg = raw_input('SMARS to Scratch Connector: Send Broadcast:')
-    # msg = askstring('SMARS to Scratch Connector', 'Send Broadcast:')
+    msg = scratchSock.recv(42001)
+
+    print msg;
+    # msg = raw_input('SMARS to Scratch Connector: Send Broadcast:')
 
     #need to add SMARS commands here.
-    if msg:
-        sendScratchCommand('broadcast "' + msg + '"')
+    # if msg:
+    #     sendScratchCommand('broadcast "' + msg + '"')
