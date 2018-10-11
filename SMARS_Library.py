@@ -386,51 +386,52 @@ class SmarsRobot(object):
                     self.feet[n].up()
                     time.sleep(sleep_count)
 
-def walkBackward(self, steps):
-    # used to move the robot forward.
+    def walkBackward(self, steps):
+        # used to move the robot backward.
 
-    # include the global variables
-    global left_leg_front
-    global left_leg_back
-    global right_leg_front
-    global right_leg_back
-    global left_foot_front
-    global left_foot_back
-    global right_foot_front
-    global right_foot_back
+        # include the global variables
+        global left_leg_front
+        global left_leg_back
+        global right_leg_front
+        global right_leg_back
+        global left_foot_front
+        global left_foot_back
+        global right_foot_front
+        global right_foot_back
 
-    # set the legs to the correct position for walking.
-    self.sit()
-    self.legs[left_leg_front].setBody()
-    self.legs[left_leg_back].setBody()
-    self.legs[right_leg_front].setSwing()
-    self.legs[right_leg_back].setSwing()
-    self.stand()
+        # set the legs to the correct position for walking.
+        self.sit()
+        self.legs[left_leg_front].setBody()
+        self.legs[left_leg_back].setBody()
+        self.legs[right_leg_front].setSwing()
+        self.legs[right_leg_back].setSwing()
+        self.stand()
 
-    # the walking cycle, loops for the number of steps provided.
-    currentStep = 0;
-    while currentStep < steps:
-        currentStep += 1
-        for n in range (0, 4):
-            if self.legs[n].untick() == False:
-                # print self.name, "walking, step", currentStep, "of", steps
-                self.legs[n].untick()
-            else:
-                # print "moving leg:", self.legs[n].name
-                self.feet[n].down()
-                time.sleep(sleep_count)
+        # the walking cycle, loops for the number of steps provided.
+        currentStep = 0;
+        while currentStep < steps:
+            currentStep += 1
+            for n in range (0, 4):
+                if self.legs[n].untick() == False:
+                    # print self.name, "walking, step", currentStep, "of", steps
+                    self.legs[n].un
+                    untick()
+                else:
+                    # print "moving leg:", self.legs[n].name
+                    self.feet[n].down()
+                    time.sleep(sleep_count)
 
-                # change this to left and right legs, rather than invert or not invert
-                if self.legs[n].invert == False:
-                    if self.legs[n].name == "left_leg_back":
-                        self.legs[n].setStretch()
-                    else:
-                        self.legs[n].setBody()
-                elif self.legs[n].invert == True:
-                    if self.legs[n].name == "left_leg_front":
-                        self.legs[n].setBody()
-                    else:
-                        self.legs[n].setStretch()
-                time.sleep(sleep_count)
-                self.feet[n].up()
-                time.sleep(sleep_count)
+                    # change this to left and right legs, rather than invert or not invert
+                    if self.legs[n].invert == False:
+                        if self.legs[n].name == "left_leg_back":
+                            self.legs[n].setStretch()
+                        else:
+                            self.legs[n].setBody()
+                    elif self.legs[n].invert == True:
+                        if self.legs[n].name == "left_leg_front":
+                            self.legs[n].setBody()
+                        else:
+                            self.legs[n].setStretch()
+                    time.sleep(sleep_count)
+                    self.feet[n].up()
+                    time.sleep(sleep_count)
