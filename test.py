@@ -192,7 +192,7 @@ while key != "q":
     print "                   | A = Turn Left"
     print "                   | D = Turn Right"
     print "                   | R = Stand up"
-    Print "                   | F = Sit Down"
+    print "                   | F = Sit Down"
 
     key = raw_input("type an option, or type 'q' to quit ")
     if key == "1":
