@@ -7,6 +7,7 @@ import time
 import sys
 import SMARS_Library
 from SMARS_Library import SmarsRobot
+import Adafruit_PCA9685
 
 # from Tkinter import Tk
 # from tkSimpleDialog import askstring
