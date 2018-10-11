@@ -287,6 +287,8 @@ class SmarsRobot(object):
         for l in self.legs:
             l.setSwing()
         time.sleep(sleep_count)
+        for f in self.feet:
+            f.up()
 
         # twist body
         self.legs[left_leg_front].setStretch()
@@ -298,11 +300,11 @@ class SmarsRobot(object):
         # move legs one at a time back to swing position
         for l in range(0, 4):
             self.feet[l].down()
-            time.sleep(l)
+            time.sleep(sleep_count)
             self.legs[l].setSwing()
-            time.sleep(l)
+            time.sleep(sleep_count)
             self.feet[l].up()
-            time.sleep(l)
+            time.sleep(sleep_count)
 
     def walkForward(self, steps):
         # used to move the robot forward.
