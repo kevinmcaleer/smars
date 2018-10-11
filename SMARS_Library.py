@@ -332,7 +332,7 @@ class SmarsRobot(object):
             for n in range (0, 4):
                 if self.legs[n].tick() == False:
                     # print self.name, "walking, step", currentStep, "of", steps
-                    # self.legs[n].tick()
+                    self.legs[n].tick()
                 # while self.legs[n].tick() == False:
                 #     #loop until limit reached then lift leg reset and lower leg.
                 #     self.legs[n].tick()
