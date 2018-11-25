@@ -29,8 +29,7 @@ def readLine(line):
         print "line count: ", len(line)
         if len(line) <= 1:
             clap_count = 3
-        elif:
-            clap_count = int(line[1]) # convert str to int
+        elif clap_count = int(line[1]) # convert str to int
         sm.clap(clap_count)
 
 # Main
