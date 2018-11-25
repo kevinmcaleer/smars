@@ -457,8 +457,8 @@ class SmarsRobot(object):
         global right_foot_back
 
         self.sit()
-        self.legs[left_leg_back].up()
-        self.legs[right_leg_back].up()
+        self.legs[left_foot_back].down()
+        self.legs[right_foot_back].down()
         time.sleep(sleep_count * 5)
 
         for n in range (0, wiggle_count):
