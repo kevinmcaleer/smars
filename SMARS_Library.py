@@ -436,7 +436,8 @@ class SmarsRobot(object):
         for n in range (0, clap_count):
             self.legs[left_leg_front].setBody()
             self.legs[right_leg_front].setBody()
-            time.sleep(sleep_count)
+            time.sleep(sleep_count * 10)
             self.legs[left_leg_front].setStretch()
             self.legs[right_leg_front].setStretch()
-            time.sleep(sleep_count)
+            time.sleep(sleep_count * 10)
+        self.stand()
