@@ -459,12 +459,12 @@ class SmarsRobot(object):
         self.sit()
         self.legs[left_leg_back].down()
         self.legs[right_leg_back].down()
-        time.sleep(sleep_count * 2)
-        
+        time.sleep(sleep_count * 5)
+
         for n in range (0, wiggle_count):
             self.legs[left_leg_back].setBody()
             self.legs[right_leg_back].setStretch()
-            time.sleep(sleep_count * 2)
+            time.sleep(sleep_count * 5)
             self.legs[left_leg_back].setStretch()
             self.legs[right_leg_back].setBody()
 
