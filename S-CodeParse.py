@@ -27,6 +27,8 @@ def readLine(line):
         sm.sit()
     if line[0] == 's157': # Clap
         clap_count = int(line[1]) # convert str to int
+        if clap_count < 0:
+            clap_count = 3
         sm.clap(clap_count)
 
 # Main
