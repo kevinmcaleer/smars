@@ -188,6 +188,7 @@ while key != "q":
     print "5) continous servo check"
     print "6) Set all legs to body position"
     print "7) Set all legs to stretch position"
+    print "8) Clap"
     print ""
     print "       W    R      | W = Walk Forwards"
     print "     A S D  F Walk | S = Backwards"
@@ -195,6 +196,7 @@ while key != "q":
     print "                   | D = Turn Right"
     print "                   | R = Stand up"
     print "                   | F = Sit Down"
+    print "                   | C = Clap"
 
     key = raw_input("type an option, or type 'q' to quit ")
     if key == "1":
@@ -221,6 +223,8 @@ while key != "q":
     if key == "7":
         # set legs to stretch position
         legs_stretch()
+    if key == "8":
+        sm.clap()
 
     if key == "w":
         # Walk!
@@ -237,3 +241,5 @@ while key != "q":
         sm.sit()
     if key == "q":
         print "Good bye!"
+    if key == "c":
+        sm.clap()
