@@ -419,3 +419,24 @@ class SmarsRobot(object):
                     time.sleep(sleep_count)
                     self.feet[n].up()
                     time.sleep(sleep_count)
+    def clap(self):
+        # Clap front two hands (the sound of two hands clapping)
+        global left_leg_front
+        global left_leg_back
+        global right_leg_front
+        global right_leg_back
+        global left_foot_front
+        global left_foot_back
+        global right_foot_front
+        global right_foot_back
+
+        self.sit()
+        #self.feet[left_foot_front].up()
+        #self.feet[right_foot_front].up()
+
+        self.legs[left_leg_front].setBody()
+        self.legs[right_leg_front].setBody()
+        time.sleep(sleep_count)
+        self.legs[left_leg_front].setStretch()
+        self.legs[right_leg_front].setStretch()
+        time.sleep(sleep_count)
