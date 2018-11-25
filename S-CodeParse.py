@@ -23,9 +23,13 @@ def readLine(line):
         sm.turnRight()
 
 # Main
-key = raw_input("# ")
-keywords = key.split()
-for items in keywords:
-    print items
+keywords = ""
+while keywords[0] <> "quit":
 
-readLine(keywords)
+    key = raw_input("# ")
+    keywords = key.split()
+    
+    for items in keywords:
+        print items
+
+    readLine(keywords)
