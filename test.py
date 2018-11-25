@@ -197,6 +197,7 @@ while key != "q":
     print "                   | R = Stand up"
     print "                   | F = Sit Down"
     print "                   | C = Clap"
+    print "                   | x = Wiggle"
 
     key = raw_input("type an option, or type 'q' to quit ")
     if key == "1":
@@ -243,3 +244,5 @@ while key != "q":
         print "Good bye!"
     if key == "c":
         sm.clap(4)
+    if key == "x":
+        sm.wiggle(4)
