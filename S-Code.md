@@ -18,15 +18,15 @@ This would move the robot forward 3 units. A unit is dependent on lots of things
 110 -
  111 - Move Forward
  112 - Move Backwards
- 113 - Turn Right
- 114 - Turn Left
+ 113 - Turn Left
+ 114 - Turn Right
 
 # Quad Smars
 150 - Quad SMARS movements
  151 - Walk Forward
  152 - Walk Backward
- 153 - Turn left
- 154 - Turn right
+ 153 - Turn Left
+ 154 - Turn Right
  155 - Stand Up
  156 - Sit Down
  157 - Clap
