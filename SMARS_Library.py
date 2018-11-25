@@ -1,28 +1,25 @@
-# SMARS Python library
-# Kevin McAleer September 2018
-# Purpose: Provides library routines for the SMARS robot and quad robots
+""" SMARS Python library
+Kevin McAleer September 2018
+Purpose: Provides library routines for the SMARS robot and quad robots
 
-#
-#You will need to install the following python libraries for this to work:
-#
+
+You will need to install the following python libraries for this to work:
+
   # sudo apt-get install python-smbus
   # sudo apt-get install i2c-tools
 
-# You will also need to enable the I2C interface using the raspberry pi configuration tool (raspi-config)
+You will also need to enable the I2C interface using the raspberry pi configuration tool (raspi-config)
 
-# You will need ot install the adafruit PCA9685 servo driver python library
+You will need ot install the adafruit PCA9685 servo driver python library
 
-# If you have Raspbian, not Occidentalis check /etc/modprobe.d/raspi-blacklist.conf and comment "blacklist i2c-bcm2708" by running sudo nano /etc/modprobe.d/raspi-blacklist.conf and adding a # (if its not there).
-# If you're running Wheezy or something-other-than-Occidentalis, you will need to
-# add the following lines to /etc/modules
-# i2c-dev
-# i2c-bcm2708
-
+If you have Raspbian, not Occidentalis check /etc/modprobe.d/raspi-blacklist.conf and comment "blacklist i2c-bcm2708" by running sudo nano /etc/modprobe.d/raspi-blacklist.conf and adding a # (if its not there).
+If you're running Wheezy or something-other-than-Occidentalis, you will need to
+add the following lines to /etc/modules
+ - i2c-dev
+ - i2c-bcm2708
+"""
 import Adafruit_PCA9685
 import time
-# from __future__ import division
-# import logging
-# logging.basicConfig(level=logging.DEBUG)
 
 # Initialise the PCA9685 using the default address (0x40).
 pwm = Adafruit_PCA9685.PCA9685()
@@ -58,7 +55,7 @@ def set_servo_pulse(channel, pulse):
     pwm.set_pwm(channel, 0, pulse)
 
 class leg(object):
-
+    # provides a model of a limb (for either a foot or a leg)
     leg_min = 150
     leg_max = 600
     swingAngle = 0
@@ -70,7 +67,6 @@ class leg(object):
         # Initialises the leg object
         pwm = Adafruit_PCA9685.PCA9685()
         pwm.set_pwm_freq(60)
-        # print "setting up leg object"
         self.name = name
         self.channel = channel
         self.leg_minAngle = leg_minAngle
@@ -225,7 +221,7 @@ class SmarsRobot(object):
     # need to make this an enum then set the type to be one of the items in the list
     type = ['wheel', 'quad']
 
-    # newLeg = leg()
+    # setup two arrays, one for legs, and one for feet
     legs = []
     feet = []
     name = "" # the friendly name for the robot - used in console messages.
@@ -352,35 +348,24 @@ class SmarsRobot(object):
         currentStep = 0;
         while currentStep < steps:
             currentStep += 1
+
             for n in range (0, 4):
                 if self.legs[n].tick() == False:
-                    # print self.name, "walking, step", currentStep, "of", steps
                     self.legs[n].tick()
-                # while self.legs[n].tick() == False:
-                #     #loop until limit reached then lift leg reset and lower leg.
-                #     self.legs[n].tick()
-                #
-                #     time.sleep(sleep_count)
                 else:
-                    # print "moving leg:", self.legs[n].name
                     self.feet[n].down()
                     time.sleep(sleep_count)
 
                     # change this to left and right legs, rather than invert or not invert
                     if self.legs[n].invert == False:
-
                         if self.legs[n].name == "right_leg_front":
-
                             self.legs[n].setStretch()
                         else:
-
                             self.legs[n].setBody()
                     elif self.legs[n].invert == True:
                         if self.legs[n].name == "right_leg_back":
-
                             self.legs[n].setBody()
                         else:
-
                             self.legs[n].setStretch()
                     time.sleep(sleep_count)
                     self.feet[n].up()

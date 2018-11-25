@@ -1,8 +1,10 @@
-# This is the SMARS Library test program
-# it can be used to test each of the SMARS Library functions
-#
-# Written by Kevin McAleer
-# September 2018
+"""
+This is the SMARS Library test program
+it can be used to test each of the SMARS Library functions
+
+Written by Kevin McAleer
+September 2018
+"""
 
 import SMARS_Library as sl
 from SMARS_Library import SmarsRobot
