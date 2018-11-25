@@ -30,6 +30,7 @@ This would move the robot forward 3 units. A unit is dependent on lots of things
  155 - Stand Up
  156 - Sit Down
  157 - Clap
+ 158 - Wiggle 
 
 # Inputs
 200 - Inputs, sensors
