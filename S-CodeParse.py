@@ -32,7 +32,13 @@ def readLine(line):
         else:
             clap_count = int(line[1]) # convert str to int
         sm.clap(clap_count)
-
+    if line[0] == 's158': # Wiggle
+        print "line count:", len(line)
+        if len(line) <= 1:
+            wiggle_count = 3
+        else:
+            wiggle_count = int(line[1]) # convert str to int
+        sm.wiggle(wiggle_count)
 # Main
 keywords = ""
 while keywords != "quit":
