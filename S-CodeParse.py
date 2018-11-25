@@ -21,6 +21,12 @@ def readLine(line):
         sm.turnLeft()
     if line[0] == 's104': # Turn right
         sm.turnRight()
+    if line[0] == 's155': # Stand Up
+        sm.Stand()
+    if line[0] == 's156': # Sit down
+        sm.Sit()
+    if line[0] == 's157': # Clap
+        sm.Clap()
 
 # Main
 keywords = ""
