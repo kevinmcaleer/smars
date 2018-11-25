@@ -26,7 +26,7 @@ def readLine(line):
     if line[0] == 's156': # Sit down
         sm.sit()
     if line[0] == 's157': # Clap
-        sm.clap()
+        sm.clap(line[1])
 
 # Main
 keywords = ""
