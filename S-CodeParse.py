@@ -21,6 +21,17 @@ def readLine(line):
         sm.turnLeft()
     if line[0] == 's104': # Turn right
         sm.turnRight()
+    if line[0] == 's155': # Stand Up
+        sm.stand()
+    if line[0] == 's156': # Sit down
+        sm.sit()
+    if line[0] == 's157': # Clap
+        print "line count: ", len(line)
+        if len(line) <= 1:
+            clap_count = 3
+        else:
+            clap_count = int(line[1]) # convert str to int
+        sm.clap(clap_count)
 
 # Main
 keywords = ""
