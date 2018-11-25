@@ -224,7 +224,7 @@ while key != "q":
         # set legs to stretch position
         legs_stretch()
     if key == "8":
-        sm.clap()
+        sm.clap(4)
 
     if key == "w":
         # Walk!
@@ -242,4 +242,4 @@ while key != "q":
     if key == "q":
         print "Good bye!"
     if key == "c":
-        sm.clap()
+        sm.clap(4)
