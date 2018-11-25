@@ -433,7 +433,7 @@ class SmarsRobot(object):
         self.sit()
         #self.feet[left_foot_front].up()
         #self.feet[right_foot_front].up()
-        for n in range (0, clapcount):
+        for n in range (0, clap_count):
             self.legs[left_leg_front].setBody()
             self.legs[right_leg_front].setBody()
             time.sleep(sleep_count)
