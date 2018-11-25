@@ -24,11 +24,11 @@ def readLine(line):
 
 # Main
 keywords = ""
-while keywords[0] <> "quit":
+while keywords != "quit":
 
     key = raw_input("# ")
     keywords = key.split()
-    
+
     for items in keywords:
         print items
 
