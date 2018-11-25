@@ -1,7 +1,7 @@
 #S-code
 S-code describes a set of codes used to communicate with a SMARS robot.
 
-and example sent over bluetooth would be:
+An example sent over bluetooth would be:
 
 S111 3
 
