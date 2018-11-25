@@ -8,6 +8,7 @@ from SMARS_Library import leg
 import time
 
 def readLine(line):
+    line = line.split()
     sm = SmarsRobot()
     sm.setName("Quaddy")
     sm.type = "Quad"
@@ -23,7 +24,8 @@ def readLine(line):
 
 # Main
 key = raw_input("# ")
-for items in key:
+keywords = key.split()
+for items in keywords:
     print items
 
 readLine(key)
