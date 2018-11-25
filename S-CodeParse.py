@@ -21,6 +21,9 @@ def readLine(line):
     if line[1] == 's104': # Turn right
         sm.turnRight()
 
-# Main 
+# Main
 key = raw_input("# ")
+for items in key:
+    print items
+
 readLine(key)
