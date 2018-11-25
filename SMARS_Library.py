@@ -467,5 +467,5 @@ class SmarsRobot(object):
             time.sleep(sleep_count * 5)
             self.legs[left_leg_back].setStretch()
             self.legs[right_leg_back].setBody()
-
+            time.sleep(sleep_count * 5)
         self.stand()
