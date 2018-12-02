@@ -154,29 +154,38 @@ class leg(object):
         print self.channel
         print self.name
 
-    def moveTo(self, position):
-        # obsolete - use setAngle instead
-        pwm.set_pwm(self.channel, self.channel, position)
-        time.sleep(sleep_count)
+
+
+    # def moveTo(self, position):
+    #     # obsolete - use setAngle instead
+    #     pwm.set_pwm(self.channel, self.channel, position)
+    #     time.sleep(sleep_count)
 
     def setAngle(self, angle):
         # Works out the value of the angle by mapping the leg_min and leg_max to between 0 and 180 degrees
         # Then moves the limb to that position
         pulse = 0
 
-        # Check the angle is within the boundaries for this limb
-        if angle >= self.leg_minAngle and angle <= self.leg_maxAngle:
-            mapMax = self.leg_max - self.leg_min
-            percentage = ( float(angle) / 180 ) * 100
-            pulse = int( (( float(mapMax) / 100 ) * float(percentage) ) + self.leg_min)
+        if angle >= 0 and angle <= 180:
 
-            # send the servo the pulse, to set the angle
-            pwm.set_pwm(self.channel, self.channel, pulse)
+            # Check the angle is within the boundaries for this limb
+            if angle >= self.leg_minAngle and angle <= self.leg_maxAngle:
+                mapMax = self.leg_max - self.leg_min
+                percentage = ( float(angle) / 180 ) * 100
+                pulse = int( (( float(mapMax) / 100 ) * float(percentage) ) + self.leg_min)
+
+                # send the servo the pulse, to set the angle
+                pwm.set_pwm(self.channel, self.channel, pulse)
+                self.currentAngle = angle
+                return True
+            else:
+                # display an error message if the angle set was outside the range (leg_minAngle and leg_maxAngle)
+                logging.warning("Warning: angle was outside of bounds for this leg")
+                # print "Warning: angle was outside of bounds for this leg: ", self.name, angle, "Minimum:", self.leg_minAngle, "Maximum:", self.leg_maxAngle
+                return False
         else:
-            # display an error message if the angle set was outside the range (leg_minAngle and leg_maxAngle)
-            logging.warning("Warning: angle was outside of bounds for this leg")
-            print "Warning: angle was outside of bounds for this leg: ", self.name, angle, "Minimum:", self.leg_minAngle, "Maximum:", self.leg_maxAngle
-        self.currentAngle = angle
+            logging.warning("Warning: angle was less than 0 or greater than 180.")
+            return False
 
     def untick(self):
 

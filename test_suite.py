@@ -15,5 +15,10 @@ class setServoPulseTestCase(unittest.TestCase):
         self.assertTrue(set_servo_pulse(0,2000))
         self.assertFalse(set_servo_pulse(0,4097))
 
+    def test_setAngle(self):
+        self.assertTrue(setAngle(0))
+        self.assertTrue(setAngle(180))
+        self.assertFalse(setAngle(181))
+
 if __name__ == '__main__':
     unittest.main()
