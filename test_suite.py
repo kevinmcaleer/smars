@@ -7,7 +7,7 @@ class setServoPulseTestCase(unittest.TestCase):
 
     def test_setServoPulseChannelLessThan15(self):
         for channel in range(0,16):
-            self.assertTrue(set_servo_pulse(channel,0))
+            self.assertTrue(set_servo_pulse(channel,10))
 
     def test_setServoPulseIsNumberBetween0And4096(self):
         self.assertTrue(set_servo_pulse(0,0))
