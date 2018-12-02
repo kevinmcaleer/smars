@@ -1,7 +1,7 @@
 import unittest
 from SMARS_Library import leg
+import SMARS_Library as sl
 from SMARS_Library import set_servo_pulse
-from SMARS_Library import leg.setAngle 
 
 class setServoPulseTestCase(unittest.TestCase):
     """ tests setServoPulse """
@@ -17,9 +17,10 @@ class setServoPulseTestCase(unittest.TestCase):
         self.assertFalse(set_servo_pulse(0,4097))
 
     def test_setAngle(self):
-        self.assertTrue(setAngle(0))
-        self.assertTrue(setAngle(180))
-        self.assertFalse(setAngle(181))
+        legTest = leg()
+        self.assertTrue(legTest.setAngle(0))
+        self.assertTrue(legTest.setAngle(180))
+        self.assertFalse(legTest.setAngle(181))
 
 if __name__ == '__main__':
     unittest.main()
