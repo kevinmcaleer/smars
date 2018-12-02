@@ -62,7 +62,7 @@ def set_servo_pulse(channel, pulse):
         return True
     else:
         print("channel less than 0 or greater than 15, or not an integer:", channel)
-        logging.warning("channel less than 0 or greater than 15, or not an integer:", channel)
+        logging.warning("Warning: channel less than 0 or greater than 15, or not an integer:", channel)
         return False
 class leg(object):
     # provides a model of a limb (for either a foot or a leg)
