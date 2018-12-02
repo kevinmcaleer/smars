@@ -20,6 +20,7 @@ add the following lines to /etc/modules
 """
 import Adafruit_PCA9685
 import time
+import logging
 
 # Initialise the PCA9685 using the default address (0x40).
 pwm = Adafruit_PCA9685.PCA9685()
@@ -52,15 +53,16 @@ def set_servo_pulse(channel, pulse):
        pulse >= 0:
         pulse_length = 1000000    # 1,000,000 us per second
         pulse_length //= 60       # 60 Hz
-        print('{0}us per period'.format(pulse_length))
+        logging.info('{0}us per period'.format(pulse_length))
         pulse_length //= 4096     # 12 bits of resolution
-        print('{0}us per bit'.format(pulse_length))
+        logging.info('{0}us per bit'.format(pulse_length))
         pulse *= 1000
         pulse //= pulse_length
         pwm.set_pwm(channel, 0, pulse)
-        return True 
+        return True
     else:
         print("channel less than 0 or greater than 15, or not an integer:", channel)
+        logging.warning("channel less than 0 or greater than 15, or not an integer:", channel)
         return False
 class leg(object):
     # provides a model of a limb (for either a foot or a leg)
