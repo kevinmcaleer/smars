@@ -49,7 +49,7 @@ def set_servo_pulse(channel, pulse):
        channel <= 15 and \
        type(channel) is int and \
        pulse <= 4096 and \
-       pulse >= 0:        
+       pulse >= 0:
         pulse_length = 1000000    # 1,000,000 us per second
         pulse_length //= 60       # 60 Hz
         print('{0}us per period'.format(pulse_length))
@@ -60,7 +60,7 @@ def set_servo_pulse(channel, pulse):
         pwm.set_pwm(channel, 0, pulse)
     else:
         print("channel less than 0 or greater than 15, or not an integer:", channel)
-
+        return False 
 class leg(object):
     # provides a model of a limb (for either a foot or a leg)
     leg_min = 150
