@@ -45,14 +45,21 @@ pwm.set_pwm_freq(60)
 
 # Helper function to make setting a servo pulse width simpler.
 def set_servo_pulse(channel, pulse):
-    pulse_length = 1000000    # 1,000,000 us per second
-    pulse_length //= 60       # 60 Hz
-    print('{0}us per period'.format(pulse_length))
-    pulse_length //= 4096     # 12 bits of resolution
-    print('{0}us per bit'.format(pulse_length))
-    pulse *= 1000
-    pulse //= pulse_length
-    pwm.set_pwm(channel, 0, pulse)
+    if channel >= 0 and \
+       channel <= 15 and \
+       type(channel) is int and \
+       pulse <= 4096 and \
+       pulse >= 0:        
+        pulse_length = 1000000    # 1,000,000 us per second
+        pulse_length //= 60       # 60 Hz
+        print('{0}us per period'.format(pulse_length))
+        pulse_length //= 4096     # 12 bits of resolution
+        print('{0}us per bit'.format(pulse_length))
+        pulse *= 1000
+        pulse //= pulse_length
+        pwm.set_pwm(channel, 0, pulse)
+    else:
+        print("channel less than 0 or greater than 15, or not an integer:", channel)
 
 class leg(object):
     # provides a model of a limb (for either a foot or a leg)
