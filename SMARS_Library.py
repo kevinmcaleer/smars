@@ -58,9 +58,10 @@ def set_servo_pulse(channel, pulse):
         pulse *= 1000
         pulse //= pulse_length
         pwm.set_pwm(channel, 0, pulse)
+        return True 
     else:
         print("channel less than 0 or greater than 15, or not an integer:", channel)
-        return False 
+        return False
 class leg(object):
     # provides a model of a limb (for either a foot or a leg)
     leg_min = 150
