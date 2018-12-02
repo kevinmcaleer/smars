@@ -1,5 +1,6 @@
 import unittest
 from SMARS_Library import leg
+from SMARS_Library import setServoPulse
 
 class setServoPulseTestCase(unittest.TestCase):
     """ tests setServoPulse """
