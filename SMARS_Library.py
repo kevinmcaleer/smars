@@ -62,7 +62,7 @@ def set_servo_pulse(channel, pulse):
         return True
     else:
         print("channel less than 0 or greater than 15, or not an integer:", channel)
-        logging.warning("Warning: channel less than 0 or greater than 15, or not an integer:", channel)
+        logging.warning("Warning: channel less than 0 or greater than 15, or not an integer:")
         return False
 class leg(object):
     # provides a model of a limb (for either a foot or a leg)
@@ -174,6 +174,7 @@ class leg(object):
             pwm.set_pwm(self.channel, self.channel, pulse)
         else:
             # display an error message if the angle set was outside the range (leg_minAngle and leg_maxAngle)
+            logging.warning("Warning: angle was outside of bounds for this leg")
             print "Warning: angle was outside of bounds for this leg: ", self.name, angle, "Minimum:", self.leg_minAngle, "Maximum:", self.leg_maxAngle
         self.currentAngle = angle
 
