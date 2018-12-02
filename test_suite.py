@@ -1,6 +1,7 @@
 import unittest
-from SMARS_Library import leg
 import SMARS_Library as sl
+from SMARS_Library import SmarsRobot
+from SMARS_Library import leg
 from SMARS_Library import set_servo_pulse
 
 class setServoPulseTestCase(unittest.TestCase):
