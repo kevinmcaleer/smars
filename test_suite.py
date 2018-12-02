@@ -10,10 +10,10 @@ class setServoPulseTestCase(unittest.TestCase):
             self.assertTrue(set_servo_pulse(channel,0))
 
     def test_setServoPulseIsNumberBetween0And4096(self):
-        self.assertTrue(setServoPulse(0,0))
-        self.assertTrue(setServoPulse(0,4096))
-        self.assertTrue(setServoPulse(0,2000))
-        self.assertFalse(setServoPulse(0,4097))
+        self.assertTrue(set_servo_pulse(0,0))
+        self.assertTrue(set_servo_pulse(0,4096))
+        self.assertTrue(set_servo_pulse(0,2000))
+        self.assertFalse(set_servo_pulse(0,4097))
 
 if __name__ == '__main__':
     unittest.main()
