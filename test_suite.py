@@ -14,4 +14,5 @@ class setServoPulseTestCase(unittest.TestCase):
         self.assertTrue(setServoPulse(0,2000))
         self.assertFalse(setServoPulse(0,4097))
 
-    
+if __name__ == '__main__':
+    unittest.main()
