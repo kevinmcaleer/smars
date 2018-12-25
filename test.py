@@ -7,7 +7,7 @@ September 2018
 """
 
 import SMARS_Library as sl
-from SMARS_Library import SmarsRobot
+
 from SMARS_Library import leg
 import time
 
