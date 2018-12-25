@@ -5,7 +5,7 @@ git clone https://github.com/kevinmcaleer/smars.git
 sudo pip install virtualenv
 cd smars
 virtualenv venv
-cd venv
+# cd venv
 source venv/bin/activate
 pip install adafruit-pca9685
 pip install smbus2
