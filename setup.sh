@@ -18,3 +18,4 @@ if grep -q 'i2c-dev' /etc/modules; then
 else
   sudo echo 'i2c-dev' >> /etc/modules
 fi
+sudo chmod -R 777 ../smars  
