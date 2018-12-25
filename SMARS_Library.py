@@ -76,9 +76,9 @@ class leg(object):
     bodyAngle = 0
     stretchAngle = 0
     currentAngle = 0
-    invert = False 
+    invert = False
 
-    def __init__(self, name=None, channel=None, leg_minAngle=None, leg_maxAngle=None, invert=None):
+    def __init__(self, name:str, channel:int, leg_minAngle:int, leg_maxAngle:int, invert:boolean):
         # Initialises the leg object
         pwm = Adafruit_PCA9685.PCA9685()
         pwm.set_pwm_freq(60)
