@@ -3,9 +3,10 @@ echo Setting up SMARS Python Environment
 echo -----------------------------------
 git clone https://github.com/kevinmcaleer/smars.git
 pip install virtualenv
-cd smars 
+cd smars
 virtualenv venv
 cd venv
+source venv/bin/activate
 pip install adafruit-pca9685
 # sudo pipenv install
 sudo apt-get install python-smbus
