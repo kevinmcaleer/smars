@@ -76,6 +76,7 @@ class leg(object):
     bodyAngle = 0
     stretchAngle = 0
     currentAngle = 0
+    invert = False 
 
     def __init__(self, name=None, channel=None, leg_minAngle=None, leg_maxAngle=None, invert=None):
         # Initialises the leg object
