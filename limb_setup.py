@@ -2,7 +2,7 @@
 
 # setup leg 1:
 
-from SMARS_Library import leg
+from SMARS_Library import *
 
 def menu():
     print "Menu"
