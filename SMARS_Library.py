@@ -31,23 +31,25 @@ servo_max = 600  # Max pulse length out of 4096
 sleep_count = 0.05 # the amount of time to wait between pwm operations
 
 # setup legs and feet to correspond to the correct channel
-left_leg_front = 0 # channel 0
-left_leg_back = 1 # channel 2
-right_leg_front  = 2 # channel 6
-right_leg_back   = 3 # channel 4
+left_leg_front = 0  # channel 0
+left_leg_back = 1  # channel 2
+right_leg_front = 2  # channel 6
+right_leg_back = 3  # channel 4
 
-left_foot_front  = 0 # channel 1
-left_foot_back   = 1 # channel 3
-right_foot_front = 2 # channel 7
-right_foot_back  = 3 # channel 5
+left_foot_front = 0  # channel 1
+left_foot_back = 1  # channel 3
+right_foot_front = 2  # channel 7
+right_foot_back = 3  # channel 5
 
 # Set frequency to 60hz, good for servos.
 pwm.set_pwm_freq(60)
 
 # Helper function to make setting a servo pulse width simpler.
+
+
 def set_servo_pulse(channel, pulse):
-    if channel >= 0 and \
-       channel <= 15 and \
+    # type: (int, int) -> boolean
+    if 0 <= channel <= 15 and \
        type(channel) is int and \
        pulse <= 4096 and \
        pulse >= 0:
@@ -64,6 +66,8 @@ def set_servo_pulse(channel, pulse):
         print("channel less than 0 or greater than 15, or not an integer:", channel)
         logging.warning("Warning: channel less than 0 or greater than 15, or not an integer:")
         return False
+
+
 class leg(object):
     # provides a model of a limb (for either a foot or a leg)
     leg_min = 150
@@ -73,7 +77,7 @@ class leg(object):
     stretchAngle = 0
     currentAngle = 0
 
-    def __init__(self,name=None, channel=None, leg_minAngle=None, leg_maxAngle=None, invert=None):
+    def __init__(self, name=None, channel=None, leg_minAngle=None, leg_maxAngle=None, invert=None):
         # Initialises the leg object
         pwm = Adafruit_PCA9685.PCA9685()
         pwm.set_pwm_freq(60)
@@ -100,7 +104,7 @@ class leg(object):
 
     def setBody(self):
         # Sets the limb to its body position.
-        if self.invert == False:
+        if not self.invert:
             self.setAngle(self.leg_minAngle)
             self.bodyAngle = self.leg_minAngle
         else:
@@ -110,7 +114,7 @@ class leg(object):
 
     def setStretch(self):
         # Sets the limb to its stretch position.
-        if self.invert == False:
+        if not self.invert:
             self.setAngle(self.leg_maxAngle)
             self.stretchAngle = self.leg_maxAngle
         else:
@@ -120,9 +124,9 @@ class leg(object):
 
     def setSwing(self):
         # Sets the limb to its swing position, which is 45 degrees - halfway between the body and stretch position.
-        a = 0
+        # a = 0
         # print "Max Angle", self.leg_maxAngle, "Min angle", self.leg_minAngle, "Invert:", self.invert
-        if self.invert == False:
+        if not self.invert:
             a = (self.leg_minAngle / 2) + self.leg_minAngle
             self.setAngle(a)
         else:
@@ -133,14 +137,14 @@ class leg(object):
 
     def up(self):
         # raises the limb to its minimum angle
-        if self.invert == False:
+        if not self.invert:
             self.setAngle(self.leg_minAngle)
         else:
             self.setAngle(self.leg_maxAngle)
 
     def down(self):
         # lowers the limb to its maximum angle
-        if self.invert == False:
+        if not self.invert:
             self.setAngle(self.leg_maxAngle)
         else:
             self.setAngle(self.leg_minAngle)
@@ -153,8 +157,6 @@ class leg(object):
         # used for debugging - shows the servo driver channel number and the limb name
         print self.channel
         print self.name
-
-
 
     # def moveTo(self, position):
     #     # obsolete - use setAngle instead
@@ -181,7 +183,8 @@ class leg(object):
             else:
                 # display an error message if the angle set was outside the range (leg_minAngle and leg_maxAngle)
                 logging.warning("Warning: angle was outside of bounds for this leg")
-                # print "Warning: angle was outside of bounds for this leg: ", self.name, angle, "Minimum:", self.leg_minAngle, "Maximum:", self.leg_maxAngle
+                # print "Warning: angle was outside of bounds for this leg: ", self.name, angle, \
+                # "Minimum:", self.leg_minAngle, "Maximum:", self.leg_maxAngle
                 return False
         else:
             logging.warning("Warning: angle was less than 0 or greater than 180.")
@@ -231,6 +234,7 @@ class leg(object):
                 # print "angle met:", self.currentAngle, "max angle:", self.leg_maxAngle, "min angle:", self.leg_minAngle
                 return True
 
+
 class SmarsRobot(object):
 # This is used to model the robot, its legs and its sensors
     def __init__(self):
@@ -247,16 +251,16 @@ class SmarsRobot(object):
     name = "" # the friendly name for the robot - used in console messages.
 
     # add each foot to the feet array
-    feet.append(leg(name = 'left_foot_front', channel = 1, leg_minAngle = 50,   leg_maxAngle = 150,  invert = False))
-    feet.append(leg(name = 'left_foot_back',  channel = 3, leg_minAngle = 50,  leg_maxAngle = 150, invert = True))
-    feet.append(leg(name = 'right_foot_front',channel = 7, leg_minAngle = 50, leg_maxAngle = 150, invert = True))
-    feet.append(leg(name = 'right_foot_back', channel = 5, leg_minAngle = 50, leg_maxAngle = 150, invert = False))
+    feet.append(leg(name='left_foot_front', channel=1, leg_minAngle=50,   leg_maxAngle=150,  invert=False))
+    feet.append(leg(name='left_foot_back',  channel=3, leg_minAngle=50,  leg_maxAngle=150, invert=True))
+    feet.append(leg(name='right_foot_front',channel=7, leg_minAngle=50, leg_maxAngle=150, invert=True))
+    feet.append(leg(name='right_foot_back', channel=5, leg_minAngle=50, leg_maxAngle=150, invert=False))
 
     # add each leg to the legs array
-    legs.append(leg(name = 'left_leg_front',  channel = 0, leg_minAngle = 9, leg_maxAngle = 90, invert = True))
-    legs.append(leg(name = 'left_leg_back',   channel = 2, leg_minAngle = 90, leg_maxAngle = 180, invert = False))
-    legs.append(leg(name = 'right_leg_front', channel = 6, leg_minAngle = 90, leg_maxAngle = 180, invert = False))
-    legs.append(leg(name = 'right_leg_back',  channel = 4, leg_minAngle = 9, leg_maxAngle = 90, invert = True))
+    legs.append(leg(name='left_leg_front',  channel=0, leg_minAngle=9, leg_maxAngle=90, invert=True))
+    legs.append(leg(name='left_leg_back',   channel=2, leg_minAngle=90, leg_maxAngle=180, invert=False))
+    legs.append(leg(name='right_leg_front', channel=6, leg_minAngle=90, leg_maxAngle=180, invert=False))
+    legs.append(leg(name='right_leg_back',  channel=4, leg_minAngle=9, leg_maxAngle=90, invert=True))
     # print "number of legs", len(legs)
 
     def setName(self, name):
@@ -369,20 +373,20 @@ class SmarsRobot(object):
         while currentStep < steps:
             currentStep += 1
 
-            for n in range (0, 4):
-                if self.legs[n].tick() == False:
+            for n in range(0, 4):
+                if not self.legs[n].tick():
                     self.legs[n].tick()
                 else:
                     self.feet[n].down()
                     time.sleep(sleep_count)
 
                     # change this to left and right legs, rather than invert or not invert
-                    if self.legs[n].invert == False:
+                    if not self.legs[n].invert:
                         if self.legs[n].name == "right_leg_front":
                             self.legs[n].setStretch()
                         else:
                             self.legs[n].setBody()
-                    elif self.legs[n].invert == True:
+                    elif self.legs[n].invert:
                         if self.legs[n].name == "right_leg_back":
                             self.legs[n].setBody()
                         else:
@@ -413,11 +417,11 @@ class SmarsRobot(object):
         self.stand()
 
         # the walking cycle, loops for the number of steps provided.
-        currentStep = 0;
+        currentStep = 0
         while currentStep < steps:
             currentStep += 1
             for n in range (0, 4):
-                if self.legs[n].untick() == False:
+                if not self.legs[n].untick():
                     # print self.name, "walking, step", currentStep, "of", steps
                     self.legs[n].untick()
                 else:
@@ -426,12 +430,12 @@ class SmarsRobot(object):
                     time.sleep(sleep_count)
 
                     # change this to left and right legs, rather than invert or not invert
-                    if self.legs[n].invert == False:
+                    if not self.legs[n].invert:
                         if self.legs[n].name == "left_leg_back":
                             self.legs[n].setStretch()
                         else:
                             self.legs[n].setBody()
-                    elif self.legs[n].invert == True:
+                    elif self.legs[n].invert:
                         if self.legs[n].name == "left_leg_front":
                             self.legs[n].setBody()
                         else:
@@ -439,7 +443,6 @@ class SmarsRobot(object):
                     time.sleep(sleep_count)
                     self.feet[n].up()
                     time.sleep(sleep_count)
-
 
     def clap(self, clap_count):
         # Clap front two hands (the sound of two hands clapping)
@@ -453,8 +456,8 @@ class SmarsRobot(object):
         global right_foot_back
 
         self.sit()
-        #self.feet[left_foot_front].up()
-        #self.feet[right_foot_front].up()
+        # self.feet[left_foot_front].up()
+        # self.feet[right_foot_front].up()
         for n in range (0, clap_count):
             self.legs[left_leg_front].setBody()
             self.legs[right_leg_front].setBody()
