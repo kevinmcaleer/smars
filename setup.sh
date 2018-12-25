@@ -16,5 +16,5 @@ echo enabling i2c Interface
 if grep -q 'i2c-dev' /etc/modules; then
   echo 'Seems i2c-dev module already exists, skip this step.'
 else
-  echo 'i2c-dev' >> /etc/modules
+  sudo echo 'i2c-dev' >> /etc/modules
 fi
