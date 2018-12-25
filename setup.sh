@@ -1,7 +1,7 @@
 #!/bin/bash
 echo Setting up SMARS Python Environment
 echo -----------------------------------
-git clone https://www.github.com/kevincaleer/smars 
+git clone http://www.github.com/kevincaleer/smars 
 pip install virtualenv
 virtualenv venv
 cd venv
