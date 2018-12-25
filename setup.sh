@@ -2,7 +2,7 @@
 echo Setting up SMARS Python Environment
 echo -----------------------------------
 git clone https://github.com/kevinmcaleer/smars.git
-pip install virtualenv
+sudo pip install virtualenv
 cd smars
 virtualenv venv
 cd venv
@@ -12,7 +12,7 @@ pip install smbus2
 # sudo pipenv install
 # sudo apt-get install python-smbus
 sudo apt-get install i2c-tools
-echo enabling i2c Interface 
+echo enabling i2c Interface
 if grep -q 'i2c-dev' /etc/modules; then
   echo 'Seems i2c-dev module already exists, skip this step.'
 else
