@@ -61,12 +61,12 @@ def select_angle():
 #globals
 angle = 0
 channel_number = 0
-l1 = leg()
-l1.name = "left_leg_front"
-l1.channel = channel_number
-l1.leg_minAngle = 0
-l1.leg_maxAngle = 180
-l1.invert = False
+l1 = leg(name:"left_leg_front", channel:channel_number, leg_minAngle:0, leg_maxAngle:180, invert:False)
+# l1.name = "left_leg_front"
+# l1.channel = channel_number
+# l1.leg_minAngle = 0
+# l1.leg_maxAngle = 180
+# l1.invert = False
 
 menu_key = ""
 # show Menu until quit
