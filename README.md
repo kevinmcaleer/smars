@@ -1,6 +1,8 @@
 # SMARS
 Screwless Modular Assemblable Robotic System
 
+[Build Status](https://travis-ci.com/kevinmcaleer/smars.svg?branch=KMC_TRY_Python3)
+
 ## SMARSfan.com
 Visit www.smarsfan.com for more information about this project. The site includes build instructions, videos, an interview with the designer and much more.
 
