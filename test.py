@@ -6,30 +6,30 @@ Written by Kevin McAleer
 September 2018
 """
 
-import SMARS_Library as sl
+import SMARS_Library3 as sl
 
-from SMARS_Library import leg
-from SMARS_Library import SmarsRobot
+from SMARS_Library3 import Leg
+from SMARS_Library3 import SmarsRobot
 import time
 
 # create an instance of the Smars Robot class
 sm = SmarsRobot()
-sm.setName("Quaddy")
+sm.setname("Quaddy")
 
 # set the robot type to 'quad'
 sm.type = "quad"
 
 def legs_body():
-    sm.legs[sl.left_leg_front].setBody()
-    sm.legs[sl.right_leg_front].setBody()
-    sm.legs[sl.left_leg_back].setBody()
-    sm.legs[sl.right_leg_back].setBody()
+    sm.legs[sl.left_leg_front].setbody()
+    sm.legs[sl.right_leg_front].setbody()
+    sm.legs[sl.left_leg_back].setbody()
+    sm.legs[sl.right_leg_back].setbody()
 
 def legs_stretch():
-    sm.legs[sl.left_leg_front].setStretch()
-    sm.legs[sl.right_leg_front].setStretch()
-    sm.legs[sl.left_leg_back].setStretch()
-    sm.legs[sl.right_leg_back].setStretch()
+    sm.legs[sl.left_leg_front].setstretch()
+    sm.legs[sl.right_leg_front].setstretch()
+    sm.legs[sl.left_leg_back].setstretch()
+    sm.legs[sl.right_leg_back].setstretch()
 def continous_test(object):
     # print "channel number", channel_num
 
@@ -37,12 +37,12 @@ def continous_test(object):
         a = object.leg_minAngle
         b = object.leg_maxAngle
         while a <= object.leg_maxAngle:
-            object.setAngle(a)
+            object.setangle(a)
             print "angle:", a, "Channel:", object.channel, "name: ", object.name
             time.sleep(0.1)
             a = a + 1
         while b >= object.leg_minAngle:
-            object.setAngle(b)
+            object.setangle(b)
             print "angle:", b
             time.sleep(0.1)
             b = b - 1
@@ -141,10 +141,10 @@ def check_legs():
     key = raw_input("press a key to continue")
 
     print "Now moving each let to its default position."
-    sm.legs[sl.left_leg_front].setDefault()
-    sm.legs[sl.right_leg_front].setDefault()
-    sm.legs[sl.left_leg_back].setDefault()
-    sm.legs[sl.right_leg_back].setDefault()
+    sm.legs[sl.left_leg_front].setdefault()
+    sm.legs[sl.right_leg_front].setdefault()
+    sm.legs[sl.left_leg_back].setdefault()
+    sm.legs[sl.right_leg_back].setdefault()
 
     print "now moving each leg to its down position"
 
@@ -169,10 +169,10 @@ def check_feet():
     key = raw_input("press a key to continue")
 
     print "Now moving each let to its default position."
-    sm.feet[sl.left_foot_front].setDefault()
-    sm.feet[sl.right_foot_front].setDefault()
-    sm.feet[sl.left_foot_back].setDefault()
-    sm.feet[sl.right_foot_back].setDefault()
+    sm.feet[sl.left_foot_front].setdefault()
+    sm.feet[sl.right_foot_front].setdefault()
+    sm.feet[sl.left_foot_back].setdefault()
+    sm.feet[sl.right_foot_back].setdefault()
 
 # set the input choice to nothing
 key = ""
@@ -204,10 +204,10 @@ while key != "q":
     if key == "1":
         for n in sm.legs:
             print n.name
-            n.setDefault()
+            n.setdefault()
         for n in sm.feet:
             print n.name
-            n.setDefault()
+            n.setdefault()
     if key == "2":
         for n in sm.feet:
             n.up()
@@ -230,13 +230,13 @@ while key != "q":
 
     if key == "w":
         # Walk!
-        sm.walkForward(100)
+        sm.walkforward(100)
     if key == "s":
-        sm.walkBackward(100)
+        sm.walkbackward(100)
     if key == "a":
-        sm.turnLeft()
+        sm.turnleft()
     if key == "d":
-        sm.turnRight()
+        sm.turnright()
     if key == 'r':
         sm.stand()
     if key == "f":
