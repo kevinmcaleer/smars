@@ -261,8 +261,11 @@ class Leg(object):
 class SmarsRobot(object):
 # This is used to model the robot, its legs and its sensors
     def __init__(self):
-        pwm = Adafruit_PCA9685.PCA9685()
-        pwm.set_pwm_freq(60)
+        try:
+            pwm = Adafruit_PCA9685.PCA9685()
+            pwm.set_pwm_freq(60)
+        except:
+            print("The Servo Driver failed to initialise, is the driver installed and the board plugged in?")
 
     # defines if the robot is a quad or wheel based robot
     # need to make this an enum then set the type to be one of the items in the list
