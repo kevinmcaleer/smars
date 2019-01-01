@@ -6,10 +6,10 @@ Written by Kevin McAleer
 September 2018
 """
 
-import SMARS_Library3 as sl
+import SMARS_Library as sl
 
-from SMARS_Library3 import Leg
-from SMARS_Library3 import SmarsRobot
+from SMARS_Library import leg
+from SMARS_Library import SmarsRobot
 import time
 
 # create an instance of the Smars Robot class

@@ -23,8 +23,11 @@ import time
 import logging
 
 # Initialise the PCA9685 using the default address (0x40).
-pwm = Adafruit_PCA9685.PCA9685()
-
+try:
+    pwm = Adafruit_PCA9685.PCA9685()
+except:
+    print("failed to initialise the servo driver (Adafruit PCA9685)")
+    pwm = ""
 # Configure min and max servo pulse lengths
 servo_min = 150  # Min pulse length out of 4096
 servo_max = 600  # Max pulse length out of 4096
@@ -42,7 +45,10 @@ right_foot_front = 2  # channel 7
 right_foot_back = 3  # channel 5
 
 # Set frequency to 60hz, good for servos.
-pwm.set_pwm_freq(60)
+try:
+    pwm.set_pwm_freq(60)
+except:
+    print("failed to set the pwm frequency")
 
 # Helper function to make setting a servo pulse width simpler.
 
@@ -60,11 +66,15 @@ def set_servo_pulse(channel, pulse):
         logging.info('{0}us per bit'.format(pulse_length))
         pulse *= 1000
         pulse //= pulse_length
-        pwm.set_pwm(channel, 0, pulse)
+        try:
+            pwm.set_pwm(channel, 0, pulse)
+        except:
+            print("Failed to set pwm - did the driver initialize correctly?")
+
         return True
     else:
-        print("channel less than 0 or greater than 15, or not an integer:", channel)
-        logging.warning("Warning: channel less than 0 or greater than 15, or not an integer:")
+        print("channel less than 0 or greater than 15, or not an integer, or pulse is greater than 4096:", channel, pulse)
+        logging.warning("channel less than 0 or greater than 15, or not an integer, or pulse is greater than 4096.")
         return False
 
 
@@ -80,8 +90,16 @@ class Leg(object):
 
     def __init__(self, name, channel, leg_minangle, leg_maxangle, invert):
         # Initialises the leg object
-        pwm = Adafruit_PCA9685.PCA9685()
-        pwm.set_pwm_freq(60)
+        try:
+            pwm = Adafruit_PCA9685.PCA9685()
+        except:
+            print("The servo driver failed to initialise - have you installed the adafruit PCA9685 driver,"
+                  "and is it connected?")
+        try:
+            pwm.set_pwm_freq(60)
+        except:
+            print("Failed to set the pwm frequency - did the servo driver initialize correctly?")
+
         self.name = name
         self.channel = channel
         self.leg_minangle = leg_minangle
@@ -156,8 +174,8 @@ class Leg(object):
 
     def show(self):
         # used for debugging - shows the servo driver channel number and the limb name
-        print self.channel
-        print self.name
+        print (self.channel)
+        print (self.name)
 
     # def moveTo(self, position):
     #     # obsolete - use setAngle instead
@@ -173,14 +191,18 @@ class Leg(object):
 
             # Check the angle is within the boundaries for this limb
             if angle >= self.leg_minangle and angle <= self.leg_maxangle:
-                mapMax = self.leg_max - self.leg_min
+                mapmax = self.leg_max - self.leg_min
                 percentage = ( float(angle) / 180 ) * 100
-                pulse = int( (( float(mapMax) / 100 ) * float(percentage) ) + self.leg_min)
+                pulse = int( (( float(mapmax) / 100 ) * float(percentage) ) + self.leg_min)
 
                 # send the servo the pulse, to set the angle
-                pwm.set_pwm(self.channel, self.channel, pulse)
+                try:
+                    pwm.set_pwm(self.channel, self.channel, pulse)
+                except:
+                    print("Failed to set pwm - did the servo driver initialize correctly?")
                 self.currentangle = angle
                 return True
+
             else:
                 # display an error message if the angle set was outside the range (leg_minAngle and leg_maxAngle)
                 logging.warning("Warning: angle was outside of bounds for this leg")
@@ -267,7 +289,7 @@ class SmarsRobot(object):
     def setname(self, name):
         # Sets the robots name, used for displaying console messages.
         self.name = name
-        print "***", name, "Online ***"
+        print ("***", name, "Online ***")
 
     def leg_reset(self):
         # used to reset all the legs
@@ -276,19 +298,19 @@ class SmarsRobot(object):
 
     def middle(self):
         # used to position all the legs into the middle position
-        print "received middle command"
+        print ("received middle command")
         for l in self.legs:
             l.middle()
             # l.show()
 
     def sit(self):
         # used to sit the robot down
-        print self.name, "sitting Down."
+        print (self.name, "sitting Down.")
         for l in self.feet:
             l.down()
 
     def stand(self):
-        print self.name, "standing up."
+        print (self.name, "standing up.")
         for l in self.feet:
             l.up()
 
@@ -309,7 +331,7 @@ class SmarsRobot(object):
             global left_foot_back
             global right_foot_front
             global right_foot_back
-            print self.name, "Turning Right."
+            print (self.name, "Turning Right.")
 
             # move legs one at a time back to swing position
             self.setswing()
@@ -333,7 +355,7 @@ class SmarsRobot(object):
         global left_foot_back
         global right_foot_front
         global right_foot_back
-        print self.name, "Turning left."
+        print (self.name, "Turning left.")
 
         # move legs one at a time back to swing position
         self.setswing()
