@@ -1,7 +1,7 @@
 language: python
 python:
-  - '3.7'
-  - '2.7'
+  - 3.7.0
+  - 2.7.10
 install:
   - pip install unittest2
   - pip install adafruit_pca9685
