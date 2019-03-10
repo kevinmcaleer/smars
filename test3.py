@@ -10,6 +10,7 @@ import SMARS_Library3 as sl
 
 from SMARS_Library3 import Leg
 from SMARS_Library3 import SmarsRobot
+from SMARS_Library3 import SMARSColor as c
 import time
 
 # create an instance of the Smars Robot class
@@ -189,26 +190,28 @@ key = ""
 
 # Display the main menu
 while key != "q":
-    print ("SMARS QUAD TEST PROGRAM")
-    print ("-----------------------")
-    print ("")
-    print ("1) Set all limbs and feet to their default position")
-    print ("2) Set all feet to stand position")
-    print ("3) Set all feet to sit position")
-    print ("4) Check each limb is set correctly")
-    print ("5) continous servo check")
-    print ("6) Set all legs to body position")
-    print ("7) Set all legs to stretch position")
-    print ("8) Clap")
-    print ("")
-    print ("       W    R      | W = Walk Forwards")
-    print ("     A S D  F Walk | S = Backwards")
-    print ("                   | A = Turn Left")
-    print ("                   | D = Turn Right")
-    print ("                   | R = Stand up")
-    print ("                   | F = Sit Down")
-    print ("                   | C = Clap")
-    print ("                   | x = Wiggle")
+    print(c.CLEAR_SCREEN)
+    print(c.BG_BLUE + c.BRIGHTYELLOW + "SMARS QUAD TEST PROGRAM" + c.CLEAR_LINE_FROM_CURSOR)
+    print(c.BG_BLACK + c.NORMAL)
+    print("-----------------------")
+    print()
+    print( "1) Set all limbs and feet to their default position")
+    print("2) Set all feet to stand position")
+    print("3) Set all feet to sit position")
+    print("4) Check each limb is set correctly")
+    print("5) continous servo check")
+    print("6) Set all legs to body position")
+    print("7) Set all legs to stretch position")
+    print("8) Clap")
+    print("")
+    print("       W    R      | W = Walk Forwards")
+    print("     A S D  F Walk | S = Backwards")
+    print("                   | A = Turn Left")
+    print("                   | D = Turn Right")
+    print("                   | R = Stand up")
+    print("                   | F = Sit Down")
+    print("                   | C = Clap")
+    print("                   | x = Wiggle")
 
     key = input("type an option, or type 'q' to quit ")
     if key == "1":

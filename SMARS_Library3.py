@@ -18,37 +18,40 @@ add the following lines to /etc/modules
  - i2c-dev
  - i2c-bcm2708
 """
-import Adafruit_PCA9685
 import time
 import logging
-
+import Adafruit_PCA9685
+logging.basicConfig(level=logging.CRITICAL)
+logging.propagate = False
 # Initialise the PCA9685 using the default address (0x40).
 try:
-    pwm = Adafruit_PCA9685.PCA9685()
+    PWM = Adafruit_PCA9685.PCA9685()
 except:
-    print("failed to initialise the servo driver (Adafruit PCA9685)")
-    pwm = ""
+    logging.error("failed to initialise the servo driver (Adafruit PCA9685)")
+    # print("failed to initialise the servo driver (Adafruit PCA9685)")
+    PWM = ""
 # Configure min and max servo pulse lengths
 servo_min = 150  # Min pulse length out of 4096
 servo_max = 600  # Max pulse length out of 4096
-sleep_count = 0.05 # the amount of time to wait between pwm operations
+SLEEP_COUNT = 0.05 # the amount of time to wait between pwm operations
 
 # setup legs and feet to correspond to the correct channel
-left_leg_front = 0  # channel 0
-left_leg_back = 1  # channel 2
-right_leg_front = 2  # channel 6
-right_leg_back = 3  # channel 4
+LEFT_LEG_FRONT = 0  # channel 0
+LEFT_LEG_BACK = 1  # channel 2
+RIGHT_LEG_FRONT = 2  # channel 6
+RIGHT_LEG_BACK = 3  # channel 4
 
-left_foot_front = 0  # channel 1
-left_foot_back = 1  # channel 3
-right_foot_front = 2  # channel 7
-right_foot_back = 3  # channel 5
+LEFT_FOOT_FRONT = 0  # channel 1
+LEFT_FOOT_BACK = 1  # channel 3
+RIGHT_FOOT_FRONT = 2  # channel 7
+RIGHT_FOOT_BACK = 3  # channel 5
 
 # Set frequency to 60hz, good for servos.
 try:
-    pwm.set_pwm_freq(60)
+    PWM.set_pwm_freq(60)
 except:
-    print("failed to set the pwm frequency")
+    logging.error("failed to set the pwm frequency")
+    # print("failed to set the pwm frequency")
 
 # Helper function to make setting a servo pulse width simpler.
 
@@ -67,9 +70,10 @@ def set_servo_pulse(channel, pulse):
         pulse *= 1000
         pulse //= pulse_length
         try:
-            pwm.set_pwm(channel, 0, pulse)
+            PWM.set_pwm(channel, 0, pulse)
         except:
-            print("Failed to set pwm - did the driver initialize correctly?")
+            logging.warning("Failed to set pwm - did the driver initialize correctly?")
+            # print("Failed to set pwm - did the driver initialize correctly?")
 
         return True
     else:
@@ -93,12 +97,15 @@ class Leg(object):
         try:
             pwm = Adafruit_PCA9685.PCA9685()
         except:
-            print("The servo driver failed to initialise - have you installed the adafruit PCA9685 driver,"
+            logging.warning("The servo driver failed to initialise - have you installed the adafruit PCA9685 driver,"
                   "and is it connected?")
+            # print("The servo driver failed to initialise - have you installed the adafruit PCA9685 driver,"
+            #       "and is it connected?")
         try:
             pwm.set_pwm_freq(60)
         except:
-            print("Failed to set the pwm frequency - did the servo driver initialize correctly?")
+            logging.warning("Failed to set the pwm frequency - did the servo driver initialize correctly?")
+            # print("Failed to set the pwm frequency - did the servo driver initialize correctly?")
 
         self.name = name
         self.channel = channel
@@ -174,8 +181,8 @@ class Leg(object):
 
     def show(self):
         # used for debugging - shows the servo driver channel number and the limb name
-        print (self.channel)
-        print (self.name)
+        print(self.channel)
+        print(self.name)
 
     # def moveTo(self, position):
     #     # obsolete - use setAngle instead
@@ -192,14 +199,15 @@ class Leg(object):
             # Check the angle is within the boundaries for this limb
             if angle >= self.leg_minangle and angle <= self.leg_maxangle:
                 mapmax = self.leg_max - self.leg_min
-                percentage = ( float(angle) / 180 ) * 100
-                pulse = int( (( float(mapmax) / 100 ) * float(percentage) ) + self.leg_min)
+                percentage = (float(angle) / 180) * 100
+                pulse = int(((float(mapmax) / 100) * float(percentage)) + self.leg_min)
 
                 # send the servo the pulse, to set the angle
                 try:
-                    pwm.set_pwm(self.channel, self.channel, pulse)
+                    PWM.set_pwm(self.channel, self.channel, pulse)
                 except:
-                    print("Failed to set pwm - did the servo driver initialize correctly?")
+                    logging.warning("Failed to set the pwm frequency - did the servo driver initialize correctly?")
+                    # print("Failed to set pwm - did the servo driver initialize correctly?")
                 self.currentangle = angle
                 return True
 
@@ -214,8 +222,7 @@ class Leg(object):
             return False
 
     def untick(self):
-
-        # Used to walk backwards
+        """ Used to walk backwards """
         if self.name == "right_leg_back" or self.name == "right_leg_front":
             if self.currentangle <= self.leg_maxangle:
                 self.currentangle += 2
@@ -265,7 +272,8 @@ class SmarsRobot(object):
             pwm = Adafruit_PCA9685.PCA9685()
             pwm.set_pwm_freq(60)
         except:
-            print("The Servo Driver failed to initialise, is the driver installed and the board plugged in?")
+            logging.warning("Failed to set the pwm frequency - did the servo driver initialize correctly?")
+            # print("The Servo Driver failed to initialise, is the driver installed and the board plugged in?")
 
     # defines if the robot is a quad or wheel based robot
     # need to make this an enum then set the type to be one of the items in the list
@@ -320,44 +328,44 @@ class SmarsRobot(object):
     def setswing(self):
         for l in range(0, 4):
             self.feet[l].down()
-            time.sleep(sleep_count)
+            time.sleep(SLEEP_COUNT)
             self.legs[l].setswing()
-            time.sleep(sleep_count)
+            time.sleep(SLEEP_COUNT)
             self.feet[l].up()
-            time.sleep(sleep_count)
+            time.sleep(SLEEP_COUNT)
     def turnright(self):
-            global left_leg_front
-            global left_leg_back
-            global right_leg_front
-            global right_leg_back
-            global left_foot_front
-            global left_foot_back
-            global right_foot_front
-            global right_foot_back
-            print (self.name, "Turning Right.")
+        global LEFT_LEG_FRONT
+        global LEFT_LEG_BACK
+        global RIGHT_LEG_FRONT
+        global RIGHT_LEG_BACK
+        global LEFT_FOOT_FRONT
+        global LEFT_FOOT_BACK
+        global RIGHT_FOOT_FRONT
+        global RIGHT_FOOT_BACK
+        print (self.name, "Turning Right.")
 
-            # move legs one at a time back to swing position
-            self.setswing()
+        # move legs one at a time back to swing position
+        self.setswing()
 
-            # twist body
-            self.legs[right_leg_front].setstretch()
-            self.legs[right_leg_back].setbody()
-            self.legs[left_leg_front].setbody()
-            self.legs[left_leg_back].setstretch()
-            time.sleep(sleep_count)
+        # twist body
+        self.legs[right_leg_front].setstretch()
+        self.legs[right_leg_back].setbody()
+        self.legs[left_leg_front].setbody()
+        self.legs[left_leg_back].setstretch()
+        time.sleep(sleep_count)
 
-            # move legs one at a time back to swing position
-            self.setswing()
+        # move legs one at a time back to swing position
+        self.setswing()
 
     def turnleft(self):
-        global left_leg_front
-        global left_leg_back
-        global right_leg_front
-        global right_leg_back
-        global left_foot_front
-        global left_foot_back
-        global right_foot_front
-        global right_foot_back
+        global LEFT_LEG_FRONT
+        global LEFT_LEG_BACK
+        global RIGHT_LEG_FRONT
+        global RIGHT_LEG_BACK
+        global LEFT_FOOT_FRONT
+        global LEFT_FOOT_BACK
+        global RIGHT_FOOT_FRONT
+        global RIGHT_FOOT_BACK
         print (self.name, "Turning left.")
 
         # move legs one at a time back to swing position
@@ -377,34 +385,34 @@ class SmarsRobot(object):
         # used to move the robot forward.
 
         # include the global variables
-        global left_leg_front
-        global left_leg_back
-        global right_leg_front
-        global right_leg_back
-        global left_foot_front
-        global left_foot_back
-        global right_foot_front
-        global right_foot_back
+        global LEFT_LEG_FRONT
+        global LEFT_LEG_BACK
+        global RIGHT_LEG_FRONT
+        global RIGHT_LEG_BACK
+        global LEFT_FOOT_FRONT
+        global LEFT_FOOT_BACK
+        global RIGHT_FOOT_FRONT
+        global RIGHT_FOOT_BACK
 
         # set the legs to the correct position for walking.
         self.sit()
-        self.legs[left_leg_front].setbody()
-        self.legs[left_leg_back].setbody()
-        self.legs[right_leg_front].setswing()
-        self.legs[right_leg_back].setswing()
+        self.legs[LEFT_LEG_FRONT].setbody()
+        self.legs[LEFT_LEG_BACK].setbody()
+        self.legs[RIGHT_LEG_FRONT].setswing()
+        self.legs[RIGHT_LEG_BACK].setswing()
         self.stand()
 
         # the walking cycle, loops for the number of steps provided.
-        currentStep = 0;
-        while currentStep < steps:
-            currentStep += 1
+        current_step = 0
+        while current_step < steps:
+            current_step += 1
 
             for n in range(0, 4):
                 if not self.legs[n].tick():
                     self.legs[n].tick()
                 else:
                     self.feet[n].down()
-                    time.sleep(sleep_count)
+                    time.sleep(SLEEP_COUNT)
 
                     # change this to left and right legs, rather than invert or not invert
                     if not self.legs[n].invert:
@@ -417,22 +425,22 @@ class SmarsRobot(object):
                             self.legs[n].setbody()
                         else:
                             self.legs[n].setstretch()
-                    time.sleep(sleep_count)
+                    time.sleep(SLEEP_COUNT)
                     self.feet[n].up()
-                    time.sleep(sleep_count)
+                    time.sleep(SLEEP_COUNT)
 
     def walkbackward(self, steps):
-        # used to move the robot backward.
+        """ used to move the robot backward. """
 
         # include the global variables
-        global left_leg_front
-        global left_leg_back
-        global right_leg_front
-        global right_leg_back
-        global left_foot_front
-        global left_foot_back
-        global right_foot_front
-        global right_foot_back
+        global LEFT_LEG_FRONT
+        global LEFT_LEG_BACK
+        global RIGHT_LEG_FRONT
+        global RIGHT_LEG_BACK
+        global LEFT_FOOT_FRONT
+        global LEFT_FOOT_BACK
+        global RIGHT_FOOT_FRONT
+        global RIGHT_FOOT_BACK
 
         # set the legs to the correct position for walking.
         self.sit()
@@ -443,9 +451,9 @@ class SmarsRobot(object):
         self.stand()
 
         # the walking cycle, loops for the number of steps provided.
-        currentStep = 0
-        while currentStep < steps:
-            currentStep += 1
+        current_step = 0
+        while current_step < steps:
+            current_step += 1
             for n in range (0, 4):
                 if not self.legs[n].untick():
                     # print self.name, "walking, step", currentStep, "of", steps
@@ -453,7 +461,7 @@ class SmarsRobot(object):
                 else:
                     # print "moving leg:", self.legs[n].name
                     self.feet[n].down()
-                    time.sleep(sleep_count)
+                    time.sleep(SLEEP_COUNT)
 
                     # change this to left and right legs, rather than invert or not invert
                     if not self.legs[n].invert:
@@ -466,55 +474,136 @@ class SmarsRobot(object):
                             self.legs[n].setbody()
                         else:
                             self.legs[n].setstretch()
-                    time.sleep(sleep_count)
+                    time.sleep(SLEEP_COUNT)
                     self.feet[n].up()
-                    time.sleep(sleep_count)
+                    time.sleep(SLEEP_COUNT)
 
     def clap(self, clap_count):
         # Clap front two hands (the sound of two hands clapping)
-        global left_leg_front
-        global left_leg_back
-        global right_leg_front
-        global right_leg_back
-        global left_foot_front
-        global left_foot_back
-        global right_foot_front
-        global right_foot_back
+        global LEFT_LEG_FRONT
+        global LEFT_LEG_BACK
+        global RIGHT_LEG_FRONT
+        global RIGHT_LEG_BACK
+        global LEFT_FOOT_FRONT
+        global LEFT_FOOT_BACK
+        global RIGHT_FOOT_FRONT
+        global RIGHT_FOOT_BACK
 
         self.sit()
         # self.feet[left_foot_front].up()
         # self.feet[right_foot_front].up()
-        for n in range (0, clap_count):
-            self.legs[left_leg_front].setbody()
-            self.legs[right_leg_front].setbody()
-            time.sleep(sleep_count * 2)
-            self.legs[left_leg_front].setstretch()
-            self.legs[right_leg_front].setstretch()
-            time.sleep(sleep_count * 2)
+        for _ in range (0, clap_count):
+            self.legs[LEFT_LEG_FRONT].setbody()
+            self.legs[RIGHT_LEG_FRONT].setbody()
+            time.sleep(SLEEP_COUNT * 2)
+            self.legs[LEFT_LEG_FRONT].setstretch()
+            self.legs[RIGHT_LEG_FRONT].setstretch()
+            time.sleep(SLEEP_COUNT * 2)
         self.stand()
 
 
     def wiggle(self, wiggle_count):
-        # Wiggle butt
-        global left_leg_front
-        global left_leg_back
-        global right_leg_front
-        global right_leg_back
-        global left_foot_front
-        global left_foot_back
-        global right_foot_front
-        global right_foot_back
+        """ Wiggle butt """
+        global LEFT_LEG_FRONT
+        global LEFT_LEG_BACK
+        global RIGHT_LEG_FRONT
+        global RIGHT_LEG_BACK
+        global LEFT_FOOT_FRONT
+        global LEFT_FOOT_BACK
+        global RIGHT_FOOT_FRONT
+        global RIGHT_FOOT_BACK
 
         self.sit()
-        self.legs[left_foot_back].up()
-        self.legs[right_foot_back].up()
-        time.sleep(sleep_count * 5)
+        self.legs[LEFT_FOOT_BACK].up()
+        self.legs[RIGHT_FOOT_BACK].up()
+        time.sleep(SLEEP_COUNT * 5)
 
-        for n in range (0, wiggle_count):
-            self.legs[left_leg_back].setbody()
-            self.legs[right_leg_back].setstretch()
-            time.sleep(sleep_count * 5)
-            self.legs[left_leg_back].setstretch()
-            self.legs[right_leg_back].setbody()
-            time.sleep(sleep_count * 5)
+        for _ in range(0, wiggle_count):
+            self.legs[LEFT_LEG_BACK].setbody()
+            self.legs[RIGHT_LEG_BACK].setstretch()
+            time.sleep(SLEEP_COUNT * 5)
+            self.legs[LEFT_LEG_BACK].setstretch()
+            self.legs[RIGHT_LEG_BACK].setbody()
+            time.sleep(SLEEP_COUNT * 5)
         self.stand()
+
+
+class SMARSColor(object):
+    """ Some standard console colors for use with terminal display output """
+
+    # Foreground Colours
+    WHITE = u'\001b[30m'
+    RED = u'\001b[31m'
+    GREEN = u'\001b[32m'
+    YELLOW = u'\001b[33m'
+    BLUE = u'\001b[34m'
+    MAGENTA = u'\001b[35m'
+    CYAN = u'\001b[36m'
+    BLACK = u'\001b[30m'
+    DARKPINK = u'\033[95m'
+    PINK = u'\033[94m'
+    RESET = u'\033[0m'
+    NORMAL = u'\033[0m'
+
+    # Bright Colours
+    BRIGHTWHITE = u'\001b[30;1m'
+    BRIGHTRED = u'\001b[31;1m'
+    BRIGHTGREEN = u'\001b[32;1m'
+    BRIGHTYELLOW = u'\001b[33;1m'
+    BRIGHTBLUE = u'\001b[34;1m'
+    BRIGHTMAGENTA = u'\001b[35;1m'
+    BRIGHTCYAN = u'\001b[36m;1m'
+    DARKGRAY = u'\u001b[30;1m'
+    BRIGHTPINK = u'\033[94m;1m'
+
+    # Decoration
+    REVERSED = u'\u001b[7m'
+    BOLD = u'\033[1m'
+    UNDERLINE = u'\033[4m'
+
+    # Background Colours
+    BG_BLUE = u'\033[44m'
+    BG_BLACK = u'\u001b[40m'
+    BG_RED = u'\u001b[41m'
+    BG_GREEN = u'\u001b[42m'
+    BG_YELLOW = u'\u001b[43m'
+    BG_MAGENTA = u'\u001b[45m'
+    BG_CYAN = u'\u001b[46m'
+    BG_WHITE = u'\u001b[47m'
+
+    # Clear screen or line
+    CLEAR_SCREEN_FROM_CURSOR = u'\u001b[0J'  # clears the screen from the cursor
+
+    # Clears the screen from the beginning of the screen to the cursor
+    CLEAR_SCREEN_TO_CURSOR = u'\u001b[1J'
+
+    # Clears the screen
+    CLEAR_SCREEN = u'\u001b[2J'
+
+    CLEAR_LINE = u'\u001b[2K'
+    CLEAR_LINE_FROM_CURSOR = u'\u001b[0K'
+    CLEAR_LINE_TO_CURSOR = u'\u001b[1K'
+
+    # Move cursor
+    @classmethod
+    def cursor_left(cls, no_of_chars):
+        """ moves the cursor left """
+        print(u'\u001b[' + str(no_of_chars) + 'D')
+
+    @classmethod
+    def cursor_right(cls, no_of_chars):
+        """ moves the cursor right """
+        print(u'\u001b[' + str(no_of_chars) + 'C')
+
+    @classmethod
+    def cursor_up(cls, no_of_chars):
+        print(u'\u001b[' + str(no_of_chars) + 'A')
+
+    @classmethod
+    def cursor_down(cls, no_of_chars):
+        print(u'\u001b[' + str(no_of_chars) + 'B')
+
+    @classmethod
+    def set_position(cls, x, y):
+        s = u'\u001b[' + str(x) + ';' + str(y) + 'H'
+        print(s)

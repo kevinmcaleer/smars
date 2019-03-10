@@ -52,5 +52,13 @@ class TestLegSetdefault(unittest.TestCase):
         self.assertIsNone(l.setdefault())
 
 
+class TestLegSetBody(unittest.TestCase):
+    """ tests leg setbody() """
+
+    def test_setbody(self):
+        l = Leg(channel=0, leg_minangle=0, leg_maxangle=180, invert=False, name="testbot")
+        self.assertIsNone(l.setbody())
+
+
 if __name__ == '__main__':
     unittest.main()
