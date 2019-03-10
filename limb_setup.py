@@ -5,6 +5,7 @@
 from SMARS_Library import *
 
 def menu():
+    """ display the main menu """
     print "Menu"
     print "----"
     print ""
@@ -13,6 +14,7 @@ def menu():
     print "0) quit"
     print ""
 
+channel_number = 0
 def select_channel():
     global channel_number
     global l1
@@ -37,7 +39,11 @@ def select_channel():
                     l1.channel = channel_number
                     l1.show()
 
+angle = 0
+
+
 def select_angle():
+    """ change the current angle """
     global angle
     print "Select Angle"
     print "------------"
@@ -58,9 +64,7 @@ def select_angle():
             l1.setAngle(angle)
             print "current angle:", angle
 
-#globals
-angle = 0
-channel_number = 0
+
 l1 = leg(name="limb test", channel=channel_number, leg_minAngle=0, leg_maxAngle=180, invert=False)
 # l1.name = "left_leg_front"
 # l1.channel = channel_number
