@@ -18,6 +18,8 @@ add the following lines to /etc/modules
  - i2c-dev
  - i2c-bcm2708
 """
+
+# TODO: Add smars to pypy 
 import Adafruit_PCA9685
 import time
 import logging
