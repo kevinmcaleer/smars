@@ -2,9 +2,9 @@
 S-code Parser
 """
 
-import SMARS_Library as sl
-from SMARS_Library import SmarsRobot
-from SMARS_Library import leg
+from smars_library.smars_library import SmarsRobot
+from smars_library.smars_library import leg
+import smars_library.smars_library as sl
 import time
 
 def readLine(line):

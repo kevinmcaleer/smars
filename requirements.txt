@@ -1,0 +1,5 @@
+Adafruit-GPIO==1.0.3
+Adafruit-PCA9685==1.0.1
+Adafruit-PureIO==0.2.3
+pathlib==1.0.1
+smars-library==0.1.4

@@ -1,7 +1,7 @@
 # SMARS
 Screwless Modular Assemblable Robotic System
 
-![Build Status](https://travis-ci.com/kevinmcaleer/smars.svg?branch=KMC_TRY_Python3)
+![Build Status](https://travis-ci.com/kevinmcaleer/smars.svg)
 
 ## SMARSfan.com
 Visit www.smarsfan.com for more information about this project. The site includes build instructions, videos, an interview with the designer and much more.
@@ -9,8 +9,25 @@ Visit www.smarsfan.com for more information about this project. The site include
 ## About this library
 This library will enable you to get the quad robot walking and detecting its environment.
 
-##Python 3 Library
-There is now a Python 3 compatible library for SMARS. Just include the SMARS_Library3.py in your code.
+## Python Library now pulls from pip
+There is now a SMARS Python library available via pip.
+
+***Make sure you follow the instructions below to ensure the virtual environment is setup correctly and everything should work perfectly.***
+
+## Setup a virtual environment
+The best way to ensure all the right prerequisites are installed and the supported version of python is installed is by setting up a virtual environment for python.
+
+To Install virtualenv:
+* log on to your raspberry pi
+* install virtualenv:
+`sudo apt-get install virtualenv`
+* create a new virtual python environment:
+`virtualenv -p python3 venv`
+* activate the new python environment:
+`source venv/bin/activate`
+* install the pre-requisites:
+`pip install -r requirements.txt`
+* to deactivate the environment once you have finished, type `deactivate`
 
 ## Scratch 1.4 Code  
 The Library now includes a sample Scratch 1.4 script that will enable you to control your SMARS Quad robot from the scratch environment. Please note you will need to enable the remote sensor control for this to work, by right clicking on the sensor and clicking on 'enable remote sensing'.

@@ -6,11 +6,11 @@ Written by Kevin McAleer
 September 2018
 """
 
-import SMARS_Library3 as sl
+from smars_library.smars_library import SmarsRobot
+from smars_library.smars_library import Leg
 
-from SMARS_Library3 import Leg
-from SMARS_Library3 import SmarsRobot
-from SMARS_Library3 import SMARSColor as c
+import smars_library.smars_library as sl
+
 import time
 
 # create an instance of the Smars Robot class
@@ -27,17 +27,17 @@ sm.type = "quad"
 
 
 def legs_body():
-    sm.legs[sl.left_leg_front].setbody()
-    sm.legs[sl.right_leg_front].setbody()
-    sm.legs[sl.left_leg_back].setbody()
-    sm.legs[sl.right_leg_back].setbody()
+    sm.legs[sl.LEFT_LEG_FRONT].setbody()
+    sm.legs[sl.RIGHT_LEG_FRONT].setbody()
+    sm.legs[sl.LEFT_LEG_BACK].setbody()
+    sm.legs[sl.RIGHT_LEG_BACK].setbody()
 
 
 def legs_stretch():
-    sm.legs[sl.left_leg_front].setstretch()
-    sm.legs[sl.right_leg_front].setstretch()
-    sm.legs[sl.left_leg_back].setstretch()
-    sm.legs[sl.right_leg_back].setstretch()
+    sm.legs[sl.LEFT_LEG_FRONT].setstretch()
+    sm.legs[sl.RIGHT_LEG_FRONT].setstretch()
+    sm.legs[sl.LEFT_LEG_BACK].setstretch()
+    sm.legs[sl.RIGHT_LEG_BACK].setstretch()
 
 
 def continuous_test(object):
@@ -73,14 +73,14 @@ def continuous_feet_test():
 
         key = input("Type 1-4 or q to return to main menu")
         if key == "1":
-            # sm.legs[sl.left_foot_front].setAngle(sm.legs[sl.left_foot_front].leg_minAngle)
-            continuous_test(sm.feet[sl.left_foot_front])
+            # sm.legs[sl.LEFT_FOOT_FRONT].setAngle(sm.legs[sl.LEFT_FOOT_FRONT].leg_minAngle)
+            continuous_test(sm.feet[sl.LEFT_FOOT_FRONT])
         if key == "2":
-            continuous_test(sm.feet[sl.right_foot_front])
+            continuous_test(sm.feet[sl.RIGHT_FOOT_FRONT])
         if key == "3":
-            continuous_test(sm.feet[sl.left_foot_back])
+            continuous_test(sm.feet[sl.LEFT_FOOT_BACK])
         if key == "4":
-            continuous_test(sm.feet[sl.right_foot_back])
+            continuous_test(sm.feet[sl.RIGHT_FOOT_BACK])
 
 
 def continuous_leg_test():
@@ -96,14 +96,16 @@ def continuous_leg_test():
 
     key = input("Type 1-4 or q to return to main menu")
     if key == "1":
-        # print sl.right_leg_front
-        continuous_test(sm.legs[sl.left_leg_front])
+        # print sl.RIGHT_LEG_FRONT
+
+        continuous_test(sm.legs[sl.LEFT_LEG_FRONT])
     if key == "2":
-        continuous_test(sm.legs[sl.right_leg_front])
+        continuous_test(sm.legs[sl.RIGHT_LEG_FRONT
+])
     if key == "3":
-        continuous_test(sm.legs[sl.left_leg_back])
+        continuous_test(sm.legs[sl.LEFT_LEG_BACK])
     if key == "4":
-        continuous_test(sm.legs[sl.right_leg_back])
+        continuous_test(sm.legs[sl.RIGHT_LEG_BACK])
 
 def continuous_check():
     key = ""
@@ -132,30 +134,30 @@ def check_legs():
     key = input("press a key to continue")
 
     print ("front left leg")
-    sm.legs[sl.left_leg_front].up()
-    print (sm.legs[sl.left_leg_front].name)
+    sm.legs[sl.LEFT_LEG_FRONT].up()
+    print (sm.legs[sl.LEFT_LEG_FRONT].name)
     key = input("press a key to continue")
 
     print ("front right leg")
-    sm.legs[sl.right_leg_front].up()
-    print (sm.legs[sl.right_leg_front].name)
+    sm.legs[sl.RIGHT_LEG_FRONT].up()
+    print (sm.legs[sl.RIGHT_LEG_FRONT].name)
     key = input("press a key to continue")
 
     print ("back left leg")
-    sm.legs[sl.left_leg_back].up()
-    print (sm.legs[sl.left_leg_back].name)
+    sm.legs[sl.LEFT_LEG_BACK].up()
+    print (sm.legs[sl.LEFT_LEG_BACK].name)
     key = input("press a key to continue")
 
     print ("back right leg")
-    sm.legs[sl.right_leg_back].up()
-    print (sm.legs[sl.right_leg_back].name)
+    sm.legs[sl.RIGHT_LEG_BACK].up()
+    print (sm.legs[sl.RIGHT_LEG_BACK].name)
     key = input("press a key to continue")
 
     print ("Now moving each let to its default position.")
-    sm.legs[sl.left_leg_front].setdefault()
-    sm.legs[sl.right_leg_front].setdefault()
-    sm.legs[sl.left_leg_back].setdefault()
-    sm.legs[sl.right_leg_back].setdefault()
+    sm.legs[sl.LEFT_LEG_FRONT].setdefault()
+    sm.legs[sl.RIGHT_LEG_FRONT].setdefault()
+    sm.legs[sl.LEFT_LEG_BACK].setdefault()
+    sm.legs[sl.RIGHT_LEG_BACK].setdefault()
 
     print ("now moving each leg to its down position")
 
@@ -164,38 +166,36 @@ def check_feet():
     key = input("press a key to continue")
 
     print ("front left foot")
-    sm.feet[sl.left_foot_front].up()
+    sm.feet[sl.LEFT_FOOT_FRONT].up()
     key = input("press a key to continue")
 
     print ("front right foot")
-    sm.feet[sl.right_foot_front].up()
+    sm.feet[sl.RIGHT_FOOT_FRONT].up()
     key = input("press a key to continue")
 
     print ("back left foot")
-    sm.feet[sl.left_foot_back].up()
+    sm.feet[sl.LEFT_FOOT_BACK].up()
     key = input("press a key to continue")
 
     print ("back right foot")
-    sm.feet[sl.right_foot_back].up()
+    sm.feet[sl.RIGHT_FOOT_BACK].up()
     key = input("press a key to continue")
 
     print ("Now moving each let to its default position.")
-    sm.feet[sl.left_foot_front].setdefault()
-    sm.feet[sl.right_foot_front].setdefault()
-    sm.feet[sl.left_foot_back].setdefault()
-    sm.feet[sl.right_foot_back].setdefault()
+    sm.feet[sl.LEFT_FOOT_FRONT].setdefault()
+    sm.feet[sl.RIGHT_FOOT_FRONT].setdefault()
+    sm.feet[sl.LEFT_FOOT_BACK].setdefault()
+    sm.feet[sl.RIGHT_FOOT_BACK].setdefault()
 
 # set the input choice to nothing
 key = ""
 
 # Display the main menu
 while key != "q":
-    print(c.CLEAR_SCREEN)
-    print(c.BG_BLUE + c.BRIGHTYELLOW + "SMARS QUAD TEST PROGRAM" + c.CLEAR_LINE_FROM_CURSOR)
-    print(c.BG_BLACK + c.NORMAL)
+    print("SMARS QUAD TEST PROGRAM")
     print("-----------------------")
     print()
-    print( "1) Set all limbs and feet to their default position")
+    print("1) Set all limbs and feet to their default position")
     print("2) Set all feet to stand position")
     print("3) Set all feet to sit position")
     print("4) Check each limb is set correctly")
