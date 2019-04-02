@@ -8,4 +8,4 @@ python:
 install:
   - pip install unittest2
   - pip install adafruit_pca9685
-script: python test_suite3.py
+script: python test_suite.py
