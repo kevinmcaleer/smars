@@ -55,3 +55,33 @@ You can use most common small hardware platforms as the brains inside SMARS, the
 
 ## Getting the Arduino IDE
 Visit http://www.arduino.cc to download the latest Arduino Integrated Development Environment (IDE).
+.
+├── Documentation
+│   └── SMARS Build Instructions
+│       └── Build instructions.pdf
+├── limb_setup.py
+├── pinouts.md
+├── README.md
+├── requirements.txt
+├── S-Code.md
+├── S-CodeParse.py
+├── Scratch 1.4
+│   └── SMARSScratchDemo.sb
+├── ScratchListener.py
+├── setup.sh
+├── SMARS_ultrasonic_demo
+│   └── SMARS_ultrasonic_demo.ino
+├── STL_Files
+│   ├── Track 18mm.png
+│   ├── Track 18mm.stl
+│   ├── Track 20.5mm 16h.stl
+│   ├── Track 20.5mm.stl
+│   ├── Track 205mm.stl
+│   ├── Track 210mm.stl
+│   └── Track.png
+└── test
+    ├── test.md
+    ├── test.py
+    └── test_suite.py
+
+6 directories, 21 files
