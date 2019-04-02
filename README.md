@@ -30,7 +30,35 @@ To Install virtualenv:
 * to deactivate the environment once you have finished, type `deactivate`
 
 ## Files
-
+```.
+├── Documentation                   - All the Documents
+│   └── SMARS Build Instructions    
+│       └── Build instructions.pdf  - PDF version of the build instructions
+├── limb_setup.py                   - script for helping setup limbs on a QUAD SMARS
+├── pinouts.md                      - Describes the pinouts for the PCA9685
+├── README.md                       - this file
+├── requirements.txt                - used by pip to install the prerequisites
+├── S-Code.md                       - a code similar to G-Code for sending commands to a SMARS, work in progress
+├── S-CodeParse.py                  - a parser for S-Code
+├── Scratch 1.4                   
+│   └── SMARSScratchDemo.sb         - an example Scratch 1.4 file for communicating with SMARS
+├── ScratchListener.py              - the lister app for communicating with SMARS and Scratch
+├── setup.sh                        - a shell script for setting up the code on a raspberry pi
+├── SMARS_ultrasonic_demo      
+│   └── SMARS_ultrasonic_demo.ino   - a sample Arduino script for using the ultrasonic sensor
+├── STL_Files                       - some STL files for modified tracks
+│   ├── Track 18mm.png
+│   ├── Track 18mm.stl
+│   ├── Track 20.5mm 16h.stl
+│   ├── Track 20.5mm.stl
+│   ├── Track 205mm.stl
+│   ├── Track 210mm.stl
+│   └── Track.png
+└── test                            - the test suite
+    ├── test.md                     - test suite documentation
+    ├── test.py                     - a simple test app for checking your SMARS setup
+    └── test_suite.py               - the test suite used by Travis-CI to confirm build quality
+```
 
 ## Scratch 1.4 Code  
 The Library now includes a sample Scratch 1.4 script that will enable you to control your SMARS Quad robot from the scratch environment. Please note you will need to enable the remote sensor control for this to work, by right clicking on the sensor and clicking on 'enable remote sensing'.
@@ -55,33 +83,3 @@ You can use most common small hardware platforms as the brains inside SMARS, the
 
 ## Getting the Arduino IDE
 Visit http://www.arduino.cc to download the latest Arduino Integrated Development Environment (IDE).
-.
-├── Documentation
-│   └── SMARS Build Instructions
-│       └── Build instructions.pdf
-├── limb_setup.py
-├── pinouts.md
-├── README.md
-├── requirements.txt
-├── S-Code.md
-├── S-CodeParse.py
-├── Scratch 1.4
-│   └── SMARSScratchDemo.sb
-├── ScratchListener.py
-├── setup.sh
-├── SMARS_ultrasonic_demo
-│   └── SMARS_ultrasonic_demo.ino
-├── STL_Files
-│   ├── Track 18mm.png
-│   ├── Track 18mm.stl
-│   ├── Track 20.5mm 16h.stl
-│   ├── Track 20.5mm.stl
-│   ├── Track 205mm.stl
-│   ├── Track 210mm.stl
-│   └── Track.png
-└── test
-    ├── test.md
-    ├── test.py
-    └── test_suite.py
-
-6 directories, 21 files
