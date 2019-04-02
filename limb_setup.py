@@ -2,7 +2,9 @@
 
 # setup leg 1:
 
-from SMARS_Library import *
+# from SMARS_Library import *
+from smars_library.smars_library import SmarsRobot
+import smars_library.smars_library
 
 def menu():
     """ display the main menu """

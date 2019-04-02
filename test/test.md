@@ -13,7 +13,6 @@ check that angle is between 0 and 180
 
 # class SmarsRobot(object):
 
-
 ## def setName(self, name
 check that name doesn't exceed 20 characters
 
@@ -28,4 +27,3 @@ check that clap_count is less than 100
 
 ##  def wiggle(self, wiggle_count):
 check that wiggle_count is less than 100
-
