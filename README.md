@@ -6,6 +6,14 @@ Screwless Modular Assemblable Robotic System
 ## SMARSfan.com
 Visit www.smarsfan.com for more information about this project. The site includes build instructions, videos, an interview with the designer and much more.
 
+## SMARSLab & SMARS_Library
+I've broken the SMARS code into two parts:
+
+SMARS_Library is a component that can now be installed via `pip install smars-library` or visiting https://pypi.org/project/smars-library/
+
+SMARSLab is a web-based application for controlling your SMARS robots. The aim it that this will support both bluetooth connected wheeled SMARS as well as ones running locally on a raspberry pi zero. It currently supports QUAD SMARS and there is a test `butil.py` app for testing bluetooth connectivity.
+Visit https://www.github.com/kevinmcaleer/smarslab for more information.
+
 ## About this library
 This library will enable you to get the quad robot walking and detecting its environment.
 
