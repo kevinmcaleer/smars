@@ -1,0 +1,12 @@
+language: python
+python:
+  - 3.4
+  - 3.5
+  - 3.6
+  - 3.7
+  - 3.8
+install:
+  - pip install unittest2
+  - pip install adafruit_pca9685
+  - pip install smars-library
+script: python test/test_suite.py

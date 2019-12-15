@@ -5,17 +5,17 @@ from array import array
 import socket
 import time
 import sys
-import SMARS_Library
-from SMARS_Library import SmarsRobot
-import Adafruit_PCA9685
 
+import smars_library.smars_library
+from smars_library.smars_library import SmarsRobot
+import Adafruit_PCA9685
 
 
 # create a SMARS robots
 smars = SmarsRobot()
 
 PORT = 42001
-HOST = raw_input("Scratch Connector IP:")
+HOST = input("Scratch Connector IP:")
 # HOST = askstring('Scratch Connector', 'IP:')
 if not HOST:
     sys.exit()
@@ -36,25 +36,25 @@ def sendScratchCommand(cmd):
 
 def recvScratchCommand():
     msg = scratchSock.recv(42001)
-    print msg, "length =", len(msg);
+    print(msg, "length =", len(msg))
     a = ""
     a = msg.split('"')
-    print "a 0", a[0]
-    print "a 1", a[1]
+    print("a 0", a[0])
+    print("a 1", a[1])
     cmd = a[1]
     return cmd
 
 while True:
     cmd = recvScratchCommand()
-    if cmd == "WalkForward":
-        smars.walkForward(100)
-    if cmd == "WalkBackward":
-        smars.walkBackward(100)
+    if cmd == "Walkforward":
+        smars.walkforward(100)
+    if cmd == "Walkbackward":
+        smars.walkbackward(100)
     if cmd == "Sit":
         smars.sit()
     if cmd == "Stand":
         smars.stand()
     if cmd == "TurnLeft":
-        smars.turnLeft()
+        smars.turnleft()
     if cmd == "TurnRight":
-        smars.turnRight()
+        smars.turnright()
