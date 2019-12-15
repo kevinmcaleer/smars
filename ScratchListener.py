@@ -46,15 +46,15 @@ def recvScratchCommand():
 
 while True:
     cmd = recvScratchCommand()
-    if cmd == "WalkForward":
-        smars.walkForward(100)
-    if cmd == "WalkBackward":
-        smars.walkBackward(100)
+    if cmd == "Walkforward":
+        smars.walkforward(100)
+    if cmd == "Walkbackward":
+        smars.walkbackward(100)
     if cmd == "Sit":
         smars.sit()
     if cmd == "Stand":
         smars.stand()
     if cmd == "TurnLeft":
-        smars.turnLeft()
+        smars.turnleft()
     if cmd == "TurnRight":
-        smars.turnRight()
+        smars.turnright()

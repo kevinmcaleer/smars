@@ -10,6 +10,7 @@ from smars_library.smars_library import SmarsRobot
 from smars_library.smars_library import Leg
 
 import smars_library.smars_library as sl
+from smars_library.constants import Channel as ch
 
 import time
 
@@ -27,17 +28,17 @@ sm.type = "quad"
 
 
 def legs_body():
-    sm.legs[sl.LEFT_LEG_FRONT].setbody()
-    sm.legs[sl.RIGHT_LEG_FRONT].setbody()
-    sm.legs[sl.LEFT_LEG_BACK].setbody()
-    sm.legs[sl.RIGHT_LEG_BACK].setbody()
+    sm.legs[ch.LEFT_LEG_FRONT].setbody()
+    sm.legs[ch.RIGHT_LEG_FRONT].setbody()
+    sm.legs[ch.LEFT_LEG_BACK].setbody()
+    sm.legs[ch.RIGHT_LEG_BACK].setbody()
 
 
 def legs_stretch():
-    sm.legs[sl.LEFT_LEG_FRONT].setstretch()
-    sm.legs[sl.RIGHT_LEG_FRONT].setstretch()
-    sm.legs[sl.LEFT_LEG_BACK].setstretch()
-    sm.legs[sl.RIGHT_LEG_BACK].setstretch()
+    sm.legs[ch.LEFT_LEG_FRONT].setstretch()
+    sm.legs[ch.RIGHT_LEG_FRONT].setstretch()
+    sm.legs[ch.LEFT_LEG_BACK].setstretch()
+    sm.legs[ch.RIGHT_LEG_BACK].setstretch()
 
 
 def continuous_test(object):
@@ -74,13 +75,13 @@ def continuous_feet_test():
         key = input("Type 1-4 or q to return to main menu")
         if key == "1":
             # sm.legs[sl.LEFT_FOOT_FRONT].setAngle(sm.legs[sl.LEFT_FOOT_FRONT].leg_minAngle)
-            continuous_test(sm.feet[sl.LEFT_FOOT_FRONT])
+            continuous_test(sm.feet[ch.LEFT_FOOT_FRONT])
         if key == "2":
-            continuous_test(sm.feet[sl.RIGHT_FOOT_FRONT])
+            continuous_test(sm.feet[ch.RIGHT_FOOT_FRONT])
         if key == "3":
-            continuous_test(sm.feet[sl.LEFT_FOOT_BACK])
+            continuous_test(sm.feet[ch.LEFT_FOOT_BACK])
         if key == "4":
-            continuous_test(sm.feet[sl.RIGHT_FOOT_BACK])
+            continuous_test(sm.feet[ch.RIGHT_FOOT_BACK])
 
 
 def continuous_leg_test():
@@ -98,14 +99,14 @@ def continuous_leg_test():
     if key == "1":
         # print sl.RIGHT_LEG_FRONT
 
-        continuous_test(sm.legs[sl.LEFT_LEG_FRONT])
+        continuous_test(sm.legs[ch.LEFT_LEG_FRONT])
     if key == "2":
-        continuous_test(sm.legs[sl.RIGHT_LEG_FRONT
+        continuous_test(sm.legs[ch.RIGHT_LEG_FRONT
 ])
     if key == "3":
-        continuous_test(sm.legs[sl.LEFT_LEG_BACK])
+        continuous_test(sm.legs[ch.LEFT_LEG_BACK])
     if key == "4":
-        continuous_test(sm.legs[sl.RIGHT_LEG_BACK])
+        continuous_test(sm.legs[ch.RIGHT_LEG_BACK])
 
 def continuous_check():
     key = ""
@@ -134,30 +135,30 @@ def check_legs():
     key = input("press a key to continue")
 
     print ("front left leg")
-    sm.legs[sl.LEFT_LEG_FRONT].up()
-    print (sm.legs[sl.LEFT_LEG_FRONT].name)
+    sm.legs[ch.LEFT_LEG_FRONT].up()
+    print (sm.legs[ch.LEFT_LEG_FRONT].name)
     key = input("press a key to continue")
 
     print ("front right leg")
-    sm.legs[sl.RIGHT_LEG_FRONT].up()
-    print (sm.legs[sl.RIGHT_LEG_FRONT].name)
+    sm.legs[ch.RIGHT_LEG_FRONT].up()
+    print (sm.legs[ch.RIGHT_LEG_FRONT].name)
     key = input("press a key to continue")
 
     print ("back left leg")
-    sm.legs[sl.LEFT_LEG_BACK].up()
-    print (sm.legs[sl.LEFT_LEG_BACK].name)
+    sm.legs[ch.LEFT_LEG_BACK].up()
+    print (sm.legs[ch.LEFT_LEG_BACK].name)
     key = input("press a key to continue")
 
     print ("back right leg")
-    sm.legs[sl.RIGHT_LEG_BACK].up()
-    print (sm.legs[sl.RIGHT_LEG_BACK].name)
+    sm.legs[ch.RIGHT_LEG_BACK].up()
+    print (sm.legs[ch.RIGHT_LEG_BACK].name)
     key = input("press a key to continue")
 
     print ("Now moving each let to its default position.")
-    sm.legs[sl.LEFT_LEG_FRONT].setdefault()
-    sm.legs[sl.RIGHT_LEG_FRONT].setdefault()
-    sm.legs[sl.LEFT_LEG_BACK].setdefault()
-    sm.legs[sl.RIGHT_LEG_BACK].setdefault()
+    sm.legs[ch.LEFT_LEG_FRONT].setdefault()
+    sm.legs[ch.RIGHT_LEG_FRONT].setdefault()
+    sm.legs[ch.LEFT_LEG_BACK].setdefault()
+    sm.legs[ch.RIGHT_LEG_BACK].setdefault()
 
     print ("now moving each leg to its down position")
 
@@ -166,26 +167,26 @@ def check_feet():
     key = input("press a key to continue")
 
     print ("front left foot")
-    sm.feet[sl.LEFT_FOOT_FRONT].up()
+    sm.feet[ch.LEFT_FOOT_FRONT].up()
     key = input("press a key to continue")
 
     print ("front right foot")
-    sm.feet[sl.RIGHT_FOOT_FRONT].up()
+    sm.feet[ch.RIGHT_FOOT_FRONT].up()
     key = input("press a key to continue")
 
     print ("back left foot")
-    sm.feet[sl.LEFT_FOOT_BACK].up()
+    sm.feet[ch.LEFT_FOOT_BACK].up()
     key = input("press a key to continue")
 
     print ("back right foot")
-    sm.feet[sl.RIGHT_FOOT_BACK].up()
+    sm.feet[ch.RIGHT_FOOT_BACK].up()
     key = input("press a key to continue")
 
     print ("Now moving each let to its default position.")
-    sm.feet[sl.LEFT_FOOT_FRONT].setdefault()
-    sm.feet[sl.RIGHT_FOOT_FRONT].setdefault()
-    sm.feet[sl.LEFT_FOOT_BACK].setdefault()
-    sm.feet[sl.RIGHT_FOOT_BACK].setdefault()
+    sm.feet[ch.LEFT_FOOT_FRONT].setdefault()
+    sm.feet[ch.RIGHT_FOOT_FRONT].setdefault()
+    sm.feet[ch.LEFT_FOOT_BACK].setdefault()
+    sm.feet[ch.RIGHT_FOOT_BACK].setdefault()
 
 # set the input choice to nothing
 key = ""
