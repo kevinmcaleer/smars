@@ -5,3 +5,5 @@
 __pycache__
 venv
 .DS_*
+dist
+smars.egg-info

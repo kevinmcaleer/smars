@@ -10,7 +10,7 @@ from smars_library.smars_library import SmarsRobot
 from smars_library.smars_library import Leg
 
 import smars_library.smars_library as sl
-from smars_library.constants import Channel as ch
+from smars_library.smars_library import Channel as ch
 
 import time
 
