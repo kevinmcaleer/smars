@@ -5,6 +5,9 @@ python:
   - 3.6
   - 3.7
   - 3.8
+before_install:
+  - "pip install -U pip"
+  - "python setup.py install"
 install:
   - pip install unittest2
   - pip install adafruit_pca9685
