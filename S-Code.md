@@ -4,7 +4,7 @@ S-code describes a set of codes used to communicate with a SMARS robot.
 
 An example sent over bluetooth would be:
 
-```python
+```
 S111 3
 ```
 
@@ -12,7 +12,7 @@ This would move the robot forward 3 units. A unit is dependent on lots of things
 
 ## Generic Movement
 
-```python
+```
 100 - # Movement
 101 - Move Forward
 102 - Move backward
@@ -22,7 +22,7 @@ This would move the robot forward 3 units. A unit is dependent on lots of things
 
 ## Wheeled SMARS
 
- ```python
+ ```
  110 - # Movement
  111 - Move Forward
  112 - Move Backwards
@@ -32,7 +32,7 @@ This would move the robot forward 3 units. A unit is dependent on lots of things
 
 ## Quad Smars
 
- ```python
+ ```
  150 - # Quad SMARS movements
  151 - Walk Forward
  152 - Walk Backward
@@ -46,7 +46,7 @@ This would move the robot forward 3 units. A unit is dependent on lots of things
 
 ## Inputs
 
-```python
+```
 200 - # Inputs, sensors
 210 - Light sensor
 211 - get light level
@@ -63,7 +63,7 @@ This would move the robot forward 3 units. A unit is dependent on lots of things
 
 ## Outputs
 
-```python
+```
 300 - # output - sound and lights
 400 - status
 401 - get current status
