@@ -8,6 +8,7 @@ python:
 before_install:
   - "pip install -U pip"
   - "python setup.py install"
+  - "export PYTHONPATH=$PYTHONPATH:$(pwd)"
 install:
   - pip install unittest2
   - pip install adafruit_pca9685
