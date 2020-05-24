@@ -1,5 +1,6 @@
 #Leg setup
 
+VERSION = "1.0"
 # setup leg 1:
 
 # from SMARS_Library import *
@@ -16,27 +17,36 @@ l1 = Leg(name="limb test", channel=channel_number,  leg_minangle=0, leg_maxangle
 
 def menu():
     """ display the main menu """
+    print("")
+    print("*** SMARS Limb setup, Version ", VERSION, "***")
+    print("")
     print("Menu")
     print("----")
-    print("")
-    print("1) select channel")
-    print("2) select angle")
-    print("0) quit")
+    print("") 
+    print("Select:")
+    print("1) Channel")
+    print("2) Angle")
+    print("0) Quit")
     print("")
 
 channel_number = 0
 def select_channel():
     global channel_number
     global l1
-    print("Select Channel")
-    print("--------------")
     print("")
-    print("currently selected channel is:", channel_number)
+    print("")
+    print("CHANNEL")
+    print("-------------------------")
+    print("")
+    print("Currently selected channel is:", channel_number)
+    print("")
+    print("Select new channel.")
     key = ""
     ch = 0
     #  need to make this loop exit once the channel number is selected and "q" pressed
     while key != "q":
-        key = input("type channel number:, or q to return to the main menu")
+        key = input("Type channel number:, or q to return to the main menu")
+        print("")
         print(key)
         if key == "q":
             print("")
@@ -51,6 +61,13 @@ def select_channel():
 
 angle = 0
 
+def show_status():
+    """
+    Shows the currently selected channel and angle
+    """
+    print("")
+    print("[current channel is:", l1.channel,"]:[current angle is:", angle,"]")
+    print("")
 
 def select_angle():
     """ change the current angle """
@@ -78,13 +95,12 @@ menu_key = ""
 # show Menu until quit
 while menu_key != "0":
     menu()
-    print("current channel is:", l1.channel)
-    print("current angle is:", angle)
-    menu_key = input("enter number ")
+    show_status()
+    menu_key = input("enter choice ")
 
-    if menu_key == "1":
+    if (menu_key == "1") or (menu_key == "c"):
         select_channel()
-    if menu_key == "2":
+    if (menu_key == "2") or (menu_key == "a"):
         select_angle()
-    if menu_key == "0":
+    if (menu_key == "0") or (menu_key == "q"):
         print("Good bye!")
